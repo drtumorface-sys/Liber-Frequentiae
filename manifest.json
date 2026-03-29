@@ -1,25 +1,43 @@
 {
-  "name": "Liber Frequentiae V · Binaural Oracle",
+  "name": "Liber Frequentiae V",
   "short_name": "Liber Freq",
-  "description": "Kabbalistic Binaural Oracle · 72³×32 Paths · Shem ⟶ Goetia ⟶ Middle Pillar · 11,943,936 Combinations",
+  "description": "Kabbalistic Binaural Oracle \u00b7 72\u00b3\u00d732 Paths \u00b7 Shem \u00b7 Goetia \u00b7 Middle Pillar",
   "start_url": "./liber_frequentiae_v5-3.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#080604",
   "theme_color": "#080604",
-  "categories": ["music", "utilities", "lifestyle"],
+  "lang": "en",
+  "categories": [
+    "music",
+    "utilities",
+    "lifestyle"
+  ],
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%23080604'/><circle cx='96' cy='96' r='80' fill='none' stroke='%23e8a020' stroke-width='2'/><circle cx='96' cy='96' r='55' fill='none' stroke='%23e8a020' stroke-width='1' opacity='0.4'/><text x='96' y='108' font-size='52' text-anchor='middle' fill='%23e8a020' font-family='serif'>✦</text><text x='96' y='168' font-size='12' text-anchor='middle' fill='%237a4a08' font-family='monospace' letter-spacing='2'>LIBER</text></svg>",
+      "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23080604'/><circle cx='256' cy='256' r='220' fill='none' stroke='%23e8a020' stroke-width='3'/><circle cx='256' cy='256' r='150' fill='none' stroke='%23e8a020' stroke-width='1' opacity='0.35'/><text x='256' y='295' font-size='140' text-anchor='middle' fill='%23e8a020' font-family='serif'>✦</text><text x='256' y='440' font-size='28' text-anchor='middle' fill='%237a4a08' font-family='monospace' letter-spacing='4'>LIBER FREQ</text></svg>",
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "screenshots": [],
@@ -27,16 +45,28 @@
   "related_applications": [],
   "shortcuts": [
     {
-      "name": "Oracle Mode",
+      "name": "Oracle \u2014 Random All",
       "short_name": "Oracle",
-      "description": "Random all — Shem × Goetia × Pillar",
-      "url": "./liber_frequentiae_v5-3.html#oracle"
+      "description": "Random Shem \u00d7 Goetia \u00d7 Pillar combination",
+      "url": "./liber_frequentiae_v5-3.html#oracle",
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
-      "name": "Path 32 · Tau",
+      "name": "Path 32 \u00b7 Tau Gate",
       "short_name": "Tau Gate",
-      "description": "Activate Path 32 — Malkuth Gate",
-      "url": "./liber_frequentiae_v5-3.html#path32"
+      "description": "Activate Path 32 \u2014 Malkuth Gate",
+      "url": "./liber_frequentiae_v5-3.html#path32",
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
