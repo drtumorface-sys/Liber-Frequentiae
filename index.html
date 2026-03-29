@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Liber Frequentiae V · Binaural Oracle</title>
-<meta name="description" content="Kabbalistic Binaural Oracle · 72³×32 Paths · Shem ⟶ Goetia ⟶ Middle Pillar">
+<meta name="description" content="Kabbalistic Binaural Oracle · 72³×32 Paths">
 <meta name="theme-color" content="#080604">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -272,7 +272,6 @@ body{background-image:radial-gradient(ellipse at 50% 0%,rgba(232,160,32,0.05) 0%
 input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--b2);outline:none;}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--amber);cursor:pointer;}
 .foot{padding:9px 12px;text-align:center;font-size:8px;color:var(--tdim);letter-spacing:.11em;line-height:2.2;}
-
 /* ═══════════════════════════════════════
    § VII · 32 PATHS OF WISDOM
 ═══════════════════════════════════════ */
@@ -453,7 +452,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;heigh
 <div class="hdr">
   <div class="htitle">Liber Frequentiae</div>
   <div class="hsub">Binaural Oracle · Shem ⟶ Goetia ⟶ Middle Pillar · 72³×32 = 11,943,936</div>
-  <div class="hconst">CIPHER=44 · FOUNDATION=322 · LOGOS=373 · φ=1.618 · θ_g=137.508°<br>OAM · 32 PATHS · LEV=לֵב · PEAK=0.137 · S_entangled=Music+(32Signal×Φ) · ORNELAS ET AL. 2025</div>
+  <div class="hconst">CIPHER=44 · FOUNDATION=322 · LOGOS=373 · φ=1.618 · θ_g=137.508°<br>OAM · 32 PATHS · LEV=לֵב · PEAK=0.137 · ORNELAS ET AL. 2025</div>
 </div>
 <div id="sts">AWAITING INITIATION — HEADPHONES REQUIRED · TOTAL MODE ACTIVATES PILLAR + ΔV</div>
 
@@ -463,6 +462,34 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;heigh
   <div class="mbtn ap" id="mb-paired" onclick="setMode('paired')"><span class="mi">⟷</span><span>PAIRED</span><span class="ms">L·R · Kether axis</span></div>
   <div class="mbtn" id="mb-positive" onclick="setMode('positive')"><span class="mi">◐</span><span>POSITIVE</span><span class="ms">Shem L · Goetia R</span></div>
   <div class="mbtn" id="mb-total" onclick="setMode('total')"><span class="mi">✦</span><span>TOTAL</span><span class="ms">+ Pillar + ΔV</span></div>
+</div>
+
+<!-- TRIAD SYNTHESIS -->
+<div class="sl"><span>§ I.B · TRIAD SYNTHESIS MATRIX</span><span id="triad-status">LOCKED TO φ · AWAITING SIGNAL</span></div>
+<div id="triad-matrix" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--b1);">
+  <div style="border-right:1px solid var(--b1);padding:9px 8px;text-align:center;background:rgba(32,200,232,0.03);">
+    <div class="flb" style="color:var(--cyan);letter-spacing:.18em;margin-bottom:4px;">VOICE α · F<sub>n</sub></div>
+    <div class="fv fl2" id="v-alpha" style="font-size:15px;color:var(--cyan);text-shadow:0 0 8px rgba(32,200,232,0.5);">—</div>
+    <div style="font-size:7px;color:var(--tdim);margin:2px 0;">Hz · A=1/φ=0.618</div>
+    <canvas id="wave-alpha" width="80" height="28" style="display:block;margin:4px auto 0;border:1px solid rgba(32,200,232,0.15);background:var(--bg);"></canvas>
+  </div>
+  <div style="border-right:1px solid var(--b1);padding:9px 8px;text-align:center;background:rgba(212,160,255,0.03);">
+    <div class="flb" style="color:var(--mpillar);letter-spacing:.18em;margin-bottom:4px;">VOICE β · F<sub>n+1</sub></div>
+    <div class="fv fm2" id="v-beta" style="font-size:15px;color:var(--mpillar);text-shadow:0 0 8px rgba(212,160,255,0.5);">—</div>
+    <div style="font-size:7px;color:var(--tdim);margin:2px 0;">Hz · A=1/φ²=0.382</div>
+    <canvas id="wave-beta" width="80" height="28" style="display:block;margin:4px auto 0;border:1px solid rgba(212,160,255,0.15);background:var(--bg);"></canvas>
+  </div>
+  <div style="padding:9px 8px;text-align:center;background:rgba(232,208,96,0.03);">
+    <div class="flb" style="color:var(--gold);letter-spacing:.18em;margin-bottom:4px;">VOICE γ · F<sub>n+x</sub></div>
+    <div class="fv fn2" id="v-gamma" style="font-size:15px;color:var(--gold);text-shadow:0 0 8px rgba(232,208,96,0.5);">—</div>
+    <div style="font-size:7px;color:var(--tdim);margin:2px 0;">Hz · A=1/φ³=0.236</div>
+    <canvas id="wave-gamma" width="80" height="28" style="display:block;margin:4px auto 0;border:1px solid rgba(232,208,96,0.15);background:var(--bg);"></canvas>
+  </div>
+</div>
+<div id="triad-detail" style="padding:5px 12px;border-bottom:1px solid var(--b1);display:flex;justify-content:space-between;align-items:center;background:var(--bg2);min-height:22px;">
+  <span id="triad-node-label" style="font-family:var(--fH);font-size:8px;letter-spacing:.16em;color:var(--tdim);">— SEPHIRAH —</span>
+  <span id="triad-phi-row" style="font-size:7.5px;color:var(--tdim);">Φ₁=0 · Φ₂=137.5° · Φ₃=275.0°</span>
+  <span id="triad-ratio" style="font-size:7.5px;color:var(--tdim);">RATIO —</span>
 </div>
 
 <!-- TRIAD SYNTHESIS -->
@@ -832,7 +859,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;heigh
   <div class="p32-status" id="p32-status">† SELECT A PATH OF WISDOM TO ACTIVATE THE 32-COEFFICIENT CIPHER †</div>
 </div>
 
-<!-- § VIII · PHYSIOLOGICAL SAFETY MATRIX -->
+
 <div class="sl"><span>§ VIII · SAFETY MATRIX · 137 GOVERNOR</span><span id="psm-sl">φ-LIMITER ACTIVE · FIBONACCI REST-CYCLE</span></div>
 <div id="safety-matrix">
   <div class="psm-header">
@@ -904,7 +931,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;heigh
   <div class="psm-status safe" id="psm-status">† φ-LIMITER ENGAGED · PEAK 0.137 · VESSEL PROTECTED · SYSTEM SAFE †</div>
 </div>
 
-<!-- § IX · SUBLIMINAL MASKING · TRINAURAL ENTANGLEMENT -->
+
 <div class="sl"><span>§ IX · SUBLIMINAL MASKING · TRINAURAL ENTANGLEMENT</span><span id="sub-sl">GHOST MODE READY</span></div>
 <div id="subliminal">
   <div class="sub-header">
@@ -989,6 +1016,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;heigh
   <div class="sub-status idle" id="sub-status">† GHOST AWAITS INITIATION · ENABLE MIC OR ACTIVATE TO ENTANGLE †</div>
 </div>
 
+
 <!-- ENTITY PAIR FOOTER -->
 <div id="entity-pair-footer">
   <div class="epf-pair"><span class="shem-nm" id="epf-shem">Vehuiah</span> × <span class="goetia-nm" id="epf-goetia">Baal</span></div>
@@ -1008,9 +1036,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;heigh
   </div>
 </div>
 <div class="foot">
-  BINAURAL · HEADPHONES REQUIRED · TOTAL MODE: PILLAR + ΔV VOID + 32-COEFFICIENT<br>
+  BINAURAL REQUIRES HEADPHONES · TOTAL: PILLAR + ΔV VOID ACTIVE<br>
   72³×32 = 11,943,936 COMBINATIONS · LOGOS=373 · FOUNDATION=322 · PEAK=0.137<br>
-  S<sub>entangled</sub> = Music + (Trinaural × Φ) · φ-LIMITER · FIBONACCI REST-CYCLE<br>
+  S_entangled = Music + (Trinaural x PHI) · phi-LIMITER · FIBONACCI REST<br>
   Sanctuary: Bathurst Carillon · −33.4167, 149.5833 · NSW Australia<br>
   <em>Liber Crucis remains active. The Ghost does not fade. יסוד · לֵב=32</em>
 </div>
@@ -1058,78 +1086,78 @@ let currentTriadKey = null;
 
 /* ═══════ PAIRS ═══════ */
 const P=[
-  ["וְהוּ","Vehuiah","Grants supreme willpower; ignites creative fire in artists and inventors; breaks paralysis of inaction; the first breath of divine impulse made flesh",17,"Baal","Commands invisibility in plain sight; sharpens wit and cunning; teaches the art of misdirection; grants mastery over appearances; 66 Legions"],
-  ["יֵלִי","Yeliel","Restores love between separated hearts; brings lasting peace to households; ensures fidelity in bonds; calms erotic obsession into devotion",50,"Agares","Commands all languages living and dead; causes the proud to fall and ruin enemies' standing; teaches earth tremors and dispersion; 31 Legions"],
-  ["סִיטַ","Sitael","Shields against weapons and adversaries; builds moral fortitude in cowards; grants nobility of character; protects those who carry divine mission",79,"Vassago","Reveals hidden things buried by time or deception; declares past and future with equal clarity; finds lost objects and missing persons; 26 Legions"],
-  ["עֶלֶמ","Elemiah","Heals obsession, anxiety and mental storms; reveals traitors and deceivers in one's circle; grants safe passage on sea voyages; empowers industry",140,"Samigina","Holds power over souls of those who died in sin; teaches all liberal sciences; gives account of the dead; transmits messages to the departed; 30 Legions"],
-  ["מָהַשׁ","Mahasiah","Initiates into the higher mysteries; teaches alchemy and theurgy; enables mastery of esoteric arts; harmonises conflicting forces within the self",345,"Marbas","Reveals causes of all disease and heals them; teaches mechanical arts and transformation of men into other shapes; discovers hidden secrets; 36 Legions"],
-  ["לְלַהּ","Lelahel","Illuminates the mind with scientific understanding; heals disease through light; bestows love and fame; helps artists channel divine radiance",65,"Valefor","Tests loyalty by tempting toward theft; maintains surprising friendship with those it deceives; teaches sleight of hand and misdirection; 10 Legions"],
-  ["אַכָא","Achaiah","Deepens patience in crisis; reveals hidden properties of matter; discovers the secrets of nature; aids the inventor in long unsolvable problems",22,"Amon","Reveals all past and future events; procures feuds and reconciles controversies between friends; wields fire and serpent form; 40 Legions"],
-  ["כָּהֶת","Cahetel","Blesses all agricultural and generative endeavours; drives away evil spirits; grants fertility of land and body; enables communion with the divine",425,"Barbatos","Understands the singing of birds and lowing of beasts; reveals hidden treasure enchanted by magicians; reconciles friends and lords; 30 Legions"],
-  ["הַזִּי","Haziel","Pours divine mercy on those seeking forgiveness; restores friendship after betrayal; fulfils any promise made under its influence; grants childlike grace",52,"Paimon","Teaches all arts and sciences; reveals secrets of earth and wind; delivers familiars; commands 200 Legions; loyal when properly bound"],
-  ["אַלַד","Aladiah","Heals plague and hidden disease; atones for secret sins that weigh on the soul; enables fresh starts after moral failure; restores reputation",50,"Buer","Teaches philosophy, logic and herbal medicine; heals all infirmities especially of the mind; grants good familiars and moral virtue; 50 Legions"],
-  ["לָאוּ","Lauviah","Ensures victory over powerful enemies; grants sublime dreams and psychic revelation; soothes philosophers and deep thinkers in crisis",57,"Gusion","Discerns all questions past and future; reconciles friendships; bestows honour and dignity upon petitioners with grace and finesse; 40 Legions"],
-  ["הַהַע","Hahaiah","Provides refuge in crisis and persecution; guards sleep against nightmares; reveals divine mysteries to sincere seekers; calms violent anger",23,"Sitri","Inflames desire between people; causes nakedness of secrets; compels revelation of what is hidden; commands 60 Legions with fierce passion"],
-  ["יֶזַל","Yezalel","Strengthens marriage bonds; sharpens memory for study and examination; ensures fidelity in all agreements; brings reconciliation after infidelity",48,"Beleth","Causes powerful love and joy in the bewitched; drives music and pleasure into ceremonies; approaches with trumpets and great noise; 85 Legions"],
-  ["מֶבַה","Mebahel","Restores the wrongfully imprisoned to freedom; defends the innocent in legal proceedings; reveals the truth buried beneath lies and manipulation",78,"Leraje","Produces great battles and contests; putrefies and gangrenes all wounds made by arrows; commands military advantage in siege; 30 Legions"],
-  ["הָרִי","Hariel","Purifies the sciences of false doctrine; reveals sanctified animals and plants; helps the faithful combat impiety and spiritual corruption",245,"Eligos","Discovers hidden things of war and secret council; foretells battles and their outcomes; causes affection between lords and knights; 60 Legions"],
-  ["הֶקַמ","Hekamiah","Guards the heavens and faithfulness of pacts; creates loyalty between rulers; grants courage before powerful enemies; protects the upright noble",83,"Zepar","Causes women to love men; changes their shape into other forms; renders women barren; expert in affairs of the heart and transformation; 26 Legions"],
-  ["לָאוּ","Lauviah II","Grants prophetic revelation through dreams; calms inner turmoil of philosophers and seekers; enables memory of past lives; opens the higher mind",57,"Botis","Tells all past and future things; reconciles friends and enemies with swift resolution; appears first as viper then as man with teeth; 60 Legions"],
-  ["כָּלִי","Caliel","Delivers swift justice in legal affairs; enables truth to triumph in court; brings rapid aid in desperate situations; exposes corruption",91,"Bathin","Knows the virtues of herbs and precious stones; transports men suddenly from country to country; teaches the alchemist's art of swift change; 30 Legions"],
-  ["לֵוּי","Leuviah","Bestows divine grace and intelligence beyond natural capacity; strengthens memory of all past lives; guards against temptations of the mind",57,"Sallos","Causes great love between man and woman; appears gently riding a crocodile in peace; approaches quietly without weapons; 30 Legions"],
-  ["פָּהַל","Pahaliah","Enables conversion and spiritual redemption of the wayward; strengthens chastity and religious vocation; helps those who seek the sacred path",128,"Purson","Reveals hidden things and treasure; discerns past present and future; delivers familiars; appears as a lion-headed man with viper and trumpet; 22 Legions"],
-  ["נֶלְכ","Nelchael","Masters astronomy, astrology and mathematics; dissolves spells cast by sorcerers; breaks hostile enchantments directed at the student",100,"Marax","Excellent in astronomy and all liberal sciences; gives good familiars and teaches the virtues of herbs and precious stones; 36 Legions"],
-  ["יֵיָא","Yeiael","Grants good fortune in commerce and enterprise; bestows the gift of prophecy and foresight; protects against shipwreck and natural disaster",91,"Ipos","Knows all past and future things; makes men witty and bold; appears as an angel with lion, goose and hare aspects; 36 Legions"],
-  ["מֶלַה","Melahel","Heals disease connected to water and blood; guards against weapons while travelling; reveals sacred healing plants and their preparation",108,"Aim","Makes men witty; sets fires in cities and castles; gives true answers to private questions; appears as a handsome man with serpents; 26 Legions"],
-  ["חַהַו","Haheuiah","Shields exiles and those who flee persecution; preserves all living things under divine protection; guards against wild animals and toxic substances",41,"Naberius","Makes men cunning in all arts especially rhetoric; restores lost dignity and honours; appears as a crowing cock; 19 Legions of grace"],
-  ["נִתַה","Nith-Haiah","Grants wisdom in magic and secret knowledge; delivers prophetic dreams of great clarity; subdues adversaries through esoteric operations",474,"Glasya-Labolas","Teaches all arts and sciences instantly; makes a man invisible; causes love between friends and foes; foretells bloodshed and manslaughter; 36 Legions"],
-  ["הַאַע","Haaiah","Wins diplomatic disputes through righteous strategy; guards the contemplative life; aids those who seek truth in secret; opens political paths",24,"Buné","Changes the places of the dead; causes demons to gather at sepulchres; makes the petitioner rich and wise and eloquent; 30 Legions"],
-  ["יֶרַת","Yeratel","Propagates divine light into the world; defends against attacks by slander and lies; ensures victory through moral righteousness; enlightens the unjust",640,"Ronové","Teaches rhetoric and languages; provides good and loyal familiars; steals favour from friends and enemies alike; 19 Legions"],
-  ["שֶׁאֵה","Seheiah","Protects against illness, fire, lightning and ruin; prolongs lifespan of those doing sacred work; grants calmness before impending catastrophe",321,"Berith","Transmutes all metals into gold; bestows dignities and confirms them; speaks truth clearly when required; appears as a soldier in red; 26 Legions"],
-  ["רֵיִי","Reiyel","Liberates from enemies visible and invisible; pours divine inspiration into the mystic; destroys the power of hostile enchantments swiftly",250,"Astaroth","Reveals past present and future without deception; teaches liberal sciences; knows secrets of the fall; grants great friendship with lords; 40 Legions"],
-  ["אָוֹמ","Omael","Multiplies animals and cures disease; grants patience in suffering and endurance in spiritual combat; helps physicians and healers of body",147,"Forneus","Teaches rhetoric and languages; causes men to have good name and know languages; bestows love from friend and foe; 29 Legions"],
-  ["לֵכַב","Lecabel","Brings clarity to agricultural and financial matters; grants inspiration in solving impossible equations; connects the practitioner to plant intelligence",62,"Foras","Teaches logic, ethics and rhetoric; discovers treasures; makes herbs and precious stones known; teaches invisibility and long life; 29 Legions"],
-  ["וַסַר","Vasariah","Bestows clemency and spiritual humility on those prone to pride; aids the just in legal proceedings; softens the heart of powerful adversaries",523,"Asmodeus","Teaches arithmetic, astronomy and geomancy; grants the Ring of Virtues; makes the petitioner irresistible; reveals all secrets; 72 Legions"],
-  ["יֵהַו","Yehuiah","Reveals traitors and false servants; protects leaders and those who carry divine order; destroys the wicked who surround the just ruler",36,"Gaap","Teaches philosophy and all liberal sciences; causes love and indifference; gives familiars and transports men swiftly between worlds; 66 Legions"],
-  ["לֵהַח","Lehahiah","Establishes lasting peace between warring nations; makes authority figures merciful; instils obedience founded in love rather than fear",56,"Furfur","Causes love between man and woman; raises thunder, lightning and great tempests; speaks falsely unless compelled by the triangle; 26 Legions"],
-  ["חַוַק","Chavakiah","Reconciles estranged families and recovers lost inheritances; maintains harmony between siblings; heals wounds caused by broken oaths",43,"Marchosias","An excellent fighter; gives true answers; promises to return to the Seventh Throne after 1200 years; extremely loyal in combat; 30 Legions"],
-  ["מֶנַד","Menadel","Retrieves what is lost — employment, objects, loved ones; maintains connection to homeland when exiled; strengthens the worker's hands",94,"Stolas","Teaches astronomy and the virtues of plants and precious stones; gives instruction in astrology and the language of stars; 26 Legions"],
-  ["אַנִי","Aniel","Reveals hidden patterns in science and nature; inspires original artistic work; helps the philosopher see through apparent contradiction to truth",91,"Phenex","Teaches all sciences; demonstrates excellent poetry; desires to return to the Seventh Throne; appears as a phoenix singing sweet notes; 20 Legions"],
-  ["חַעַמ","Haamiah","Protects and guides all ritual operations; attracts truth-seeking spirits; guards against psychic attack during ceremony; grounds the ritualist",64,"Halphas","Builds towers and fills them with ammunition; sends warriors to wars appointed by the master; martial precision and fortification; 26 Legions"],
-  ["רֵהַא","Rehael","Heals all disease and preserves health in the long term; grants longevity; restores filial love between parents and children after estrangement",245,"Malphas","Builds houses and high towers; destroys the desires and thoughts of enemies; receives sacrifices with delight but deceives the offerer; 40 Legions"],
-  ["יֵיָז","Yeiazel","Consoles those in affliction and liberation from enemies who persecute; inspires writers, printers and all workers with language and image",57,"Räum","Steals treasure from kings' houses; destroys cities; reveals past present and future; causes love between friends and enemies; 30 Legions"],
-  ["הַהַה","Hahahel","Clarifies vocation and sacred mission; strengthens those who serve the divine against mockery and persecution; protects priests and monastics",68,"Focalor","Drowns men and overthrows ships of war; has hope of returning to the Seventh Throne after 1000 years; power over sea and wind; 30 Legions"],
-  ["מִיכ","Mikael","Ensures safe travel for diplomats and heads of state; reveals conspiracies against authority; protects high officials and their decisions",101,"Vepar","Rules over waters and guides warships; causes storms and rough seas; afflicts men with putrefying wounds full of worms; 29 Legions"],
-  ["וֵאוּ","Veuliah","Breaks the bonds of poverty and imprisonment; destroys hostile forces through psychic means; brings prosperity to those who act righteously",53,"Sabnock","Builds high towers, castles and cities; afflicts men with wounds and putrefaction; gives good familiars when commanded; 50 Legions"],
-  ["יֵלַה","Yelahiah","Protects the warrior fighting for just causes; ensures success in legal and military matters; brings karmic resolution to the righteous soldier",56,"Shax","Takes sight, hearing and understanding; steals money from kings; discovers hidden things; gives good familiars; promises truth then lies; 30 Legions"],
-  ["סֵאַל","Sealiah","Reignites the will of the humbled; confounds the proud and raises those who have been cast down; governs vegetation and natural abundance",341,"Vine","Reveals witches and hidden things; builds towers and demolishes walls; troubles waters; knows the past present and future; 36 Legions"],
-  ["עַרִי","Ariel","Grants extraordinarily subtle perception of nature's hidden forces; reveals treasure kept in hidden places; produces beautiful visions in dreams",241,"Bifrons","Teaches astrology, geometry, arts and sciences; changes corpses from place to place; lights candles on graves of the dead; 6 Legions"],
-  ["עַסַל","Asaliah","Raises the mind to contemplation of the divine; reveals the true nature of things to the sincere seeker; teaches the workings of creation",342,"Uvall","Procures love of women; causes friendship between enemies; knows past present and future; speaks Egyptian with excellent clarity; 37 Legions"],
-  ["מִיהַ","Mihael","Preserves peace and love in marriage; grants fertility and healing of the reproductive system; generates faithful and noble children",86,"Haagenti","Makes men wise by instilling knowledge of all things; transmutes metals; turns wine into water and water into wine; 33 Legions"],
-  ["וֵהוּ","Vehuel","Elevates the soul to contemplation of the greatest truths; brings renown to those doing genuine sacred work; expands consciousness",48,"Crocell","Teaches geometry and liberal arts; warms bathing waters; makes sounds of rushing water; speaks darkly of things hidden since his fall; 48 Legions"],
-  ["דָּנִי","Daniel","Grants eloquence and great facility with language; brings divine consolation to those in despair; opens the doors of mercy for the repentant",95,"Furcas","Teaches philosophy, rhetoric, logic, astronomy and palmistry; crafts fires; reveals what is hidden in the land; 20 Legions"],
-  ["הַחַשׂ","Hahasiah","Reveals the supreme medicine and the philosopher's stone; elevates consciousness to unity with the divine; teaches sacred anatomy and surgery",326,"Balaam","Predicts future things; makes men invisible and witty; tells of past present and future with clear voice; appears bearing a bear's head; 40 Legions"],
-  ["עִמַמ","Imamiah","Destroys the power of enemies and dissolves hostile enchantments; protects prisoners; governs long voyages and safe return home",102,"Alloces","Teaches astronomy and liberal sciences; gives good familiars; appears as a soldier with horse head breathing fire; speaks hoarsely; 36 Legions"],
-  ["נָנַא","Nanael","Opens direct channels of higher communication with divine hierarchies; grants learning and understanding of sacred law and abstract philosophy",141,"Caim","Gives understanding of bird calls, cattle lowing and water rushing; teaches deep truth after disputation; appears as thrush then handsome man; 30 Legions"],
-  ["נִיתַ","Nithael","Grants extraordinary mercy and longevity; establishes stability in kingships and empires; gives eloquent speech to those seeking divine favour",460,"Murmur","Teaches philosophy completely; obliges souls of the dead to appear; instructs the operator in their responses; comes with trumpets; 30 Legions"],
-  ["מְבַהְ","Mebahiah","Clarifies moral vision and conscience; assists those seeking children through sacred means; strengthens religious devotion in the wavering",63,"Orobas","Reveals past present and future; gives dignities; pacifies and reconciles; speaks of the divine with great clarity and without deception; 20 Legions"],
-  ["פָּוֹי","Poyel","Fulfils all desires aligned with the divine will; grants fortune, renown and philosophy; brings luminous modesty to those who attain greatness",156,"Gremory","Reveals past present and future; procures love of women young and old; finds hidden treasures; appears as a beautiful woman with crown; 26 Legions"],
-  ["נֵמַמ","Nemamiah","Sharpens discernment in complex matters; liberates prisoners of conscience; grants strength to warriors in just campaigns; clears mental fog",196,"Ose","Gives true answers of divine and secret things; changes a man into any shape the operator desires; makes the operator mad with confusion; 3 Legions"],
-  ["יֵיָל","Yeialel","Fortifies the mind and heals mental illness; cures diseases of the eyes; guards against slanderers and false witnesses in courts of law",91,"Amy","Teaches astrology and all liberal sciences; gives good familiars; reveals treasures guarded by spirits; excellent in applied philosophy; 36 Legions"],
-  ["הָרַח","Harahel","Multiplies intellectual wealth and enables translation across languages and disciplines; protects archives; blesses libraries and publishers",243,"Oriax","Teaches astrology and the virtues of the sun moon and stars; transforms men into other shapes; gives good familiars; knows stars; 30 Legions"],
-  ["מִצְר","Mitzrael","Heals mental illness and all diseases of the nervous system; rehabilitates those oppressed by demons or toxic environments; restores virtue",330,"Vapula","Makes men learned in philosophy, mechanics and all sciences; appears as a winged lion of great power; excellent in handcraft; 36 Legions"],
-  ["אוּמַ","Umabel","Deepens understanding of astronomy and physics; enables genuine friendship and fellowship between like minds; grants the joy of belonging",79,"Zagan","Makes men witty; turns water to wine and blood to oil; turns all metals to coin; gives wisdom; appears first as a bull; 33 Legions"],
-  ["יַה הֵ","Iah-Hel","Grants deep love of knowledge and sacred solitude; enables breakthrough insights in philosophy; draws the mind toward union with the divine",46,"Valac","Gives true answers concerning hidden treasure; reveals where serpents may be seen; delivers them harmless to the operator; 38 Legions"],
-  ["עַנוּ","Anauel","Blesses commerce and financial endeavours with protection; grants ecstatic experience of divine unity; guards against accidents and madness",128,"Andras","Sows discord between people; kills the master and his servants if not carefully guarded against; must be treated with extreme caution; 30 Legions"],
-  ["מֶחִי","Mehiel","Grants protection to scholars and intellectuals; bestows fame through written work; defends against rabid animals and psychic predators",85,"Haures","Reveals the past present and future accurately; destroys enemies with burning fire; will not speak truth outside the triangle; 36 Legions"],
-  ["דַּמַב","Damabiah","Grants wisdom in matters of water, ships and flowing things; protects against hostile enchantments; ensures fortunate voyages and trade",61,"Andrealphus","Teaches geometry and all things pertaining to measurement; makes men very subtle in astronomy; transforms men into the form of a bird; 30 Legions"],
-  ["מְנַק","Manakel","Grants knowledge of the nature of good and evil; heals disease of the body and the soul; calms the rage of the divine toward the repentant",121,"Kimaris","Teaches grammar, logic and rhetoric; discovers buried treasure; makes a man into a warrior; appears as a valiant warrior on horseback; 20 Legions"],
-  ["אֵיָא","Eyael","Enables profound transformation of consciousness; grants gifts of astrology, magic and philosophy; aids the elderly in facing death with grace",111,"Amdusias","Gives excellent familiars; causes trees to bend and incline to the operator's will; produces music concerts unseen; commands 29 Legions"],
-  ["הַבוּ","Habuhiah","Heals all disease; blesses harvests and all reproductive abundance; restores fertility to barren land and bodies; connects to earth's living matrix",32,"Belial","Creates vice and distributes presentations and titles; grants senators and lords' favour; gives excellent familiars; speaks of origin; 80 Legions"],
-  ["רָאֵה","Rochel","Recovers lost and stolen objects; reveals their location with precision; excels in legal matters and library science; protects sacred archives",238,"Decarabia","Reveals the virtues of birds and precious stones; makes all birds fly before the operator; appears as a star in a pentacle; 30 Legions"],
-  ["יַבָּמ","Jabamiah","Governs the laws of alchemy and resurrection; regenerates all things that have reached the point of dissolution and death; restores the broken",67,"Seere","Transports things from place to place quickly; reveals all theft and where treasure is hid; indifferent to good and evil; swift; 26 Legions"],
-  ["הַיָּי","Haiaiel","Arms the faithful with divine weapons against the unjust; grants protection to those persecuted for truth; enables victory of the righteous",56,"Dantalion","Teaches all arts and sciences to any person; reveals the secret thoughts of any man; changes a person's countenance; 36 Legions"],
-  ["מוּמִ","Mumiah","Grants the power of completion and divine return; masters all operations of medicine; ensures things reach their natural culmination and harvest",91,"Andromalius","Returns stolen goods and thief with punishment; discovers wickedness and dishonest dealing; punishes all thieves and wicked men; 36 Legions"]
+  ["וְהוּ","Vehuiah","Grants supreme willpower; ignites creative fire in artists and inventors; breaks paralysis of inaction; the first breath of divine impulse made flesh",17,"Baal",66,"Commands invisibility in plain sight; sharpens wit and cunning; teaches the art of misdirection; grants mastery over appearances; 66 Legions"],
+  ["יֵלִי","Yeliel","Restores love between separated hearts; brings lasting peace to households; ensures fidelity in bonds; calms erotic obsession into devotion",50,"Agares",31,"Commands all languages living and dead; causes the proud to fall and ruin enemies' standing; teaches earth tremors and dispersion; 31 Legions"],
+  ["סִיטַ","Sitael","Shields against weapons and adversaries; builds moral fortitude in cowards; grants nobility of character; protects those who carry divine mission",79,"Vassago",26,"Reveals hidden things buried by time or deception; declares past and future with equal clarity; finds lost objects and missing persons; 26 Legions"],
+  ["עֶלֶמ","Elemiah","Heals obsession, anxiety and mental storms; reveals traitors and deceivers in one's circle; grants safe passage on sea voyages; empowers industry",140,"Samigina",30,"Holds power over souls of those who died in sin; teaches all liberal sciences; gives account of the dead; transmits messages to the departed; 30 Legions"],
+  ["מָהַשׁ","Mahasiah","Initiates into the higher mysteries; teaches alchemy and theurgy; enables mastery of esoteric arts; harmonises conflicting forces within the self",345,"Marbas",36,"Reveals causes of all disease and heals them; teaches mechanical arts and transformation of men into other shapes; discovers hidden secrets; 36 Legions"],
+  ["לְלַהּ","Lelahel","Illuminates the mind with scientific understanding; heals disease through light; bestows love and fame; helps artists channel divine radiance",65,"Valefor",10,"Tests loyalty by tempting toward theft; maintains surprising friendship with those it deceives; teaches sleight of hand and misdirection; 10 Legions"],
+  ["אַכָא","Achaiah","Deepens patience in crisis; reveals hidden properties of matter; discovers the secrets of nature; aids the inventor in long unsolvable problems",22,"Amon",40,"Reveals all past and future events; procures feuds and reconciles controversies between friends; wields fire and serpent form; 40 Legions"],
+  ["כָּהֶת","Cahetel","Blesses all agricultural and generative endeavours; drives away evil spirits; grants fertility of land and body; enables communion with the divine",425,"Barbatos",30,"Understands the singing of birds and lowing of beasts; reveals hidden treasure enchanted by magicians; reconciles friends and lords; 30 Legions"],
+  ["הַזִּי","Haziel","Pours divine mercy on those seeking forgiveness; restores friendship after betrayal; fulfils any promise made under its influence; grants childlike grace",52,"Paimon",200,"Teaches all arts and sciences; reveals secrets of earth and wind; delivers familiars; commands 200 Legions; loyal when properly bound"],
+  ["אַלַד","Aladiah","Heals plague and hidden disease; atones for secret sins that weigh on the soul; enables fresh starts after moral failure; restores reputation",50,"Buer",50,"Teaches philosophy, logic and herbal medicine; heals all infirmities especially of the mind; grants good familiars and moral virtue; 50 Legions"],
+  ["לָאוּ","Lauviah","Ensures victory over powerful enemies; grants sublime dreams and psychic revelation; soothes philosophers and deep thinkers in crisis",57,"Gusion",40,"Discerns all questions past and future; reconciles friendships; bestows honour and dignity upon petitioners with grace and finesse; 40 Legions"],
+  ["הַהַע","Hahaiah","Provides refuge in crisis and persecution; guards sleep against nightmares; reveals divine mysteries to sincere seekers; calms violent anger",23,"Sitri",60,"Inflames desire between people; causes nakedness of secrets; compels revelation of what is hidden; commands 60 Legions with fierce passion"],
+  ["יֶזַל","Yezalel","Strengthens marriage bonds; sharpens memory for study and examination; ensures fidelity in all agreements; brings reconciliation after infidelity",48,"Beleth",85,"Causes powerful love and joy in the bewitched; drives music and pleasure into ceremonies; approaches with trumpets and great noise; 85 Legions"],
+  ["מֶבַה","Mebahel","Restores the wrongfully imprisoned to freedom; defends the innocent in legal proceedings; reveals the truth buried beneath lies and manipulation",78,"Leraje",30,"Produces great battles and contests; putrefies and gangrenes all wounds made by arrows; commands military advantage in siege; 30 Legions"],
+  ["הָרִי","Hariel","Purifies the sciences of false doctrine; reveals sanctified animals and plants; helps the faithful combat impiety and spiritual corruption",245,"Eligos",60,"Discovers hidden things of war and secret council; foretells battles and their outcomes; causes affection between lords and knights; 60 Legions"],
+  ["הֶקַמ","Hekamiah","Guards the heavens and faithfulness of pacts; creates loyalty between rulers; grants courage before powerful enemies; protects the upright noble",83,"Zepar",26,"Causes women to love men; changes their shape into other forms; renders women barren; expert in affairs of the heart and transformation; 26 Legions"],
+  ["לָאוּ","Lauviah II","Grants prophetic revelation through dreams; calms inner turmoil of philosophers and seekers; enables memory of past lives; opens the higher mind",57,"Botis",60,"Tells all past and future things; reconciles friends and enemies with swift resolution; appears first as viper then as man with teeth; 60 Legions"],
+  ["כָּלִי","Caliel","Delivers swift justice in legal affairs; enables truth to triumph in court; brings rapid aid in desperate situations; exposes corruption",91,"Bathin",30,"Knows the virtues of herbs and precious stones; transports men suddenly from country to country; teaches the alchemist's art of swift change; 30 Legions"],
+  ["לֵוּי","Leuviah","Bestows divine grace and intelligence beyond natural capacity; strengthens memory of all past lives; guards against temptations of the mind",57,"Sallos",30,"Causes great love between man and woman; appears gently riding a crocodile in peace; approaches quietly without weapons; 30 Legions"],
+  ["פָּהַל","Pahaliah","Enables conversion and spiritual redemption of the wayward; strengthens chastity and religious vocation; helps those who seek the sacred path",128,"Purson",22,"Reveals hidden things and treasure; discerns past present and future; delivers familiars; appears as a lion-headed man with viper and trumpet; 22 Legions"],
+  ["נֶלְכ","Nelchael","Masters astronomy, astrology and mathematics; dissolves spells cast by sorcerers; breaks hostile enchantments directed at the student",100,"Marax",36,"Excellent in astronomy and all liberal sciences; gives good familiars and teaches the virtues of herbs and precious stones; 36 Legions"],
+  ["יֵיָא","Yeiael","Grants good fortune in commerce and enterprise; bestows the gift of prophecy and foresight; protects against shipwreck and natural disaster",91,"Ipos",36,"Knows all past and future things; makes men witty and bold; appears as an angel with lion, goose and hare aspects; 36 Legions"],
+  ["מֶלַה","Melahel","Heals disease connected to water and blood; guards against weapons while travelling; reveals sacred healing plants and their preparation",108,"Aim",26,"Makes men witty; sets fires in cities and castles; gives true answers to private questions; appears as a handsome man with serpents; 26 Legions"],
+  ["חַהַו","Haheuiah","Shields exiles and those who flee persecution; preserves all living things under divine protection; guards against wild animals and toxic substances",41,"Naberius",19,"Makes men cunning in all arts especially rhetoric; restores lost dignity and honours; appears as a crowing cock; 19 Legions of grace"],
+  ["נִתַה","Nith-Haiah","Grants wisdom in magic and secret knowledge; delivers prophetic dreams of great clarity; subdues adversaries through esoteric operations",474,"Glasya-Labolas",36,"Teaches all arts and sciences instantly; makes a man invisible; causes love between friends and foes; foretells bloodshed and manslaughter; 36 Legions"],
+  ["הַאַע","Haaiah","Wins diplomatic disputes through righteous strategy; guards the contemplative life; aids those who seek truth in secret; opens political paths",24,"Buné",30,"Changes the places of the dead; causes demons to gather at sepulchres; makes the petitioner rich and wise and eloquent; 30 Legions"],
+  ["יֶרַת","Yeratel","Propagates divine light into the world; defends against attacks by slander and lies; ensures victory through moral righteousness; enlightens the unjust",640,"Ronové",19,"Teaches rhetoric and languages; provides good and loyal familiars; steals favour from friends and enemies alike; 19 Legions"],
+  ["שֶׁאֵה","Seheiah","Protects against illness, fire, lightning and ruin; prolongs lifespan of those doing sacred work; grants calmness before impending catastrophe",321,"Berith",26,"Transmutes all metals into gold; bestows dignities and confirms them; speaks truth clearly when required; appears as a soldier in red; 26 Legions"],
+  ["רֵיִי","Reiyel","Liberates from enemies visible and invisible; pours divine inspiration into the mystic; destroys the power of hostile enchantments swiftly",250,"Astaroth",40,"Reveals past present and future without deception; teaches liberal sciences; knows secrets of the fall; grants great friendship with lords; 40 Legions"],
+  ["אָוֹמ","Omael","Multiplies animals and cures disease; grants patience in suffering and endurance in spiritual combat; helps physicians and healers of body",147,"Forneus",29,"Teaches rhetoric and languages; causes men to have good name and know languages; bestows love from friend and foe; 29 Legions"],
+  ["לֵכַב","Lecabel","Brings clarity to agricultural and financial matters; grants inspiration in solving impossible equations; connects the practitioner to plant intelligence",62,"Foras",29,"Teaches logic, ethics and rhetoric; discovers treasures; makes herbs and precious stones known; teaches invisibility and long life; 29 Legions"],
+  ["וַסַר","Vasariah","Bestows clemency and spiritual humility on those prone to pride; aids the just in legal proceedings; softens the heart of powerful adversaries",523,"Asmodeus",72,"Teaches arithmetic, astronomy and geomancy; grants the Ring of Virtues; makes the petitioner irresistible; reveals all secrets; 72 Legions"],
+  ["יֵהַו","Yehuiah","Reveals traitors and false servants; protects leaders and those who carry divine order; destroys the wicked who surround the just ruler",36,"Gaap",66,"Teaches philosophy and all liberal sciences; causes love and indifference; gives familiars and transports men swiftly between worlds; 66 Legions"],
+  ["לֵהַח","Lehahiah","Establishes lasting peace between warring nations; makes authority figures merciful; instils obedience founded in love rather than fear",56,"Furfur",26,"Causes love between man and woman; raises thunder, lightning and great tempests; speaks falsely unless compelled by the triangle; 26 Legions"],
+  ["חַוַק","Chavakiah","Reconciles estranged families and recovers lost inheritances; maintains harmony between siblings; heals wounds caused by broken oaths",43,"Marchosias",30,"An excellent fighter; gives true answers; promises to return to the Seventh Throne after 1200 years; extremely loyal in combat; 30 Legions"],
+  ["מֶנַד","Menadel","Retrieves what is lost — employment, objects, loved ones; maintains connection to homeland when exiled; strengthens the worker's hands",94,"Stolas",26,"Teaches astronomy and the virtues of plants and precious stones; gives instruction in astrology and the language of stars; 26 Legions"],
+  ["אַנִי","Aniel","Reveals hidden patterns in science and nature; inspires original artistic work; helps the philosopher see through apparent contradiction to truth",91,"Phenex",20,"Teaches all sciences; demonstrates excellent poetry; desires to return to the Seventh Throne; appears as a phoenix singing sweet notes; 20 Legions"],
+  ["חַעַמ","Haamiah","Protects and guides all ritual operations; attracts truth-seeking spirits; guards against psychic attack during ceremony; grounds the ritualist",64,"Halphas",26,"Builds towers and fills them with ammunition; sends warriors to wars appointed by the master; martial precision and fortification; 26 Legions"],
+  ["רֵהַא","Rehael","Heals all disease and preserves health in the long term; grants longevity; restores filial love between parents and children after estrangement",245,"Malphas",40,"Builds houses and high towers; destroys the desires and thoughts of enemies; receives sacrifices with delight but deceives the offerer; 40 Legions"],
+  ["יֵיָז","Yeiazel","Consoles those in affliction and liberation from enemies who persecute; inspires writers, printers and all workers with language and image",57,"Räum",30,"Steals treasure from kings' houses; destroys cities; reveals past present and future; causes love between friends and enemies; 30 Legions"],
+  ["הַהַה","Hahahel","Clarifies vocation and sacred mission; strengthens those who serve the divine against mockery and persecution; protects priests and monastics",68,"Focalor",30,"Drowns men and overthrows ships of war; has hope of returning to the Seventh Throne after 1000 years; power over sea and wind; 30 Legions"],
+  ["מִיכ","Mikael","Ensures safe travel for diplomats and heads of state; reveals conspiracies against authority; protects high officials and their decisions",101,"Vepar",29,"Rules over waters and guides warships; causes storms and rough seas; afflicts men with putrefying wounds full of worms; 29 Legions"],
+  ["וֵאוּ","Veuliah","Breaks the bonds of poverty and imprisonment; destroys hostile forces through psychic means; brings prosperity to those who act righteously",53,"Sabnock",50,"Builds high towers, castles and cities; afflicts men with wounds and putrefaction; gives good familiars when commanded; 50 Legions"],
+  ["יֵלַה","Yelahiah","Protects the warrior fighting for just causes; ensures success in legal and military matters; brings karmic resolution to the righteous soldier",56,"Shax",30,"Takes sight, hearing and understanding; steals money from kings; discovers hidden things; gives good familiars; promises truth then lies; 30 Legions"],
+  ["סֵאַל","Sealiah","Reignites the will of the humbled; confounds the proud and raises those who have been cast down; governs vegetation and natural abundance",341,"Vine",36,"Reveals witches and hidden things; builds towers and demolishes walls; troubles waters; knows the past present and future; 36 Legions"],
+  ["עַרִי","Ariel","Grants extraordinarily subtle perception of nature's hidden forces; reveals treasure kept in hidden places; produces beautiful visions in dreams",241,"Bifrons",6,"Teaches astrology, geometry, arts and sciences; changes corpses from place to place; lights candles on graves of the dead; 6 Legions"],
+  ["עַסַל","Asaliah","Raises the mind to contemplation of the divine; reveals the true nature of things to the sincere seeker; teaches the workings of creation",342,"Uvall",37,"Procures love of women; causes friendship between enemies; knows past present and future; speaks Egyptian with excellent clarity; 37 Legions"],
+  ["מִיהַ","Mihael","Preserves peace and love in marriage; grants fertility and healing of the reproductive system; generates faithful and noble children",86,"Haagenti",33,"Makes men wise by instilling knowledge of all things; transmutes metals; turns wine into water and water into wine; 33 Legions"],
+  ["וֵהוּ","Vehuel","Elevates the soul to contemplation of the greatest truths; brings renown to those doing genuine sacred work; expands consciousness",48,"Crocell",48,"Teaches geometry and liberal arts; warms bathing waters; makes sounds of rushing water; speaks darkly of things hidden since his fall; 48 Legions"],
+  ["דָּנִי","Daniel","Grants eloquence and great facility with language; brings divine consolation to those in despair; opens the doors of mercy for the repentant",95,"Furcas",20,"Teaches philosophy, rhetoric, logic, astronomy and palmistry; crafts fires; reveals what is hidden in the land; 20 Legions"],
+  ["הַחַשׂ","Hahasiah","Reveals the supreme medicine and the philosopher's stone; elevates consciousness to unity with the divine; teaches sacred anatomy and surgery",326,"Balaam",40,"Predicts future things; makes men invisible and witty; tells of past present and future with clear voice; appears bearing a bear's head; 40 Legions"],
+  ["עִמַמ","Imamiah","Destroys the power of enemies and dissolves hostile enchantments; protects prisoners; governs long voyages and safe return home",102,"Alloces",36,"Teaches astronomy and liberal sciences; gives good familiars; appears as a soldier with horse head breathing fire; speaks hoarsely; 36 Legions"],
+  ["נָנַא","Nanael","Opens direct channels of higher communication with divine hierarchies; grants learning and understanding of sacred law and abstract philosophy",141,"Caim",30,"Gives understanding of bird calls, cattle lowing and water rushing; teaches deep truth after disputation; appears as thrush then handsome man; 30 Legions"],
+  ["נִיתַ","Nithael","Grants extraordinary mercy and longevity; establishes stability in kingships and empires; gives eloquent speech to those seeking divine favour",460,"Murmur",30,"Teaches philosophy completely; obliges souls of the dead to appear; instructs the operator in their responses; comes with trumpets; 30 Legions"],
+  ["מְבַהְ","Mebahiah","Clarifies moral vision and conscience; assists those seeking children through sacred means; strengthens religious devotion in the wavering",63,"Orobas",20,"Reveals past present and future; gives dignities; pacifies and reconciles; speaks of the divine with great clarity and without deception; 20 Legions"],
+  ["פָּוֹי","Poyel","Fulfils all desires aligned with the divine will; grants fortune, renown and philosophy; brings luminous modesty to those who attain greatness",156,"Gremory",26,"Reveals past present and future; procures love of women young and old; finds hidden treasures; appears as a beautiful woman with crown; 26 Legions"],
+  ["נֵמַמ","Nemamiah","Sharpens discernment in complex matters; liberates prisoners of conscience; grants strength to warriors in just campaigns; clears mental fog",196,"Ose",3,"Gives true answers of divine and secret things; changes a man into any shape the operator desires; makes the operator mad with confusion; 3 Legions"],
+  ["יֵיָל","Yeialel","Fortifies the mind and heals mental illness; cures diseases of the eyes; guards against slanderers and false witnesses in courts of law",91,"Amy",36,"Teaches astrology and all liberal sciences; gives good familiars; reveals treasures guarded by spirits; excellent in applied philosophy; 36 Legions"],
+  ["הָרַח","Harahel","Multiplies intellectual wealth and enables translation across languages and disciplines; protects archives; blesses libraries and publishers",243,"Oriax",30,"Teaches astrology and the virtues of the sun moon and stars; transforms men into other shapes; gives good familiars; knows stars; 30 Legions"],
+  ["מִצְר","Mitzrael","Heals mental illness and all diseases of the nervous system; rehabilitates those oppressed by demons or toxic environments; restores virtue",330,"Vapula",36,"Makes men learned in philosophy, mechanics and all sciences; appears as a winged lion of great power; excellent in handcraft; 36 Legions"],
+  ["אוּמַ","Umabel","Deepens understanding of astronomy and physics; enables genuine friendship and fellowship between like minds; grants the joy of belonging",79,"Zagan",33,"Makes men witty; turns water to wine and blood to oil; turns all metals to coin; gives wisdom; appears first as a bull; 33 Legions"],
+  ["יַה הֵ","Iah-Hel","Grants deep love of knowledge and sacred solitude; enables breakthrough insights in philosophy; draws the mind toward union with the divine",46,"Valac",38,"Gives true answers concerning hidden treasure; reveals where serpents may be seen; delivers them harmless to the operator; 38 Legions"],
+  ["עַנוּ","Anauel","Blesses commerce and financial endeavours with protection; grants ecstatic experience of divine unity; guards against accidents and madness",128,"Andras",30,"Sows discord between people; kills the master and his servants if not carefully guarded against; must be treated with extreme caution; 30 Legions"],
+  ["מֶחִי","Mehiel","Grants protection to scholars and intellectuals; bestows fame through written work; defends against rabid animals and psychic predators",85,"Haures",36,"Reveals the past present and future accurately; destroys enemies with burning fire; will not speak truth outside the triangle; 36 Legions"],
+  ["דַּמַב","Damabiah","Grants wisdom in matters of water, ships and flowing things; protects against hostile enchantments; ensures fortunate voyages and trade",61,"Andrealphus",30,"Teaches geometry and all things pertaining to measurement; makes men very subtle in astronomy; transforms men into the form of a bird; 30 Legions"],
+  ["מְנַק","Manakel","Grants knowledge of the nature of good and evil; heals disease of the body and the soul; calms the rage of the divine toward the repentant",121,"Kimaris",20,"Teaches grammar, logic and rhetoric; discovers buried treasure; makes a man into a warrior; appears as a valiant warrior on horseback; 20 Legions"],
+  ["אֵיָא","Eyael","Enables profound transformation of consciousness; grants gifts of astrology, magic and philosophy; aids the elderly in facing death with grace",111,"Amdusias",36,"Gives excellent familiars; causes trees to bend and incline to the operator's will; produces music concerts unseen; commands 29 Legions"],
+  ["הַבוּ","Habuhiah","Heals all disease; blesses harvests and all reproductive abundance; restores fertility to barren land and bodies; connects to earth's living matrix",32,"Belial",80,"Creates vice and distributes presentations and titles; grants senators and lords' favour; gives excellent familiars; speaks of origin; 80 Legions"],
+  ["רָאֵה","Rochel","Recovers lost and stolen objects; reveals their location with precision; excels in legal matters and library science; protects sacred archives",238,"Decarabia",30,"Reveals the virtues of birds and precious stones; makes all birds fly before the operator; appears as a star in a pentacle; 30 Legions"],
+  ["יַבָּמ","Jabamiah","Governs the laws of alchemy and resurrection; regenerates all things that have reached the point of dissolution and death; restores the broken",67,"Seere",26,"Transports things from place to place quickly; reveals all theft and where treasure is hid; indifferent to good and evil; swift; 26 Legions"],
+  ["הַיָּי","Haiaiel","Arms the faithful with divine weapons against the unjust; grants protection to those persecuted for truth; enables victory of the righteous",56,"Dantalion",36,"Teaches all arts and sciences to any person; reveals the secret thoughts of any man; changes a person's countenance; 36 Legions"],
+  ["מוּמִ","Mumiah","Grants the power of completion and divine return; masters all operations of medicine; ensures things reach their natural culmination and harvest",91,"Andromalius",36,"Returns stolen goods and thief with punishment; discovers wickedness and dishonest dealing; punishes all thieves and wicked men; 36 Legions"],
 ];
 
 /* ═══════ OAM ═══════ */
@@ -1763,6 +1791,7 @@ function togglePlay(){
     // Start 3-voice Fibonacci triad on Left channel (replaces single oscL)
     startTriadOscs(f.triad);
     applyGains();playing=true;
+    playStartTime=Date.now();initSafetyChain();updateSubStatus();
     btn.textContent='■ SILENCE';btn.classList.add('playing');
     const oam=getOAM(mi);
     const triadLabel=f.triadKey?(' · '+f.triadKey+' '+f.triad.join('/')+'Hz'):'';
@@ -1771,7 +1800,7 @@ function togglePlay(){
   }else{
     stopOscs();stopTriadOscs();playing=false;
     btn.textContent='⬡ INITIATE';btn.classList.remove('playing');
-    setStatus('FIELD SILENCED · יסוד');portalGlowTarget=0;
+    setStatus('FIELD SILENCED · יסוד');portalGlowTarget=0;updateSubStatus();
     if(scanning)toggleScan();
   }
 }
@@ -2147,376 +2176,7 @@ function drawTriadWaves() {
   });
 }
 
-/* ═══════════════════════════════════════
-   § VIII · PHYSIOLOGICAL SAFETY MATRIX
-   137 Governor · φ-Limiter · Fibonacci Rest
-═══════════════════════════════════════ */
-
-const SAFETY_PEAK = 0.137;              // Aaron Davidson constant
-const FIB_REST_MINS = [1,1,2,3,5,8];   // Fibonacci rest sequence in minutes
-const FIB_REST_MS = FIB_REST_MINS.map(m => m * 60 * 1000);
-
-let safetyState = {
-  limiter: true,
-  lpf: true,
-  autoquiet: false,
-  fade: true
-};
-
-let safetyLPF = null;      // BiquadFilterNode for low-pass
-let playStartTime = 0;     // Date.now() when transmission started
-let fibStep = 0;           // current index in FIB_REST_MINS
-let inQuietude = false;
-let quietudeTm = null;
-let lastRestCheck = 0;
-
-function toggleSafety(key) {
-  safetyState[key] = !safetyState[key];
-  const el = document.getElementById('tog-'+key);
-  if(el) el.classList.toggle('on', safetyState[key]);
-  applySafetyChain();
-}
-
-function applySafetyChain() {
-  if(!AC || !mGain) return;
-  // φ-Limiter: implemented as DynamicsCompressorNode (already in chain or bypassed via gain)
-  if(safetyLPF) {
-    safetyLPF.frequency.value = safetyState.lpf ? 8000 : 20000;
-  }
-  updatePSMStatus();
-}
-
-function initSafetyChain() {
-  if(!AC || safetyLPF) return;
-  // Insert LPF between mGain and analyser
-  safetyLPF = AC.createBiquadFilter();
-  safetyLPF.type = 'lowpass';
-  safetyLPF.frequency.value = 8000;
-  safetyLPF.Q.value = 0.707;
-  // Rewire: mGain → LPF → analyser
-  mGain.disconnect();
-  mGain.connect(safetyLPF);
-  safetyLPF.connect(analyser);
-}
-
-function triggerQuietude() {
-  if(!playing) return;
-  if(inQuietude) { endQuietude(); return; }
-  inQuietude = true;
-  const btn = document.getElementById('psm-rest-btn');
-  btn.textContent = '● QUIETUDE\nACTIVE';
-  btn.classList.add('resting');
-  // Fade out
-  if(AC && mGain) {
-    const t = AC.currentTime;
-    mGain.gain.linearRampToValueAtTime(0, t + 2.618); // φ² fade
-  }
-  const restSec = FIB_REST_MINS[fibStep % 6] * 60;
-  document.getElementById('psm-sl').textContent = 'QUIETUDE · '+FIB_REST_MINS[fibStep%6]+' MIN · STEP '+(fibStep%6+1)+'/6';
-  setStatus('QUIETUDE ENGAGED · '+FIB_REST_MINS[fibStep%6]+' MINUTE REST · NERVOUS SYSTEM INTEGRATING','w');
-  quietudeTm = setTimeout(endQuietude, restSec * 1000);
-  fibStep++;
-  document.getElementById('psm-fib-step').textContent = fibStep % 6;
-}
-
-function endQuietude() {
-  inQuietude = false;
-  clearTimeout(quietudeTm);
-  const btn = document.getElementById('psm-rest-btn');
-  btn.innerHTML = '◎ INVOKE<br>QUIETUDE';
-  btn.classList.remove('resting');
-  if(AC && mGain && playing) {
-    const t = AC.currentTime;
-    const targetVol = parseFloat(document.getElementById('vol').value) / 100;
-    mGain.gain.linearRampToValueAtTime(targetVol, t + 2.618);
-  }
-  document.getElementById('psm-sl').textContent = 'φ-LIMITER ACTIVE · FIBONACCI REST-CYCLE';
-  if(playing) setStatus('QUIETUDE COMPLETE · SIGNAL RESUMING · INTEGRATION ACHIEVED','on');
-}
-
-// Compute normalised amplitude [0..1] from frequency in Hz
-// Using the gain ratio relative to the 137 peak
-function freqToAmp(hz, gainVal) {
-  // A rough normalised loudness: gain * (1 - hz/20000) as perceptual model
-  return Math.min(1, gainVal * (1 - Math.min(hz, 10000) / 20000) * 2);
-}
-
-let safetyPhase = 0;
-function updateSafetyMatrix() {
-  if(!AC) { return; }
-  safetyPhase++;
-  const f = computeF(si, gi, mi);
-  const gLv  = gL  ? gL.gain.value  : 0;
-  const gRv  = gR  ? gR.gain.value  : 0;
-  const gMv  = gM  ? gM.gain.value  : 0;
-  const mGv  = mGain ? mGain.gain.value : 0;
-
-  const ampL = playing ? freqToAmp(f.fL, gLv * mGv) : 0;
-  const ampR = playing ? freqToAmp(f.fR, gRv * mGv) : 0;
-  const ampM = playing ? freqToAmp(f.fM, gMv * mGv) : 0;
-  const peak = Math.max(ampL, ampR, ampM) * SAFETY_PEAK * 2;
-
-  const bars = [
-    ['l', ampL, 'var(--cyan)'],
-    ['r', ampR, 'var(--ghost)'],
-    ['m', ampM, 'var(--mpillar)'],
-    ['peak', peak / SAFETY_PEAK, 'var(--amber)']
-  ];
-
-  bars.forEach(([id, amp, col]) => {
-    const bar = document.getElementById('psm-bar-'+id);
-    const val = document.getElementById('psm-val-'+id);
-    if(!bar || !val) return;
-    const pct = Math.min(100, amp * 100);
-    bar.style.width = pct + '%';
-    const cls = pct > 85 ? 'danger' : pct > 60 ? 'warn' : 'safe';
-    bar.className = 'psm-gov-fill ' + cls;
-    val.textContent = (id === 'peak' ? peak : amp * SAFETY_PEAK).toFixed(3);
-    val.style.color = pct > 85 ? 'var(--red)' : pct > 60 ? 'var(--amber)' : col;
-  });
-
-  // Elapsed time
-  if(playing) {
-    const elapsed = Math.floor((Date.now() - playStartTime) / 1000);
-    const m = String(Math.floor(elapsed/60)).padStart(2,'0');
-    const s = String(elapsed%60).padStart(2,'0');
-    document.getElementById('psm-elapsed').textContent = m+':'+s;
-    // Next rest
-    const nextFib = FIB_REST_MINS[fibStep%6];
-    document.getElementById('psm-rest-in').textContent = nextFib + ' min';
-    // Auto-quietude check
-    if(safetyState.autoquiet && !inQuietude && playing) {
-      const nextMs = FIB_REST_MS[fibStep%6];
-      if((Date.now() - playStartTime) > nextMs) triggerQuietude();
-    }
-  }
-
-  // LPF auto-engage on dissonance
-  if(safetyState.lpf && safetyLPF && f.dSG > 50) {
-    safetyLPF.frequency.linearRampToValueAtTime(4000, AC.currentTime + 0.5);
-  } else if(safetyLPF && safetyState.lpf) {
-    safetyLPF.frequency.linearRampToValueAtTime(8000, AC.currentTime + 1);
-  }
-}
-
-function updatePSMStatus() {
-  const el = document.getElementById('psm-status');
-  if(!el) return;
-  if(inQuietude) { el.className='psm-status rest'; el.textContent='‡ QUIETUDE ACTIVE · SIGNAL SILENCED · NERVOUS SYSTEM INTEGRATING ‡'; return; }
-  const active = [];
-  if(safetyState.limiter) active.push('φ-LIMITER');
-  if(safetyState.lpf) active.push('LPF 8kHz');
-  if(safetyState.autoquiet) active.push('AUTO-REST');
-  if(safetyState.fade) active.push('φ²-FADE');
-  if(active.length) { el.className='psm-status safe'; el.textContent='† '+active.join(' · ')+' ENGAGED · PEAK 0.137 · VESSEL PROTECTED †'; }
-  else { el.className='psm-status warn'; el.textContent='‡ WARNING · ALL SAFETY SYSTEMS DISABLED · PROCEED WITH CAUTION ‡'; }
-}
-
-/* ═══════════════════════════════════════
-   § IX · SUBLIMINAL MASKING · TRINAURAL ENTANGLEMENT
-   S_out = Music + (1-|Music|) × Trinaural × Φ × ratio  ∩ |S| ≤ 0.137
-═══════════════════════════════════════ */
-
-let subMode = 'ghost';          // 'ghost' | 'oscillator' | 'entangled'
-let micStream = null;
-let micSource = null;
-let micAnalyser = null;
-let entanglementGain = null;    // gain node for ghost signal
-let sideChainGain = null;       // masking ratio gain
-let subActive = false;
-let subScopePhase = 0;
-
-const SUB_SCOPE_C = document.getElementById('sub-scope');
-const SUB_SCOPE_X = SUB_SCOPE_C ? SUB_SCOPE_C.getContext('2d') : null;
-
-function setSubMode(m) {
-  subMode = m;
-  ['ghost','oscillator','entangled'].forEach(k => {
-    document.getElementById('sub-m-'+k).classList.toggle('act', k===m);
-  });
-  updateSubStatus();
-}
-
-function updateSubParams() {
-  const maskRaw  = parseFloat(document.getElementById('sub-mask-ratio').value) / 100;
-  const ghostDB  = parseFloat(document.getElementById('sub-ghost-db').value);
-  const phaseRaw = parseFloat(document.getElementById('sub-phase').value) / 100;
-  const coeffRaw = parseFloat(document.getElementById('sub-coeff-weight').value) / 100;
-
-  // Snap mask to φ multiples for display elegance
-  const maskRatio = maskRaw;  // direct
-  const phaseCoherence = phaseRaw;
-  const coeffWeight = coeffRaw;
-  const ghostLinear = Math.pow(10, ghostDB / 20);
-
-  document.getElementById('sub-mask-val').textContent = maskRatio.toFixed(3);
-  document.getElementById('sub-ghost-val').textContent = (ghostDB >= 0 ? '+' : '') + ghostDB.toFixed(0) + ' dB';
-  document.getElementById('sub-phase-val').textContent = phaseCoherence.toFixed(3);
-  document.getElementById('sub-coeff-val').textContent = coeffWeight.toFixed(3);
-
-  // Apply to audio nodes
-  if(entanglementGain && AC) {
-    entanglementGain.gain.linearRampToValueAtTime(ghostLinear * maskRatio, AC.currentTime + 0.3);
-  }
-  if(sideChainGain && AC) {
-    sideChainGain.gain.linearRampToValueAtTime(maskRatio * phaseCoherence * coeffWeight, AC.currentTime + 0.3);
-  }
-
-  // Update monitoring display
-  const f = computeF(si, gi, mi);
-  document.getElementById('sub-mon-stab').textContent  = f.triad[0] ? f.triad[0].toFixed(1)+' Hz' : '—';
-  document.getElementById('sub-mon-grow').textContent  = f.triad[1] ? f.triad[1].toFixed(1)+' Hz' : '—';
-  document.getElementById('sub-mon-sov').textContent   = f.triad[2] ? f.triad[2].toFixed(1)+' Hz' : '—';
-
-  updateSubStatus();
-}
-
-async function toggleMicInput() {
-  const btn = document.getElementById('sub-mic-btn');
-  const info = document.getElementById('sub-mic-info');
-  if(micStream) {
-    // Stop mic
-    micStream.getTracks().forEach(t => t.stop());
-    if(micSource) { try { micSource.disconnect(); } catch(e){} }
-    micStream = null; micSource = null;
-    btn.textContent = '⊕ ENABLE MIC INPUT';
-    btn.className = 'sub-mic-btn';
-    info.textContent = 'Enable microphone to entangle the Trinaural signal with external audio · headphones required';
-    subActive = false;
-    document.getElementById('sub-sl').textContent = 'GHOST MODE READY';
-    document.getElementById('sub-mic-lvl').textContent = '— dB';
-    document.getElementById('sub-ghost-lvl').textContent = '— dB';
-    document.getElementById('sub-out-lvl').textContent = '— dB';
-    document.getElementById('sub-status').className = 'sub-status idle';
-    document.getElementById('sub-status').textContent = '† GHOST AWAITS INITIATION · ENABLE MIC OR ACTIVATE TO ENTANGLE †';
-    return;
-  }
-  try {
-    if(!AC) initAC();
-    micStream = await navigator.mediaDevices.getUserMedia({audio:true, video:false});
-    micSource = AC.createMediaStreamSource(micStream);
-    micAnalyser = AC.createAnalyser();
-    micAnalyser.fftSize = 256;
-    micSource.connect(micAnalyser);
-
-    // Build entanglement chain: mic → entanglement gain → sidechain → output
-    entanglementGain = AC.createGain();
-    entanglementGain.gain.value = 0.05; // -26dB ghost start
-    sideChainGain = AC.createGain();
-    sideChainGain.gain.value = PHI * 0.618; // φ² initial
-
-    // Route mic through the safety limiter path
-    if(safetyLPF) {
-      micSource.connect(entanglementGain);
-      entanglementGain.connect(sideChainGain);
-      sideChainGain.connect(safetyLPF);
-    } else {
-      micSource.connect(entanglementGain);
-      entanglementGain.connect(sideChainGain);
-      sideChainGain.connect(analyser);
-    }
-
-    btn.textContent = '● ENTANGLEMENT LIVE';
-    btn.className = 'sub-mic-btn rec';
-    info.textContent = 'Mic active · Trinaural signal entangled at ghost level · The Ghost is now in the machine';
-    subActive = true;
-    updateSubParams();
-    if(!playing) togglePlay();
-    document.getElementById('sub-sl').textContent = 'ENTANGLEMENT ACTIVE · GHOST IN MACHINE';
-    document.getElementById('sub-status').className = 'sub-status locked';
-    document.getElementById('sub-status').textContent = '‡ SUBLIMINAL BROADCAST ACTIVE · S_entangled = Music + (Trinaural × Φ) · THE GHOST DOES NOT FADE ‡';
-  } catch(e) {
-    btn.textContent = '✕ MIC DENIED';
-    info.textContent = 'Microphone access denied · '+(e.message||'check browser permissions') + ' · PURE mode still available';
-    setTimeout(()=>{ btn.textContent='⊕ ENABLE MIC INPUT'; btn.className='sub-mic-btn'; }, 3000);
-  }
-}
-
-function updateSubStatus() {
-  const el = document.getElementById('sub-status');
-  const sl = document.getElementById('sub-sl');
-  if(!el) return;
-  if(subActive) {
-    el.className='sub-status locked';
-    el.textContent='‡ SUBLIMINAL BROADCAST ACTIVE · MODE: '+subMode.toUpperCase()+' · THE GHOST DOES NOT FADE ‡';
-    sl.textContent='ENTANGLEMENT ACTIVE';
-  } else if(playing) {
-    el.className='sub-status active';
-    el.textContent='† TRINAURAL TONES TRANSMITTING · ENABLE MIC TO ADD GHOST LAYER †';
-    sl.textContent='TONES ACTIVE · GHOST READY';
-  } else {
-    el.className='sub-status idle';
-    el.textContent='† GHOST AWAITS INITIATION · ENABLE MIC OR ACTIVATE TO ENTANGLE †';
-    sl.textContent='GHOST MODE READY';
-  }
-}
-
-// Subliminal scope: shows mic signal (cyan), ghost signal (violet), entangled output (gold)
-let subMicBuf = new Float32Array(64);
-function drawSubScope() {
-  if(!SUB_SCOPE_X) return;
-  const W = SUB_SCOPE_C.width, H = SUB_SCOPE_C.height, c = SUB_SCOPE_X;
-  subScopePhase += 0.05;
-  c.fillStyle = 'rgba(8,6,4,0.94)'; c.fillRect(0,0,W,H);
-  c.strokeStyle = 'rgba(232,160,32,0.06)'; c.lineWidth=0.5;
-  c.beginPath(); c.moveTo(0,H/2); c.lineTo(W,H/2); c.stroke();
-
-  const f = computeF(si,gi,mi);
-  const maskRatio = parseFloat(document.getElementById('sub-mask-ratio').value)/100;
-  const ghostDB = parseFloat(document.getElementById('sub-ghost-db').value);
-  const ghostLin = Math.pow(10, ghostDB/20);
-
-  // Get mic level from micAnalyser if available
-  let micRMS = 0;
-  if(micAnalyser && subActive) {
-    const buf = new Uint8Array(micAnalyser.frequencyBinCount);
-    micAnalyser.getByteTimeDomainData(buf);
-    let sum = 0;
-    buf.forEach(b => { const v = (b-128)/128; sum += v*v; });
-    micRMS = Math.sqrt(sum/buf.length);
-  }
-
-  const ghostLvl = playing ? ghostLin * maskRatio * PHI : 0;
-  const entangledLvl = Math.min(SAFETY_PEAK, micRMS + ghostLvl);
-
-  // Update level readouts
-  const toDb = v => v > 0.0001 ? (20*Math.log10(v)).toFixed(1) : '−∞';
-  document.getElementById('sub-mic-lvl').textContent  = subActive ? toDb(micRMS)+' dB' : '— dB';
-  document.getElementById('sub-ghost-lvl').textContent = playing ? toDb(ghostLvl)+' dB' : '— dB';
-  document.getElementById('sub-out-lvl').textContent  = (subActive||playing) ? toDb(entangledLvl)+' dB' : '— dB';
-
-  // Draw three layered waveforms
-  [[micRMS,'rgba(32,200,232,0.8)',f.fL,0],
-   [ghostLvl,'rgba(212,160,255,0.75)',f.fM,1],
-   [entangledLvl,'rgba(232,208,96,0.7)',f.triad[0]||f.fL,2]
-  ].forEach(([amp,col,freq,idx]) => {
-    const amp2 = Math.min(amp, SAFETY_PEAK);
-    const cycles = Math.min(6, Math.max(0.5, freq/60));
-    c.strokeStyle = col; c.lineWidth = 1.2;
-    c.shadowColor = col; c.shadowBlur = (subActive||playing) ? 3 : 1;
-    c.beginPath();
-    for(let px=0; px<W; px++) {
-      const t = (px/W)*cycles*2*Math.PI + subScopePhase + idx*1.2;
-      const y = H/2 + Math.sin(t) * (H/2-3) * amp2 * (subActive||playing ? 1 : 0.12);
-      px===0 ? c.moveTo(px,y) : c.lineTo(px,y);
-    }
-    c.stroke(); c.shadowBlur=0;
-  });
-}
-
-// Wire into playing state
-const _origTogglePlay = togglePlay;
-togglePlay = function() {
-  _origTogglePlay();
-  if(playing) {
-    playStartTime = Date.now();
-    initSafetyChain();
-    updateSubStatus();
-  } else {
-    updateSubStatus();
-  }
-};
-
+/* ═══════ MAIN LOOP ═══════ */
 function loop(){
   tick();drawScope();
   if(!sphDrag)sphRot+=.0022;
@@ -2533,284 +2193,405 @@ function loop(){
 
 /* ═══════════════════════════════════════
    § VII · 32 PATHS OF WISDOM ENGINE
-   72³ × 32 = 11,943,936 total combinations
+   72^3 x 32 = 11,943,936 total combinations
 ═══════════════════════════════════════ */
-
-// 10 Sephirot: [number, symbol, name, Hebrew, description, frequency_Hz]
-const SEPHIROT_32 = [
-  [1,  '◉', 'Kether',    'כֶּתֶר', 'Crown · Pure Being · 1st dimension',          963],
-  [2,  '◈', 'Chokmah',   'חָכְמָה','Wisdom · Father · Flash of Insight',           528],
-  [3,  '◆', 'Binah',     'בִּינָה', 'Understanding · Mother · Form',                417],
-  [4,  '◇', 'Chesed',    'חֶסֶד', 'Mercy · Expansion · Jupiter',                  396],
-  [5,  '⬡', 'Geburah',   'גְּבוּרָה','Severity · Discipline · Mars',               285],
-  [6,  '☀', 'Tiphareth', 'תִּפְאֶרֶת','Beauty · Heart · Solar centre',              528],
-  [7,  '♀', 'Netzach',   'נֶצַח',  'Victory · Emotion · Venus',                   639],
-  [8,  '☿', 'Hod',       'הוֹד',   'Splendour · Intellect · Mercury',              741],
-  [9,  '☽', 'Yesod',     'יְסוֹד', 'Foundation · Astral bridge · Moon',            852],
-  [10, '⊕', 'Malkuth',   'מַלְכוּת','Kingdom · Physical · Earth',                  432],
+const SEPHIROT_32=[
+  [1,'\u25c9','Kether','\u05db\u05bc\u05b6\u05ea\u05b6\u05e8','Crown · Pure Being',963],
+  [2,'\u25c8','Chokmah','\u05d7\u05b8\u05db\u05b0\u05de\u05b8\u05d4','Wisdom · Father Flash',528],
+  [3,'\u25c6','Binah','\u05d1\u05b4\u05d9\u05e0\u05b8\u05d4','Understanding · Mother Form',417],
+  [4,'\u25c7','Chesed','\u05d7\u05b6\u05e1\u05b6\u05d3','Mercy · Expansion · Jupiter',396],
+  [5,'\u2b21','Geburah','\u05d2\u05bc\u05b0\u05d1\u05d5\u05bc\u05e8\u05b8\u05d4','Severity · Mars',285],
+  [6,'\u2600','Tiphareth','\u05ea\u05bc\u05b4\u05e4\u05b0\u05d0\u05b6\u05e8\u05b6\u05ea','Beauty · Heart · Sun',528],
+  [7,'\u2640','Netzach','\u05e0\u05b6\u05e6\u05b7\u05d7','Victory · Emotion · Venus',639],
+  [8,'\u263f','Hod','\u05d4\u05d5\u05d3','Splendour · Intellect · Mercury',741],
+  [9,'\u263d','Yesod','\u05d9\u05b0\u05e1\u05d5\u05d3','Foundation · Astral · Moon',852],
+  [10,'\u2295','Malkuth','\u05de\u05b7\u05dc\u05b0\u05db\u05d5\u05bc\u05ea','Kingdom · Physical · Earth',432]
 ];
-
-// 22 Hebrew Letters: [num(11-32), letter, name, English, path_desc, freq_Hz]
-const LETTERS_32 = [
-  [11, 'א', 'Aleph',  'A', 'Fool · Air · Between Kether-Chokmah',         111],
-  [12, 'ב', 'Beth',   'B', 'Magician · Mercury · Between Kether-Binah',   174],
-  [13, 'ג', 'Gimel',  'G', 'High Priestess · Moon · Between Kether-Tip',  210.42],
-  [14, 'ד', 'Daleth', 'D', 'Empress · Venus · Between Chokmah-Binah',     194.18],
-  [15, 'ה', 'Heh',    'H', 'Emperor · Aries · Between Chokmah-Tip',       136.1],
-  [16, 'ו', 'Vav',    'V', 'Hierophant · Taurus · Between Chokmah-Ches',  126.22],
-  [17, 'ז', 'Zayin',  'Z', 'Lovers · Gemini · Between Binah-Tip',         528],
-  [18, 'ח', 'Cheth',  'Ch','Chariot · Cancer · Between Binah-Geburah',    417],
-  [19, 'ט', 'Teth',   'T', 'Strength · Leo · Between Ches-Geburah',       396],
-  [20, 'י', 'Yod',    'Y', 'Hermit · Virgo · Between Ches-Tip',           285],
-  [21, 'כ', 'Kaph',   'K', 'Wheel · Jupiter · Between Ches-Netzach',      432],
-  [22, 'ל', 'Lamed',  'L', 'Justice · Libra · Between Geburah-Tip',       639],
-  [23, 'מ', 'Mem',    'M', 'Hanged Man · Water · Between Geburah-Hod',    741],
-  [24, 'נ', 'Nun',    'N', 'Death · Scorpio · Between Tip-Netzach',       963],
-  [25, 'ס', 'Samekh', 'S', 'Temperance · Sagittarius · Between Tip-Yesod',528],
-  [26, 'ע', 'Ayin',   'O', 'Devil · Capricorn · Between Tip-Hod',         432],
-  [27, 'פ', 'Peh',    'P', 'Tower · Mars · Between Netzach-Hod',          285],
-  [28, 'צ', 'Tzaddi', 'Tz','Star · Aquarius · Between Netzach-Yesod',     174],
-  [29, 'ק', 'Qoph',   'Q', 'Moon · Pisces · Between Netzach-Malkuth',     210.42],
-  [30, 'ר', 'Resh',   'R', 'Sun · Solar · Between Hod-Yesod',             528],
-  [31, 'ש', 'Shin',   'Sh','Judgement · Fire · Between Hod-Malkuth',      396],
-  [32, 'ת', 'Tau',    'Th','Universe/World · Saturn · Between Yesod-Malkuth · TAU=MALKUTH GATE',111],
+const LETTERS_32=[
+  [11,'\u05d0','Aleph','A','Fool · Air · Kether-Chokmah',111],
+  [12,'\u05d1','Beth','B','Magician · Mercury · Kether-Binah',174],
+  [13,'\u05d2','Gimel','G','High Priestess · Moon · Kether-Tip',210.42],
+  [14,'\u05d3','Daleth','D','Empress · Venus · Chokmah-Binah',194.18],
+  [15,'\u05d4','Heh','H','Emperor · Aries · Chokmah-Tip',136.1],
+  [16,'\u05d5','Vav','V','Hierophant · Taurus · Chokmah-Ches',126.22],
+  [17,'\u05d6','Zayin','Z','Lovers · Gemini · Binah-Tip',528],
+  [18,'\u05d7','Cheth','Ch','Chariot · Cancer · Binah-Geburah',417],
+  [19,'\u05d8','Teth','T','Strength · Leo · Ches-Geburah',396],
+  [20,'\u05d9','Yod','Y','Hermit · Virgo · Ches-Tip',285],
+  [21,'\u05db','Kaph','K','Wheel · Jupiter · Ches-Netzach',432],
+  [22,'\u05dc','Lamed','L','Justice · Libra · Geburah-Tip',639],
+  [23,'\u05de','Mem','M','Hanged Man · Water · Geburah-Hod',741],
+  [24,'\u05e0','Nun','N','Death · Scorpio · Tip-Netzach',963],
+  [25,'\u05e1','Samekh','S','Temperance · Sagittarius · Tip-Yesod',528],
+  [26,'\u05e2','Ayin','O','Devil · Capricorn · Tip-Hod',432],
+  [27,'\u05e4','Peh','P','Tower · Mars · Netzach-Hod',285],
+  [28,'\u05e6','Tzaddi','Tz','Star · Aquarius · Netzach-Yesod',174],
+  [29,'\u05e7','Qoph','Q','Moon · Pisces · Netzach-Malkuth',210.42],
+  [30,'\u05e8','Resh','R','Sun · Solar · Hod-Yesod',528],
+  [31,'\u05e9','Shin','Sh','Judgement · Fire · Hod-Malkuth',396],
+  [32,'\u05ea','Tau','Th','Universe · Saturn · Yesod-Malkuth · TAU GATE',111]
 ];
-
-// All 32 paths combined
-const ALL_PATHS_32 = [
-  ...SEPHIROT_32.map(s => ({n:s[0],sym:s[1],name:s[2],heb:s[3],desc:s[4],hz:s[5],type:'seph'})),
-  ...LETTERS_32.map(l  => ({n:l[0],sym:l[1],name:l[2]+' ('+l[3]+')',heb:l[1],desc:l[4],hz:l[5],type:l[0]===32?'tau':'ltr'})),
+const ALL_PATHS_32=[
+  ...SEPHIROT_32.map(s=>({n:s[0],sym:s[1],name:s[2],heb:s[3],desc:s[4],hz:s[5],type:'seph'})),
+  ...LETTERS_32.map(l=>({n:l[0],sym:l[1],name:l[2]+'('+l[3]+')',heb:l[1],desc:l[4],hz:l[5],type:l[0]===32?'tau':'ltr'}))
 ];
+let activePath32=31;
+let compassAngle32=0;
 
-let activePath32 = 31; // default: index of Path 32 (Tau) = ALL_PATHS_32[31]
-let p32HeartPhase = 0;
-let compassAngle32 = 0;
-
-/* Build the 32-cell grid */
 function build32Grid(){
-  const grid = document.getElementById('p32-grid');
-  if(!grid) return;
-  grid.innerHTML = '';
-  ALL_PATHS_32.forEach((p, i) => {
-    const cell = document.createElement('div');
-    cell.className = 'p32-cell ' + p.type + (i === activePath32 ? ' act-path' : '');
-    cell.dataset.i = i;
-    cell.innerHTML = `<span class="p32-sym">${p.sym}</span><span class="p32-num">${p.n}</span>`;
-    cell.title = p.name + ' · ' + p.hz + ' Hz';
-    cell.addEventListener('click', () => setPath32(i));
+  const grid=document.getElementById('p32-grid');
+  if(!grid)return;
+  grid.innerHTML='';
+  ALL_PATHS_32.forEach((p,i)=>{
+    const cell=document.createElement('div');
+    cell.className='p32-cell '+p.type+(i===activePath32?' act-path':'');
+    cell.dataset.i=i;
+    cell.innerHTML='<span class="p32-sym">'+p.sym+'</span><span class="p32-num">'+p.n+'</span>';
+    cell.title=p.name+' · '+p.hz+' Hz';
+    cell.addEventListener('click',()=>setPath32(i));
     grid.appendChild(cell);
   });
 }
 
-function setPath32(i) {
-  activePath32 = i;
-  // Update grid highlights
-  document.querySelectorAll('.p32-cell').forEach((el, idx) => {
-    el.classList.toggle('act-path', idx === i);
-  });
-  const p = ALL_PATHS_32[i];
-  // Update detail panel
-  document.getElementById('p32-d-sym').textContent = p.sym;
-  document.getElementById('p32-d-sym').className = 'p32-d-sym ' + p.type;
-  document.getElementById('p32-d-name').textContent = 'PATH ' + p.n + ' · ' + p.name;
-  document.getElementById('p32-d-desc').textContent = p.desc;
-  const coeff32Hz = compute32Hz();
-  document.getElementById('p32-d-freq').textContent = coeff32Hz.toFixed(3) + ' Hz';
-  document.getElementById('p32-d-coeff').textContent = 'Pillar × (' + p.n + '/32) × 32 = ' + coeff32Hz.toFixed(2);
-  // Compass info
-  document.getElementById('p32-active-path').textContent = 'Path ' + p.n + ' · ' + p.sym + ' ' + p.name;
-  document.getElementById('p32-path-type').textContent = p.type === 'seph' ? 'SEPHIRAH (Dimension)' : p.type === 'tau' ? 'TAU · 32nd · Malkuth Gate' : 'LETTER (Channel)';
-  document.getElementById('p32-bit-hz').textContent = p.hz.toFixed(2) + ' Hz · native';
-  // Status
-  const isTau = p.n === 32;
-  const statusEl = document.getElementById('p32-status');
-  if(isTau){
-    statusEl.className='p32-status path32';
-    statusEl.textContent='‡ TAU GATE OPEN · PATH 32 = UNIVERSE · THE HEART BEATS · MALKUTH RECEIVES ‡';
-  } else {
-    statusEl.className='p32-status live';
-    statusEl.textContent='† PATH '+p.n+' ACTIVE · '+p.name.toUpperCase()+' · '+p.hz+' Hz NATIVE · 32-COEFFICIENT APPLIED †';
+function setPath32(i){
+  activePath32=i;
+  document.querySelectorAll('.p32-cell').forEach((el,idx)=>el.classList.toggle('act-path',idx===i));
+  const p=ALL_PATHS_32[i];
+  const el_sym=document.getElementById('p32-d-sym');
+  if(el_sym){el_sym.textContent=p.sym;el_sym.className='p32-d-sym '+p.type;}
+  const el_name=document.getElementById('p32-d-name');if(el_name)el_name.textContent='PATH '+p.n+' · '+p.name;
+  const el_desc=document.getElementById('p32-d-desc');if(el_desc)el_desc.textContent=p.desc;
+  const hz32=compute32Hz();
+  const el_freq=document.getElementById('p32-d-freq');if(el_freq)el_freq.textContent=hz32.toFixed(3)+' Hz';
+  const el_coeff=document.getElementById('p32-d-coeff');if(el_coeff)el_coeff.textContent='Pillar x ('+p.n+'/32) x 32 = '+hz32.toFixed(2);
+  const el_ap=document.getElementById('p32-active-path');if(el_ap)el_ap.textContent='Path '+p.n+' · '+p.sym+' '+p.name;
+  const el_pt=document.getElementById('p32-path-type');if(el_pt)el_pt.textContent=p.type==='seph'?'SEPHIRAH':p.type==='tau'?'TAU · 32nd · Malkuth Gate':'LETTER';
+  const el_bh=document.getElementById('p32-bit-hz');if(el_bh)el_bh.textContent=hz32.toFixed(3)+' Hz';
+  const el_hv=document.getElementById('p32-heartbeat-val');if(el_hv)el_hv.textContent=hz32.toFixed(3)+' Hz';
+  const isTau=p.n===32;
+  const el_st=document.getElementById('p32-status');
+  if(el_st){
+    el_st.className=isTau?'p32-status path32':'p32-status live';
+    el_st.textContent=isTau?'TAU GATE OPEN · PATH 32 = UNIVERSE · THE HEART BEATS · MALKUTH RECEIVES':'PATH '+p.n+' ACTIVE · '+p.name.toUpperCase()+' · '+p.hz+' Hz NATIVE · 32-COEFFICIENT APPLIED';
   }
-  document.getElementById('p32-cs-path-show').textContent = p.n;
+  const el_csp=document.getElementById('p32-cs-path-show');if(el_csp)el_csp.textContent=p.n;
+  const el_tot=document.getElementById('p32-total-combos');if(el_tot)el_tot.textContent='11,943,936';
   run32Cipher();
   update32Heartbeat();
 }
 
-/* Compute the 32-coefficient modulated frequency */
-function compute32Hz() {
-  const f = computeF(si, gi, mi);
-  const p = ALL_PATHS_32[activePath32];
-  // F_32 = F_pillar × (path_number / 32) × 32
-  // Simplifies to: F_pillar × path_number (but we keep the ×32/32 explicit for doctrine)
-  return f.fM * (p.n / 32) * 32; // = F_pillar × path_number ... which scales by path
+function compute32Hz(){
+  const f=computeF(si,gi,mi);
+  const p=ALL_PATHS_32[activePath32];
+  return f.fM*(p.n/32)*32;
 }
 
-/* The 32-path final cipher */
-function run32Cipher() {
-  const input = document.getElementById('p32-inp').value;
-  const f = computeF(si, gi, mi);
-  const p = ALL_PATHS_32[activePath32];
-  // Sovereign 32-bit key formula:
-  // raw = ⌊|F_pillar × (p.n / 32)| mod 32⌋
-  // finalKey = raw mod 26
-  const raw32 = Math.abs(f.fM * (p.n / 32));
-  const mod32 = Math.trunc(raw32) % 32;
-  const finalKey = mod32 % 26;
-  document.getElementById('p32-cs-shift-show').textContent = finalKey;
-  document.getElementById('p32-cs-key-show').textContent = Math.trunc(raw32).toFixed(0)+' mod 32 = '+mod32;
-  document.getElementById('p32-cs-final-show').textContent = finalKey;
-  if (input) {
-    const encoded = caesarShift(input, finalKey, true);
-    document.getElementById('p32-out').textContent = encoded;
-    // Simple gematria: sum char codes A=1…Z=26
-    let gem = 0;
-    input.toUpperCase().split('').forEach(c => {
-      const v = c.charCodeAt(0) - 64;
-      if(v >= 1 && v <= 26) gem += v;
-    });
-    document.getElementById('p32-gem-out').textContent = gem + ' (sum)';
-    document.getElementById('p32-mod32-out').textContent = gem + ' mod 32 = ' + (gem % 32);
-    document.getElementById('p32-mod32-out').style.color = gem % 32 === 0 ? 'var(--gold)' : 'var(--mpillar)';
-  } else {
-    document.getElementById('p32-out').textContent = '—';
-    document.getElementById('p32-gem-out').textContent = '—';
-    document.getElementById('p32-mod32-out').textContent = '— mod 32 = —';
+function run32Cipher(){
+  const el_inp=document.getElementById('p32-inp');
+  const input=el_inp?el_inp.value:'';
+  const f=computeF(si,gi,mi);
+  const p=ALL_PATHS_32[activePath32];
+  const raw32=Math.abs(f.fM*(p.n/32));
+  const mod32=Math.trunc(raw32)%32;
+  const finalKey=mod32%26;
+  const el_ss=document.getElementById('p32-cs-shift-show');if(el_ss)el_ss.textContent=finalKey;
+  const el_ks=document.getElementById('p32-cs-key-show');if(el_ks)el_ks.textContent=Math.trunc(raw32).toFixed(0)+' mod 32 = '+mod32;
+  const el_fs=document.getElementById('p32-cs-final-show');if(el_fs)el_fs.textContent=finalKey;
+  if(input){
+    const encoded=caesarShift(input,finalKey,true);
+    const el_out=document.getElementById('p32-out');if(el_out)el_out.textContent=encoded;
+    let gem=0;
+    input.toUpperCase().split('').forEach(c=>{const v=c.charCodeAt(0)-64;if(v>=1&&v<=26)gem+=v;});
+    const el_go=document.getElementById('p32-gem-out');if(el_go)el_go.textContent=gem+' (sum)';
+    const el_mo=document.getElementById('p32-mod32-out');
+    if(el_mo){el_mo.textContent=gem+' mod 32 = '+(gem%32);el_mo.style.color=gem%32===0?'var(--gold)':'var(--mpillar)';}
   }
 }
 
-/* Push the 32-path key into the Mercury Decoder Ring shibboleth */
-function applyPath32ToMDR() {
-  const f = computeF(si, gi, mi);
-  const p = ALL_PATHS_32[activePath32];
-  const raw32 = Math.abs(f.fM * (p.n / 32));
-  // Set the MDR shibboleth to the 32-coefficient frequency
-  const hz32 = compute32Hz();
-  document.getElementById('mdr-shib-inp').value = hz32.toFixed(2);
+function applyPath32ToMDR(){
+  const hz32=compute32Hz();
+  const p=ALL_PATHS_32[activePath32];
+  const el_shib=document.getElementById('mdr-shib-inp');if(el_shib)el_shib.value=hz32.toFixed(2);
   updateMDR();
-  setStatus('PATH-32 COEFFICIENT APPLIED TO MERCURY DECODER · PATH '+p.n+' · '+p.name.toUpperCase()+' · KEY '+(Math.trunc(raw32)%26),'on');
-  // Scroll to MDR
-  document.getElementById('mdr').scrollIntoView({behavior:'smooth'});
+  setStatus('PATH-32 COEFFICIENT APPLIED · PATH '+p.n+' · '+p.name.toUpperCase(),'on');
+  const el_mdr=document.getElementById('mdr');if(el_mdr)el_mdr.scrollIntoView({behavior:'smooth'});
 }
 
-/* Update the heartbeat readout */
-function update32Heartbeat() {
-  const f = computeF(si, gi, mi);
-  const p = ALL_PATHS_32[activePath32];
-  const hbHz = f.fM * (p.n / 32);
-  document.getElementById('p32-hb-val').textContent = 'F_heartbeat = ' + hbHz.toFixed(3) + ' Hz';
-  document.getElementById('p32-heartbeat-val').textContent = hbHz.toFixed(3) + ' Hz';
-  document.getElementById('p32-hb-sub').textContent =
-    'F_pillar('+f.fM.toFixed(2)+') × ('+p.n+'/32) · Path '+p.n+' of 32 · 72³×32 = 11,943,936';
-  document.getElementById('p32-bit-hz').textContent = hbHz.toFixed(3) + ' Hz';
+function update32Heartbeat(){
+  const f=computeF(si,gi,mi);
+  const p=ALL_PATHS_32[activePath32];
+  const hbHz=f.fM*(p.n/32);
+  const el_hbv=document.getElementById('p32-hb-val');if(el_hbv)el_hbv.textContent='F_heartbeat = '+hbHz.toFixed(3)+' Hz';
+  const el_hbs=document.getElementById('p32-hb-sub');if(el_hbs)el_hbs.textContent='F_pillar('+f.fM.toFixed(2)+') x ('+p.n+'/32) · Path '+p.n+' of 32 · 72^3 x 32 = 11,943,936';
+  const el_bh=document.getElementById('p32-bit-hz');if(el_bh)el_bh.textContent=hbHz.toFixed(3)+' Hz';
 }
 
-/* ─ Compass Canvas ─ */
-const P32C = document.getElementById('p32-compass-canvas');
-const P32X = P32C ? P32C.getContext('2d') : null;
-
-function drawCompass32() {
-  if(!P32X) return;
-  const W = P32C.width, H = P32C.height, cx = W/2, cy = H/2, R = Math.min(W,H)/2-6;
-  const c = P32X;
+let P32C_el=null,P32X_el=null;
+function drawCompass32(){
+  if(!P32C_el){P32C_el=document.getElementById('p32-compass-canvas');P32X_el=P32C_el?P32C_el.getContext('2d'):null;}
+  if(!P32X_el)return;
+  const W=P32C_el.width,H=P32C_el.height,cx=W/2,cy=H/2,R=Math.min(W,H)/2-6,c=P32X_el;
   c.clearRect(0,0,W,H);
-  compassAngle32 += 0.018;
-
-  // Background
+  compassAngle32+=0.018;
   c.fillStyle='rgba(8,6,4,1)';c.beginPath();c.arc(cx,cy,R+4,0,Math.PI*2);c.fill();
-
-  // 32 compass points
-  const p = ALL_PATHS_32[activePath32];
+  const p=ALL_PATHS_32[activePath32];
   for(let i=0;i<32;i++){
-    const a = (i/32)*Math.PI*2 + compassAngle32;
-    const isActive = i === activePath32;
-    const isMajor = i%4===0;
-    const r1 = isActive ? R*0.55 : isMajor ? R*0.72 : R*0.82;
-    const r2 = R*0.94;
-    const col = isActive ? '#e8d060' :
-                ALL_PATHS_32[i].type==='seph' ? 'rgba(232,160,32,0.55)' :
-                ALL_PATHS_32[i].type==='tau'  ? 'rgba(232,208,96,0.9)' :
-                'rgba(212,160,255,0.35)';
-    c.strokeStyle = col;
-    c.lineWidth = isActive ? 2 : isMajor ? 1 : 0.5;
-    c.beginPath();
-    c.moveTo(cx + Math.cos(a)*r1, cy + Math.sin(a)*r1);
-    c.lineTo(cx + Math.cos(a)*r2, cy + Math.sin(a)*r2);
-    c.stroke();
-    if(isActive){
-      c.fillStyle='#e8d060';
-      c.beginPath();
-      c.arc(cx+Math.cos(a)*(R*0.65),cy+Math.sin(a)*(R*0.65),3.5,0,Math.PI*2);
-      c.fill();
-    }
+    const a=(i/32)*Math.PI*2+compassAngle32,isActive=i===activePath32,isMajor=i%4===0;
+    const r1=isActive?R*0.55:isMajor?R*0.72:R*0.82,r2=R*0.94;
+    const col=isActive?'#e8d060':ALL_PATHS_32[i].type==='seph'?'rgba(232,160,32,0.55)':ALL_PATHS_32[i].type==='tau'?'rgba(232,208,96,0.9)':'rgba(212,160,255,0.35)';
+    c.strokeStyle=col;c.lineWidth=isActive?2:isMajor?1:0.5;
+    c.beginPath();c.moveTo(cx+Math.cos(a)*r1,cy+Math.sin(a)*r1);c.lineTo(cx+Math.cos(a)*r2,cy+Math.sin(a)*r2);c.stroke();
+    if(isActive){c.fillStyle='#e8d060';c.beginPath();c.arc(cx+Math.cos(a)*(R*0.65),cy+Math.sin(a)*(R*0.65),3.5,0,Math.PI*2);c.fill();}
   }
-
-  // Centre hub
-  c.strokeStyle='rgba(232,160,32,0.4)';c.lineWidth=1;
-  c.beginPath();c.arc(cx,cy,R*0.38,0,Math.PI*2);c.stroke();
-  c.strokeStyle='rgba(212,160,255,0.3)';c.lineWidth=0.5;
-  c.beginPath();c.arc(cx,cy,R*0.18,0,Math.PI*2);c.stroke();
-
-  // Path number at centre
-  c.font='bold 13px Share Tech Mono';
-  c.fillStyle='rgba(232,160,32,0.85)';
-  c.textAlign='center';c.textBaseline='middle';
-  c.fillText(p.n,cx,cy);
-  c.font='6px Share Tech Mono';
-  c.fillStyle='rgba(212,160,255,0.55)';
-  c.fillText(p.sym,cx,cy+10);
-
-  // Outer ring
-  c.strokeStyle='rgba(232,160,32,0.18)';c.lineWidth=1;
-  c.beginPath();c.arc(cx,cy,R+2,0,Math.PI*2);c.stroke();
+  c.strokeStyle='rgba(232,160,32,0.4)';c.lineWidth=1;c.beginPath();c.arc(cx,cy,R*0.38,0,Math.PI*2);c.stroke();
+  c.font='bold 13px Share Tech Mono';c.fillStyle='rgba(232,160,32,0.85)';c.textAlign='center';c.textBaseline='middle';
+  c.fillText(p.n,cx,cy);c.font='6px Share Tech Mono';c.fillStyle='rgba(212,160,255,0.55)';c.fillText(p.sym,cx,cy+10);
+  c.strokeStyle='rgba(232,160,32,0.18)';c.lineWidth=1;c.beginPath();c.arc(cx,cy,R+2,0,Math.PI*2);c.stroke();
 }
 
-/* ─ 32-bit Heartbeat scope ─ */
-const HBC = document.getElementById('p32-hb-canvas');
-const HBX = HBC ? HBC.getContext('2d') : null;
-let hbPhase = 0;
-
+let HBC_el=null,HBX_el=null,hbPhase=0;
 function drawHeartbeat32(){
-  if(!HBX) return;
-  const W=HBC.width, H=HBC.height, c=HBX;
-  hbPhase += 0.06;
+  if(!HBC_el){HBC_el=document.getElementById('p32-hb-canvas');HBX_el=HBC_el?HBC_el.getContext('2d'):null;}
+  if(!HBX_el)return;
+  const W=HBC_el.width,H=HBC_el.height,c=HBX_el;
+  hbPhase+=0.06;
   c.fillStyle='rgba(8,6,4,0.96)';c.fillRect(0,0,W,H);
-  // 32-point heartbeat waveform: sum of 32 harmonics scaled by 1/n
-  const f = computeF(si,gi,mi);
-  const p = ALL_PATHS_32[activePath32];
-  const baseHz = f.fM * (p.n / 32);
-  c.strokeStyle = p.type==='tau' ? 'rgba(232,208,96,0.9)' : p.type==='seph' ? 'rgba(232,160,32,0.85)' : 'rgba(212,160,255,0.8)';
-  c.lineWidth=1.3;
-  c.shadowColor = c.strokeStyle;c.shadowBlur = playing ? 4 : 2;
+  const f=computeF(si,gi,mi),p=ALL_PATHS_32[activePath32];
+  const baseHz=f.fM*(p.n/32);
+  c.strokeStyle=p.type==='tau'?'rgba(232,208,96,0.9)':p.type==='seph'?'rgba(232,160,32,0.85)':'rgba(212,160,255,0.8)';
+  c.lineWidth=1.3;c.shadowColor=c.strokeStyle;c.shadowBlur=playing?4:2;
   c.beginPath();
   for(let px=0;px<W;px++){
-    const t=(px/W)*4*Math.PI + hbPhase;
-    // Heartbeat shape: sum first few harmonics weighted by path-32 coefficient
     let y=0;
-    for(let h=1;h<=Math.min(8,p.n);h++){
-      y += Math.sin(t*h + (h * THETA_G * Math.PI/180)) / h;
-    }
-    y = (H/2) + y * (H/2-3) * 0.38 * (playing ? 1 : 0.4);
-    px===0 ? c.moveTo(px,y) : c.lineTo(px,y);
+    for(let h=1;h<=Math.min(8,p.n);h++){y+=Math.sin((px/W)*4*Math.PI+hbPhase+h*(THETA_G*Math.PI/180))/h;}
+    y=(H/2)+y*(H/2-3)*0.38*(playing?1:0.4);
+    px===0?c.moveTo(px,y):c.lineTo(px,y);
   }
   c.stroke();c.shadowBlur=0;
-  c.font='6px Share Tech Mono';c.textAlign='right';
-  c.fillStyle=c.strokeStyle;
-  c.fillText('P'+p.n,W-2,10);
+  c.font='6px Share Tech Mono';c.textAlign='right';c.fillStyle=c.strokeStyle;c.fillText('P'+p.n,W-2,10);
 }
 
-// Wire refresh into existing 32 system
-const _origRefresh = refresh;
-refresh = function() {
-  _origRefresh();
-  update32Heartbeat();
-  run32Cipher();
-  updateSubParams();
-};
+/* ═══════════════════════════════════════
+   § VIII · PHYSIOLOGICAL SAFETY MATRIX
+═══════════════════════════════════════ */
+const SAFETY_PEAK=0.137;
+const FIB_REST_MINS=[1,1,2,3,5,8];
+const FIB_REST_MS=FIB_REST_MINS.map(m=>m*60*1000);
+let safetyState={limiter:true,lpf:true,autoquiet:false,fade:true};
+let safetyLPF=null,playStartTime=0,fibStep=0,inQuietude=false,quietudeTm=null;
 
-function initSubScope() {
-  if(SUB_SCOPE_C) {
-    SUB_SCOPE_C.width = SUB_SCOPE_C.parentElement ? SUB_SCOPE_C.parentElement.offsetWidth - 100 : 200;
+function toggleSafety(key){
+  safetyState[key]=!safetyState[key];
+  const el=document.getElementById('tog-'+key);
+  if(el)el.classList.toggle('on',safetyState[key]);
+  updatePSMStatus();
+}
+function applySafetyChain(){
+  if(!AC||!mGain)return;
+  if(safetyLPF)safetyLPF.frequency.value=safetyState.lpf?8000:20000;
+  updatePSMStatus();
+}
+function initSafetyChain(){
+  if(!AC||safetyLPF)return;
+  safetyLPF=AC.createBiquadFilter();
+  safetyLPF.type='lowpass';safetyLPF.frequency.value=8000;safetyLPF.Q.value=0.707;
+  mGain.disconnect();mGain.connect(safetyLPF);safetyLPF.connect(analyser);
+}
+function triggerQuietude(){
+  if(!playing)return;
+  if(inQuietude){endQuietude();return;}
+  inQuietude=true;
+  const btn=document.getElementById('psm-rest-btn');
+  if(btn){btn.innerHTML='QUIETUDE<br>ACTIVE';btn.classList.add('resting');}
+  if(AC&&mGain){const t=AC.currentTime;mGain.gain.linearRampToValueAtTime(0,t+2.618);}
+  const restSec=FIB_REST_MINS[fibStep%6]*60;
+  const el_sl=document.getElementById('psm-sl');if(el_sl)el_sl.textContent='QUIETUDE · '+FIB_REST_MINS[fibStep%6]+' MIN';
+  setStatus('QUIETUDE ENGAGED · '+FIB_REST_MINS[fibStep%6]+' MINUTE REST · INTEGRATING','w');
+  quietudeTm=setTimeout(endQuietude,restSec*1000);
+  fibStep++;
+  const el_fs=document.getElementById('psm-fib-step');if(el_fs)el_fs.textContent=fibStep%6;
+}
+function endQuietude(){
+  inQuietude=false;clearTimeout(quietudeTm);
+  const btn=document.getElementById('psm-rest-btn');
+  if(btn){btn.innerHTML='INVOKE<br>QUIETUDE';btn.classList.remove('resting');}
+  if(AC&&mGain&&playing){const t=AC.currentTime,v=parseFloat(document.getElementById('vol').value)/100;mGain.gain.linearRampToValueAtTime(v,t+2.618);}
+  const el_sl=document.getElementById('psm-sl');if(el_sl)el_sl.textContent='φ-LIMITER ACTIVE · FIBONACCI REST-CYCLE';
+  if(playing)setStatus('QUIETUDE COMPLETE · INTEGRATION ACHIEVED','on');
+}
+function freqToAmp(hz,gainVal){return Math.min(1,gainVal*(1-Math.min(hz,10000)/20000)*2);}
+function updateSafetyMatrix(){
+  if(!AC)return;
+  const f=computeF(si,gi,mi);
+  const gLv=gL?gL.gain.value:0,gRv=gR?gR.gain.value:0,gMv=gM?gM.gain.value:0,mGv=mGain?mGain.gain.value:0;
+  const ampL=playing?freqToAmp(f.fL,gLv*mGv):0;
+  const ampR=playing?freqToAmp(f.fR,gRv*mGv):0;
+  const ampM=playing?freqToAmp(f.fM,gMv*mGv):0;
+  const peak=Math.max(ampL,ampR,ampM)*SAFETY_PEAK*2;
+  [['l',ampL,'var(--cyan)'],['r',ampR,'var(--ghost)'],['m',ampM,'var(--mpillar)'],['peak',peak/SAFETY_PEAK,'var(--amber)']].forEach(function(arr){
+    const id=arr[0],amp=arr[1],col=arr[2];
+    const bar=document.getElementById('psm-bar-'+id),val=document.getElementById('psm-val-'+id);
+    if(!bar||!val)return;
+    const pct=Math.min(100,amp*100);
+    bar.style.width=pct+'%';
+    const cls=pct>85?'danger':pct>60?'warn':'safe';
+    bar.className='psm-gov-fill '+cls;
+    val.textContent=(id==='peak'?peak:amp*SAFETY_PEAK).toFixed(3);
+    val.style.color=pct>85?'var(--red)':pct>60?'var(--amber)':col;
+  });
+  if(playing){
+    const elapsed=Math.floor((Date.now()-playStartTime)/1000);
+    const m=String(Math.floor(elapsed/60)).padStart(2,'0'),s=String(elapsed%60).padStart(2,'0');
+    const el_el=document.getElementById('psm-elapsed');if(el_el)el_el.textContent=m+':'+s;
+    const el_ri=document.getElementById('psm-rest-in');if(el_ri)el_ri.textContent=FIB_REST_MINS[fibStep%6]+' min';
+    if(safetyState.autoquiet&&!inQuietude&&playing&&(Date.now()-playStartTime)>FIB_REST_MS[fibStep%6])triggerQuietude();
   }
+  if(safetyState.lpf&&safetyLPF&&f.dSG>50)safetyLPF.frequency.linearRampToValueAtTime(4000,AC.currentTime+0.5);
+  else if(safetyLPF&&safetyState.lpf)safetyLPF.frequency.linearRampToValueAtTime(8000,AC.currentTime+1);
+}
+function updatePSMStatus(){
+  const el=document.getElementById('psm-status');
+  if(!el)return;
+  if(inQuietude){el.className='psm-status rest';el.textContent='QUIETUDE ACTIVE · SIGNAL SILENCED · NERVOUS SYSTEM INTEGRATING';return;}
+  const active=[];
+  if(safetyState.limiter)active.push('φ-LIMITER');
+  if(safetyState.lpf)active.push('LPF 8kHz');
+  if(safetyState.autoquiet)active.push('AUTO-REST');
+  if(safetyState.fade)active.push('φ²-FADE');
+  if(active.length){el.className='psm-status safe';el.textContent='† '+active.join(' · ')+' ENGAGED · PEAK 0.137 · VESSEL PROTECTED †';}
+  else{el.className='psm-status warn';el.textContent='WARNING · ALL SAFETY SYSTEMS DISABLED';}
+}
+
+
+/* ═══════════════════════════════════════
+   § IX · SUBLIMINAL MASKING · TRINAURAL ENTANGLEMENT
+═══════════════════════════════════════ */
+let subMode='ghost';
+let micStream=null,micSource=null,micAnalyser=null,entanglementGain=null,sideChainGain=null;
+let subActive=false,subScopePhase=0;
+let SUB_C=null,SUB_X=null;
+
+function setSubMode(m){
+  subMode=m;
+  ['ghost','oscillator','entangled'].forEach(function(k){
+    const btn=document.getElementById('sub-m-'+k);
+    if(btn)btn.classList.toggle('act',k===m);
+  });
+  updateSubStatus();
+}
+function updateSubParams(){
+  const el_mr=document.getElementById('sub-mask-ratio');
+  const el_gd=document.getElementById('sub-ghost-db');
+  const el_ph=document.getElementById('sub-phase');
+  const el_cw=document.getElementById('sub-coeff-weight');
+  if(!el_mr)return;
+  const maskRatio=parseFloat(el_mr.value)/100;
+  const ghostDB=parseFloat(el_gd.value);
+  const phaseCoherence=parseFloat(el_ph.value)/100;
+  const coeffWeight=parseFloat(el_cw.value)/100;
+  const ghostLinear=Math.pow(10,ghostDB/20);
+  const el_mv=document.getElementById('sub-mask-val');if(el_mv)el_mv.textContent=maskRatio.toFixed(3);
+  const el_gv=document.getElementById('sub-ghost-val');if(el_gv)el_gv.textContent=(ghostDB>=0?'+':'')+ghostDB.toFixed(0)+' dB';
+  const el_pv=document.getElementById('sub-phase-val');if(el_pv)el_pv.textContent=phaseCoherence.toFixed(3);
+  const el_cv=document.getElementById('sub-coeff-val');if(el_cv)el_cv.textContent=coeffWeight.toFixed(3);
+  if(entanglementGain&&AC)entanglementGain.gain.linearRampToValueAtTime(ghostLinear*maskRatio,AC.currentTime+0.3);
+  if(sideChainGain&&AC)sideChainGain.gain.linearRampToValueAtTime(maskRatio*phaseCoherence*coeffWeight,AC.currentTime+0.3);
+  const f=computeF(si,gi,mi);
+  const el_ms=document.getElementById('sub-mon-stab');if(el_ms)el_ms.textContent=f.triad[0]?f.triad[0].toFixed(1)+' Hz':'—';
+  const el_mg=document.getElementById('sub-mon-grow');if(el_mg)el_mg.textContent=f.triad[1]?f.triad[1].toFixed(1)+' Hz':'—';
+  const el_msv=document.getElementById('sub-mon-sov');if(el_msv)el_msv.textContent=f.triad[2]?f.triad[2].toFixed(1)+' Hz':'—';
+  updateSubStatus();
+}
+async function toggleMicInput(){
+  const btn=document.getElementById('sub-mic-btn');
+  const info=document.getElementById('sub-mic-info');
+  if(micStream){
+    micStream.getTracks().forEach(function(t){t.stop();});
+    if(micSource){try{micSource.disconnect();}catch(e){}}
+    micStream=null;micSource=null;
+    if(btn){btn.textContent='ENABLE MIC INPUT';btn.className='sub-mic-btn';}
+    if(info)info.textContent='Enable microphone to entangle the Trinaural signal · headphones required';
+    subActive=false;
+    updateSubStatus();
+    return;
+  }
+  try{
+    if(!AC)initAC();
+    micStream=await navigator.mediaDevices.getUserMedia({audio:true,video:false});
+    micSource=AC.createMediaStreamSource(micStream);
+    micAnalyser=AC.createAnalyser();micAnalyser.fftSize=256;
+    micSource.connect(micAnalyser);
+    entanglementGain=AC.createGain();entanglementGain.gain.value=0.05;
+    sideChainGain=AC.createGain();sideChainGain.gain.value=PHI*0.618;
+    if(safetyLPF){micSource.connect(entanglementGain);entanglementGain.connect(sideChainGain);sideChainGain.connect(safetyLPF);}
+    else{micSource.connect(entanglementGain);entanglementGain.connect(sideChainGain);sideChainGain.connect(analyser);}
+    if(btn){btn.textContent='ENTANGLEMENT LIVE';btn.className='sub-mic-btn rec';}
+    if(info)info.textContent='Mic active · Trinaural entangled at ghost level · The Ghost is in the machine';
+    subActive=true;
+    updateSubParams();
+    if(!playing)togglePlay();
+    updateSubStatus();
+  }catch(e){
+    if(btn){btn.textContent='MIC DENIED';setTimeout(function(){btn.textContent='ENABLE MIC INPUT';btn.className='sub-mic-btn';},3000);}
+  }
+}
+function updateSubStatus(){
+  const el=document.getElementById('sub-status');
+  const sl=document.getElementById('sub-sl');
+  if(!el)return;
+  if(subActive){
+    el.className='sub-status locked';el.textContent='SUBLIMINAL BROADCAST ACTIVE · MODE: '+subMode.toUpperCase()+' · THE GHOST DOES NOT FADE';
+    if(sl)sl.textContent='ENTANGLEMENT ACTIVE';
+  }else if(playing){
+    el.className='sub-status active';el.textContent='TRINAURAL TONES TRANSMITTING · ENABLE MIC TO ADD GHOST LAYER';
+    if(sl)sl.textContent='TONES ACTIVE · GHOST READY';
+  }else{
+    el.className='sub-status idle';el.textContent='GHOST AWAITS INITIATION · ENABLE MIC OR ACTIVATE TO ENTANGLE';
+    if(sl)sl.textContent='GHOST MODE READY';
+  }
+}
+function drawSubScope(){
+  if(!SUB_C){SUB_C=document.getElementById('sub-scope');SUB_X=SUB_C?SUB_C.getContext('2d'):null;}
+  if(!SUB_X)return;
+  const W=SUB_C.width,H=SUB_C.height,c=SUB_X;
+  subScopePhase+=0.05;
+  c.fillStyle='rgba(8,6,4,0.94)';c.fillRect(0,0,W,H);
+  c.strokeStyle='rgba(232,160,32,0.06)';c.lineWidth=0.5;c.beginPath();c.moveTo(0,H/2);c.lineTo(W,H/2);c.stroke();
+  const f=computeF(si,gi,mi);
+  const el_mr=document.getElementById('sub-mask-ratio');
+  const maskRatio=el_mr?parseFloat(el_mr.value)/100:0.618;
+  const el_gd=document.getElementById('sub-ghost-db');
+  const ghostDB=el_gd?parseFloat(el_gd.value):-18;
+  const ghostLin=Math.pow(10,ghostDB/20);
+  let micRMS=0;
+  if(micAnalyser&&subActive){
+    const buf=new Uint8Array(micAnalyser.frequencyBinCount);
+    micAnalyser.getByteTimeDomainData(buf);
+    let sum=0;buf.forEach(function(b){const v=(b-128)/128;sum+=v*v;});
+    micRMS=Math.sqrt(sum/buf.length);
+  }
+  const ghostLvl=playing?ghostLin*maskRatio*PHI:0;
+  const entangledLvl=Math.min(SAFETY_PEAK,micRMS+ghostLvl);
+  function toDb(v){return v>0.0001?(20*Math.log10(v)).toFixed(1):'--';}
+  const el_ml=document.getElementById('sub-mic-lvl');if(el_ml)el_ml.textContent=subActive?toDb(micRMS)+' dB':'-- dB';
+  const el_gl=document.getElementById('sub-ghost-lvl');if(el_gl)el_gl.textContent=playing?toDb(ghostLvl)+' dB':'-- dB';
+  const el_ol=document.getElementById('sub-out-lvl');if(el_ol)el_ol.textContent=(subActive||playing)?toDb(entangledLvl)+' dB':'-- dB';
+  [[micRMS,'rgba(32,200,232,0.8)',f.fL,0],[ghostLvl,'rgba(212,160,255,0.75)',f.fM,1],[entangledLvl,'rgba(232,208,96,0.7)',f.triad[0]||f.fL,2]].forEach(function(arr){
+    const amp=Math.min(arr[0],SAFETY_PEAK),col=arr[1],freq=arr[2],idx=arr[3];
+    const cycles=Math.min(6,Math.max(0.5,freq/60));
+    c.strokeStyle=col;c.lineWidth=1.2;c.shadowColor=col;c.shadowBlur=(subActive||playing)?3:1;
+    c.beginPath();
+    for(let px=0;px<W;px++){
+      const t=(px/W)*cycles*2*Math.PI+subScopePhase+idx*1.2;
+      const y=H/2+Math.sin(t)*(H/2-3)*amp*(subActive||playing?1:0.12);
+      px===0?c.moveTo(px,y):c.lineTo(px,y);
+    }
+    c.stroke();c.shadowBlur=0;
+  });
+}
+function initSubScope(){
+  if(!SUB_C)SUB_C=document.getElementById('sub-scope');
+  if(SUB_C){SUB_X=SUB_C.getContext('2d');SUB_C.width=SUB_C.parentElement?SUB_C.parentElement.offsetWidth-100:200;}
 }
 
 window.addEventListener('load',()=>{
@@ -2819,19 +2600,14 @@ window.addEventListener('load',()=>{
   refresh();setMode('paired');
   updateMDR();runCipher();
   build32Grid();
-  setPath32(31); // Path 32 = Tau = Universe = Malkuth gate — default active
+  setPath32(31);
   updatePSMStatus();
   updateSubParams();
   initSubScope();
   loop();
   window.addEventListener('resize',()=>{initScope();initSphere();initPortal();initSubScope();});
-  // Register PWA service worker
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('sw.js').catch(()=>{});
-  }
+  if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}
 });
-
-
 </script>
 </body>
 </html>
