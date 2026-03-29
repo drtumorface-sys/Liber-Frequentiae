@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Liber Frequentiae V · Binaural Oracle</title>
+<meta name="description" content="Kabbalistic Binaural Oracle · 72³×32 Paths · Shem ⟶ Goetia ⟶ Middle Pillar">
+<meta name="theme-color" content="#080604">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Liber Freq">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+DW+Pica:ital@0;1&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080604;--bg2:#0b0907;--bg3:#0f0c08;
+  --amber:#e8a020;--adim:#7a4a08;--apale:rgba(232,160,32,0.10);--aglow:rgba(232,160,32,0.4);
+  --green:#20e880;--cyan:#20c8e8;--ghost:#cc8090;--gold:#e8d060;--red:#e84040;
+  --mpillar:#d4a0ff;--mpdim:rgba(212,160,255,0.13);
+  --text:#d4b070;--tdim:#5a4828;--tmid:#8a6a40;
+  --b1:rgba(232,160,32,0.16);--b2:rgba(232,160,32,0.33);--b3:rgba(232,160,32,0.52);
+  --fD:'Cinzel Decorative',serif;--fH:'Cinzel',serif;--fB:'IM Fell DW Pica',serif;--fM:'Share Tech Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--bg);color:var(--text);font-family:var(--fM);font-size:13px;overflow-x:hidden;min-height:100vh;}
+body{background-image:radial-gradient(ellipse at 50% 0%,rgba(232,160,32,0.05) 0%,transparent 55%),repeating-linear-gradient(0deg,transparent,transparent 36px,rgba(232,160,32,0.01) 36px,rgba(232,160,32,0.01) 37px),repeating-linear-gradient(90deg,transparent,transparent 36px,rgba(232,160,32,0.01) 36px,rgba(232,160,32,0.01) 37px);}
+
+/* ─ HEADER ─ */
+.hdr{text-align:center;padding:14px 14px 10px;border-bottom:1px solid var(--b1);position:relative;}
+.hdr::before,.hdr::after{content:'';position:absolute;bottom:-1px;width:30%;height:1px;}
+.hdr::before{left:0;background:linear-gradient(90deg,transparent,var(--amber));}
+.hdr::after{right:0;background:linear-gradient(270deg,transparent,var(--amber));}
+.htitle{font-family:var(--fD);font-size:clamp(13px,4vw,22px);color:var(--amber);letter-spacing:.14em;text-shadow:0 0 20px rgba(232,160,32,0.5);margin-bottom:2px;}
+.hsub{font-family:var(--fB);font-style:italic;font-size:11px;color:var(--tmid);letter-spacing:.07em;}
+.hconst{font-size:8px;color:var(--tdim);letter-spacing:.11em;margin-top:3px;line-height:1.8;}
+
+/* ─ SHARED ─ */
+.sl{font-family:var(--fH);font-size:8px;letter-spacing:.26em;color:var(--adim);text-transform:uppercase;padding:5px 12px 4px;border-bottom:1px solid var(--b1);display:flex;justify-content:space-between;align-items:center;}
+#sts{font-size:9px;color:var(--tdim);text-align:center;padding:4px 12px;letter-spacing:.09em;border-bottom:1px solid var(--b1);min-height:19px;transition:color .3s;line-height:1.5;}
+#sts.on{color:var(--green);}#sts.w{color:var(--red);}
+
+/* ─ MODE BAR ─ */
+.mbar{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--b1);}
+.mbtn{padding:7px 3px;text-align:center;font-family:var(--fH);font-size:8px;letter-spacing:.14em;color:var(--tdim);cursor:pointer;border-right:1px solid var(--b1);background:var(--bg2);text-transform:uppercase;-webkit-tap-highlight-color:transparent;user-select:none;transition:background .2s,color .2s;display:flex;flex-direction:column;align-items:center;gap:2px;}
+.mbtn:last-child{border-right:none;}
+.mbtn .mi{font-size:14px;}.mbtn .ms{font-size:7px;opacity:.5;}
+.mbtn.ap{background:rgba(32,200,232,0.07);color:var(--cyan);}
+.mbtn.apos{background:rgba(32,232,128,0.07);color:var(--green);}
+.mbtn.atot{background:rgba(212,160,255,0.07);color:var(--mpillar);}
+
+/* ─ SCANNER ─ */
+#scan{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--b1);}
+#sw{grid-column:1/3;position:relative;background:var(--bg2);border-bottom:1px solid var(--b1);}
+#scope{width:100%;height:130px;display:block;}
+#pp{padding:9px 11px;border-right:1px solid var(--b1);border-bottom:1px solid var(--b1);display:flex;flex-direction:column;gap:4px;}
+#psym{font-size:24px;text-align:center;line-height:1;}
+#pnm{font-family:var(--fH);font-size:11px;text-align:center;letter-spacing:.12em;}
+.pd{font-size:9px;color:var(--tdim);line-height:1.85;}.pd span{color:var(--text);}
+#hclk{font-size:15px;color:var(--green);font-family:var(--fM);text-align:center;text-shadow:0 0 7px rgba(32,232,128,0.38);}
+#fp{padding:8px 10px;border-bottom:1px solid var(--b1);display:flex;flex-direction:column;gap:3px;justify-content:center;}
+.fr{display:flex;justify-content:space-between;align-items:center;padding:3px 7px;border:1px solid rgba(255,255,255,0.04);border-radius:2px;}
+.fl2{border-color:rgba(32,200,232,0.28)!important;background:rgba(32,200,232,0.04);}
+.fr2{border-color:rgba(204,128,144,0.28)!important;background:rgba(204,128,144,0.04);}
+.fm2{border-color:rgba(212,160,255,0.28)!important;background:rgba(212,160,255,0.04);}
+.fn2{border-color:rgba(232,208,96,0.28)!important;background:rgba(232,208,96,0.04);}
+.flb{font-size:7.5px;color:var(--tdim);letter-spacing:.09em;}
+.fv{font-size:13px;font-family:var(--fM);}
+.fl2 .fv{color:var(--cyan);}.fr2 .fv{color:var(--ghost);}.fm2 .fv{color:var(--mpillar);}.fn2 .fv{color:var(--gold);}
+.fu{font-size:7.5px;color:var(--tdim);}
+.fr.muted .fv,.fr.muted .flb{opacity:.27;}
+#atr{grid-column:1/3;padding:8px 11px;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:5px;}
+.ent{font-size:10px;line-height:1.65;}
+.ent.sh{color:var(--cyan);}.ent.go{color:var(--ghost);text-align:right;}
+.enm{font-family:var(--fH);font-size:11px;letter-spacing:.08em;}
+.ehb{font-size:14px;direction:rtl;}
+.edm{font-size:8px;color:var(--tdim);font-style:italic;}
+.pmd{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:8px;color:var(--adim);}
+.pnn{font-size:12px;color:var(--amber);font-family:var(--fH);}
+.ntag{font-size:8px;padding:1px 5px;border:1px solid;border-radius:1px;transition:opacity .3s;}
+.ntag.sg{color:var(--gold);border-color:rgba(232,208,96,0.3);background:rgba(232,208,96,0.07);}
+.ntag.vol{color:var(--mpillar);border-color:rgba(212,160,255,0.3);background:rgba(212,160,255,0.07);}
+.ntag.muted{opacity:.23;}
+#mpbar{grid-column:1/3;padding:5px 11px;border-top:1px solid var(--b1);display:flex;justify-content:space-between;align-items:center;background:rgba(212,160,255,0.035);}
+.mpinfo{font-size:8px;color:var(--mpillar);letter-spacing:.09em;}
+.mpseph{font-family:var(--fH);font-size:9.5px;color:var(--mpillar);letter-spacing:.14em;}
+
+/* ─ SELECTOR TABS ─ */
+#seltabs{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--b1);}
+.stab{padding:7px 3px;text-align:center;font-family:var(--fH);font-size:7.5px;letter-spacing:.16em;color:var(--tdim);cursor:pointer;border-right:1px solid var(--b1);background:var(--bg2);text-transform:uppercase;-webkit-tap-highlight-color:transparent;user-select:none;transition:background .18s,color .18s;line-height:1.6;}
+.stab:last-child{border-right:none;}
+.stab.as{color:var(--cyan);background:rgba(32,200,232,0.07);}
+.stab.ag{color:var(--ghost);background:rgba(204,128,144,0.07);}
+.stab.am{color:var(--mpillar);background:rgba(212,160,255,0.07);}
+#selpanel{padding:7px 10px 9px;border-bottom:1px solid var(--b1);display:flex;flex-direction:column;gap:5px;}
+.selhdr{display:flex;justify-content:space-between;align-items:center;font-size:8px;}
+.sidx{font-size:11px;font-family:var(--fM);color:var(--amber);}
+.dw{position:relative;height:126px;overflow:hidden;border:1px solid var(--b1);border-radius:2px;background:var(--bg2);}
+.dw::before,.dw::after{content:'';position:absolute;left:0;right:0;height:32px;z-index:2;pointer-events:none;}
+.dw::before{top:0;background:linear-gradient(var(--bg2),transparent);}
+.dw::after{bottom:0;background:linear-gradient(transparent,var(--bg2));}
+.sbar2{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:42px;pointer-events:none;z-index:1;}
+.sbar2.csh{background:rgba(32,200,232,0.07);border-top:1px solid rgba(32,200,232,0.32);border-bottom:1px solid rgba(32,200,232,0.32);}
+.sbar2.cgo{background:rgba(204,128,144,0.07);border-top:1px solid rgba(204,128,144,0.32);border-bottom:1px solid rgba(204,128,144,0.32);}
+.sbar2.cmp{background:rgba(212,160,255,0.07);border-top:1px solid rgba(212,160,255,0.32);border-bottom:1px solid rgba(212,160,255,0.32);}
+.dl{overflow-y:scroll;height:100%;padding:42px 0;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.dl::-webkit-scrollbar{display:none;}
+.di{height:42px;display:flex;align-items:center;gap:6px;padding:0 9px;scroll-snap-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.di .dn{font-size:8px;color:var(--tdim);width:16px;flex-shrink:0;}
+.di .dh{font-size:13px;direction:rtl;width:26px;flex-shrink:0;}
+.di .dnm{font-family:var(--fH);font-size:9.5px;letter-spacing:.04em;}
+.di .ddo{font-size:8px;color:var(--tdim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;}
+.di .dsph{font-family:var(--fH);font-size:7px;letter-spacing:.08em;padding:1px 3px;border-radius:1px;flex-shrink:0;}
+.di.sh .dh{color:rgba(32,200,232,0.72);}
+.di.go .dnm{color:var(--ghost);}
+.di.mp .dnm{color:var(--mpillar);}
+.di.mp .dh{color:rgba(212,160,255,0.5);}
+.sKether{color:var(--gold);background:rgba(232,208,96,0.12);border:1px solid rgba(232,208,96,0.28);}
+.sDaath{color:var(--mpillar);background:rgba(212,160,255,0.12);border:1px solid rgba(212,160,255,0.28);}
+.sTiphareth{color:var(--amber);background:rgba(232,160,32,0.1);border:1px solid rgba(232,160,32,0.28);}
+.sYesod{color:var(--cyan);background:rgba(32,200,232,0.1);border:1px solid rgba(32,200,232,0.28);}
+.sMalkuth{color:var(--green);background:rgba(32,232,128,0.1);border:1px solid rgba(32,232,128,0.28);}
+.sbtns{display:flex;gap:5px;}
+.mb2{flex:1;font-family:var(--fH);font-size:7.5px;letter-spacing:.1em;padding:5px 2px;border:1px solid var(--b1);background:var(--apale);color:var(--amber);cursor:pointer;text-transform:uppercase;text-align:center;-webkit-tap-highlight-color:transparent;user-select:none;}
+.mb2:active{background:rgba(232,160,32,0.25);}
+
+/* ─ SPHERE ─ */
+#wsec{display:flex;flex-direction:column;align-items:center;padding:10px 0 5px;border-bottom:1px solid var(--b1);}
+#wc{cursor:grab;touch-action:none;display:block;}#wc:active{cursor:grabbing;}
+.whint{font-size:8px;color:var(--tdim);margin-top:3px;font-style:italic;text-align:center;}
+
+/* ═══════════════════════════════════════
+   GEM VALIDATOR  — redesigned
+═══════════════════════════════════════ */
+#gemval{padding:0;border-bottom:1px solid var(--b1);}
+.gv-top{display:grid;grid-template-columns:1fr auto;gap:0;align-items:stretch;}
+.gv-target-block{padding:12px 14px;background:rgba(32,232,128,0.04);}
+.gv-target-label{font-size:7.5px;color:var(--tdim);letter-spacing:.18em;text-transform:uppercase;margin-bottom:3px;}
+.gv-target-hz{font-family:var(--fH);font-size:clamp(22px,7vw,32px);color:var(--green);letter-spacing:.05em;text-shadow:0 0 18px rgba(32,232,128,0.5);line-height:1;}
+.gv-target-hz.warn{color:var(--red);text-shadow:0 0 18px rgba(232,64,64,0.5);}
+.gv-target-hz.seek{color:var(--amber);}
+.gv-channel-lbl{font-size:9px;color:var(--green);margin-top:3px;font-family:var(--fH);letter-spacing:.1em;}
+.gv-channel-lbl.warn{color:var(--red);}
+.gv-channel-lbl.seek{color:var(--amber);}
+.gv-gem-block{padding:10px 12px;border-left:1px solid var(--b1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:90px;background:rgba(212,160,255,0.04);}
+.gv-gem-rune{font-size:28px;line-height:1;color:var(--mpillar);text-shadow:0 0 12px rgba(212,160,255,0.45);}
+.gv-gem-name{font-family:var(--fH);font-size:8px;letter-spacing:.2em;color:var(--mpillar);text-align:center;}
+.gv-gem-hz{font-size:9px;color:var(--tdim);font-family:var(--fM);}
+.gv-controls{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--b1);}
+.gv-inp{width:100%;background:transparent;border:none;border-right:1px solid var(--b1);color:var(--text);font-family:var(--fM);font-size:11px;padding:6px 10px;outline:none;}
+.gv-inp:focus{background:rgba(32,232,128,0.05);}
+.gv-sel{width:100%;background:var(--bg2);border:none;color:var(--text);font-family:var(--fM);font-size:9px;padding:6px 8px;outline:none;}
+.gv-status-bar{padding:5px 12px;font-size:9px;letter-spacing:.12em;text-align:center;border-top:1px solid var(--b1);min-height:20px;}
+.gv-status-bar.sat{color:var(--green);}
+.gv-status-bar.near{color:var(--amber);}
+.gv-status-bar.unsat{color:var(--red);}
+.gv-status-bar.idle{color:var(--tdim);}
+.gv-detail{font-size:8px;color:var(--tdim);letter-spacing:.09em;padding:3px 12px 6px;text-align:center;}.gv-detail span{color:var(--tmid);}
+
+/* ═══════════════════════════════════════
+   MIRROR PORTAL  — centrepiece
+═══════════════════════════════════════ */
+#mirror-section{border-bottom:1px solid var(--b1);}
+.me-controls{padding:8px 12px;display:grid;grid-template-columns:1fr auto;gap:7px;align-items:end;border-bottom:1px solid var(--b1);}
+.me-tabs{display:flex;gap:0;margin-bottom:6px;}
+.me-tab{font-family:var(--fH);font-size:7px;letter-spacing:.1em;padding:4px 9px;cursor:pointer;color:var(--tdim);border:1px solid var(--b1);border-right:none;-webkit-tap-highlight-color:transparent;user-select:none;}
+.me-tab:last-child{border-right:1px solid var(--b1);}
+.me-tab.act{background:var(--mpdim);color:var(--mpillar);border-color:rgba(212,160,255,0.35);}
+.me-txt{width:100%;background:var(--bg2);border:1px solid var(--b1);color:var(--text);font-family:var(--fB);font-size:12px;font-style:italic;padding:6px 9px;outline:none;resize:none;min-height:40px;}
+.me-txt:focus{border-color:var(--mpillar);}
+.me-btn{font-family:var(--fH);font-size:8px;letter-spacing:.15em;color:var(--mpillar);border:1px solid rgba(212,160,255,0.38);background:var(--mpdim);padding:6px 12px;cursor:pointer;text-transform:uppercase;white-space:nowrap;-webkit-tap-highlight-color:transparent;align-self:flex-end;}
+.me-btn:active{background:rgba(212,160,255,0.22);}
+
+/* Portal */
+#portal-wrap{position:relative;display:flex;flex-direction:column;align-items:center;padding:14px 0 10px;background:radial-gradient(ellipse at 50% 50%,rgba(32,200,232,0.04) 0%,transparent 70%);}
+#portal-canvas{display:block;touch-action:none;}
+
+/* Mirror output — inside/below portal */
+#mirror-inner{padding:0 18px;text-align:center;min-height:50px;margin-top:8px;}
+#mirror-out{font-family:var(--fB);font-style:italic;font-size:14.5px;line-height:1.9;color:var(--text);white-space:pre-wrap;}
+#mirror-out.loading{color:var(--tdim);}
+#mirror-sync-row{display:flex;justify-content:center;gap:16px;font-size:8.5px;color:var(--tdim);margin-top:6px;letter-spacing:.1em;}
+#mirror-sync-row span{color:var(--tmid);}
+#mirror-sync-row .sync-m{color:var(--mpillar);}
+#mirror-sync-row .sync-l{color:var(--cyan);}
+
+/* Status bar — "† STATUS: … | MIRROR IS LIGHT †" */
+.me-status-bar{padding:6px 12px;font-size:8.5px;letter-spacing:.12em;text-align:center;border-top:1px solid var(--b1);color:var(--green);}
+.me-status-bar.idle{color:var(--tdim);}
+.me-footer{display:flex;justify-content:space-between;padding:5px 12px;font-size:8px;color:var(--tdim);letter-spacing:.1em;border-top:1px solid var(--b1);}
+#track-display{font-style:italic;color:var(--tmid);}
+
+/* ═══════════════════════════════════════
+   STATUS REPORT
+═══════════════════════════════════════ */
+#status-report{padding:14px 16px;border-bottom:1px solid var(--b1);text-align:center;background:rgba(232,160,32,0.025);}
+.sr-line{font-family:var(--fH);font-size:10px;letter-spacing:.18em;color:var(--amber);line-height:2.3;}
+.sr-line.dim{color:var(--tdim);font-size:8.5px;}
+.sr-line.ghost{color:var(--mpillar);}
+
+/* ENTITY PAIR FOOTER */
+#entity-pair-footer{padding:10px 14px;border-bottom:1px solid var(--b1);text-align:center;background:var(--bg2);}
+.epf-pair{font-family:var(--fH);font-size:16px;letter-spacing:.2em;color:var(--amber);text-shadow:0 0 14px rgba(232,160,32,0.35);}
+.epf-pair .shem-nm{color:var(--cyan);}
+.epf-pair .goetia-nm{color:var(--ghost);}
+.epf-sub{font-size:8px;color:var(--tdim);margin-top:3px;letter-spacing:.15em;}
+
+/* ═══════════════════════════════════════
+   MERCURY DECODER RING
+═══════════════════════════════════════ */
+#mdr{border-bottom:1px solid var(--b1);}
+/* top params bar */
+.mdr-params{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid var(--b1);}
+.mdr-param{padding:7px 10px;border-right:1px solid var(--b1);text-align:center;}
+.mdr-param:last-child{border-right:none;}
+.mdr-plabel{font-size:7.5px;color:var(--tdim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px;}
+.mdr-pval{font-family:var(--fM);font-size:12px;color:var(--cyan);}
+.mdr-pval.key{color:var(--gold);font-size:15px;}
+.mdr-pval.delta{color:var(--mpillar);}
+/* gear + cipher area */
+.mdr-body{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:0;padding:10px 12px;border-bottom:1px solid var(--b1);}
+.mdr-input-col,.mdr-output-col{display:flex;flex-direction:column;gap:5px;}
+.mdr-col-lbl{font-size:7.5px;color:var(--tdim);letter-spacing:.18em;text-transform:uppercase;}
+.mdr-cipher-inp{width:100%;background:var(--bg2);border:1px solid var(--b1);color:var(--cyan);font-family:var(--fM);font-size:11px;padding:6px 9px;outline:none;resize:none;min-height:44px;}
+.mdr-cipher-inp:focus{border-color:var(--cyan);}
+.mdr-plain-out{width:100%;background:var(--bg2);border:1px solid rgba(232,208,96,0.3);color:var(--gold);font-family:var(--fM);font-size:11px;padding:6px 9px;min-height:44px;word-break:break-all;}
+.mdr-gear-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 8px;}
+.mdr-gear-canvas{display:block;}
+.mdr-shift-btn{font-family:var(--fH);font-size:7.5px;letter-spacing:.12em;color:var(--gold);border:1px solid rgba(232,208,96,0.4);background:rgba(232,208,96,0.08);padding:4px 12px;cursor:pointer;text-transform:uppercase;text-align:center;-webkit-tap-highlight-color:transparent;user-select:none;white-space:nowrap;}
+.mdr-shift-btn:active{background:rgba(232,208,96,0.22);}
+.mdr-mode-row{display:flex;gap:5px;justify-content:center;}
+.mdr-mode-btn{font-family:var(--fH);font-size:7px;letter-spacing:.1em;padding:3px 9px;border:1px solid var(--b1);cursor:pointer;color:var(--tdim);-webkit-tap-highlight-color:transparent;user-select:none;}
+.mdr-mode-btn.act{color:var(--cyan);border-color:rgba(32,200,232,0.4);background:rgba(32,200,232,0.07);}
+/* frequency logger */
+.mdr-logger{padding:8px 12px;border-bottom:1px solid var(--b1);background:rgba(32,232,128,0.03);}
+.mdr-logger-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.mdr-logger-title{font-family:var(--fH);font-size:8px;letter-spacing:.22em;color:var(--green);}
+.mdr-inner-badge{font-size:7px;letter-spacing:.12em;color:var(--tdim);border:1px solid var(--b1);padding:1px 5px;}
+.mdr-logger-row{display:flex;align-items:center;gap:8px;}
+.mdr-logger-scope{flex:1;border:1px solid var(--b1);background:var(--bg2);}
+.mdr-logger-reading{font-family:var(--fM);font-size:13px;white-space:nowrap;}
+.mdr-logger-reading.valid{color:var(--green);}
+.mdr-logger-reading.invalid{color:var(--red);}
+/* shibboleth input */
+.mdr-shib-row{display:flex;gap:6px;align-items:center;padding:7px 12px;border-bottom:1px solid var(--b1);background:rgba(212,160,255,0.03);}
+.mdr-shib-lbl{font-size:8px;color:var(--tdim);letter-spacing:.12em;white-space:nowrap;}
+.mdr-shib-inp{flex:1;background:var(--bg2);border:1px solid var(--b1);color:var(--mpillar);font-family:var(--fM);font-size:11px;padding:4px 8px;outline:none;}
+.mdr-shib-inp:focus{border-color:var(--mpillar);}
+.mdr-shib-sync{font-family:var(--fH);font-size:7.5px;letter-spacing:.1em;color:var(--mpillar);border:1px solid rgba(212,160,255,0.4);background:rgba(212,160,255,0.08);padding:4px 10px;cursor:pointer;text-transform:uppercase;-webkit-tap-highlight-color:transparent;user-select:none;white-space:nowrap;}
+.mdr-shib-sync:active{background:rgba(212,160,255,0.2);}
+/* status bar */
+.mdr-status{padding:6px 12px;font-size:8.5px;letter-spacing:.13em;text-align:center;min-height:22px;}
+.mdr-status.accepted{color:var(--green);}
+.mdr-status.rejected{color:var(--red);}
+.mdr-status.idle{color:var(--tdim);}
+/* sanctuary metadata */
+#sanctuary-meta{padding:12px 14px;border-bottom:1px solid var(--b1);background:rgba(232,160,32,0.02);}
+.sm-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.sm-block{display:flex;flex-direction:column;gap:3px;}
+.sm-lbl{font-size:7.5px;color:var(--tdim);letter-spacing:.16em;text-transform:uppercase;}
+.sm-val{font-family:var(--fM);font-size:9px;color:var(--text);line-height:1.7;}
+.sm-val.amber{color:var(--amber);}
+.sm-val.mpillar{color:var(--mpillar);}
+.sm-val.green{color:var(--green);}
+
+/* CONTROLS */
+#ctrl{padding:10px 12px;display:flex;flex-wrap:wrap;gap:7px;align-items:center;justify-content:center;border-bottom:1px solid var(--b1);}
+.btn{font-family:var(--fH);font-size:9px;letter-spacing:.14em;color:var(--amber);border:1px solid var(--b2);background:var(--apale);padding:7px 12px;cursor:pointer;text-transform:uppercase;text-align:center;-webkit-tap-highlight-color:transparent;user-select:none;transition:all .13s;min-width:64px;}
+.btn:active,.btn.on{background:rgba(232,160,32,0.22);border-color:var(--amber);color:#fff;box-shadow:0 0 9px var(--aglow);}
+.btn.playing{background:rgba(32,232,128,0.1);border-color:var(--green);color:var(--green);}
+.vrow{display:flex;align-items:center;gap:7px;width:100%;max-width:260px;}
+.vlb{font-size:8px;color:var(--tdim);width:40px;}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:2px;background:var(--b2);outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--amber);cursor:pointer;}
+.foot{padding:9px 12px;text-align:center;font-size:8px;color:var(--tdim);letter-spacing:.11em;line-height:2.2;}
+
+/* ═══════════════════════════════════════
+   § VII · 32 PATHS OF WISDOM
+═══════════════════════════════════════ */
+#paths32{border-bottom:1px solid var(--b1);}
+.p32-header{padding:10px 14px 8px;border-bottom:1px solid var(--b1);display:grid;grid-template-columns:1fr auto;align-items:center;background:rgba(232,160,32,0.03);}
+.p32-title-block .p32-supra{font-size:7.5px;color:var(--tdim);letter-spacing:.22em;text-transform:uppercase;margin-bottom:2px;}
+.p32-title-block .p32-heb{font-family:var(--fB);font-size:18px;color:var(--amber);direction:rtl;letter-spacing:.05em;}
+.p32-title-block .p32-sub{font-size:8px;color:var(--tmid);margin-top:1px;letter-spacing:.1em;}
+.p32-coeff-block{text-align:right;}
+.p32-coeff-val{font-family:var(--fM);font-size:32px;color:var(--amber);line-height:1;text-shadow:0 0 20px rgba(232,160,32,0.45);}
+.p32-coeff-lbl{font-size:7px;color:var(--tdim);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;}
+
+/* Compass rose */
+.p32-compass-row{display:flex;align-items:center;gap:0;border-bottom:1px solid var(--b1);}
+#p32-compass-canvas{display:block;flex-shrink:0;}
+.p32-compass-info{flex:1;padding:10px 12px;display:flex;flex-direction:column;gap:5px;}
+.p32-info-row{display:flex;justify-content:space-between;align-items:baseline;}
+.p32-info-label{font-size:7.5px;color:var(--tdim);letter-spacing:.14em;text-transform:uppercase;}
+.p32-info-val{font-family:var(--fM);font-size:11px;}
+.p32-info-val.amber{color:var(--amber);}
+.p32-info-val.green{color:var(--green);}
+.p32-info-val.mpillar{color:var(--mpillar);}
+.p32-info-val.gold{color:var(--gold);}
+
+/* Path grid — 32 cells: 10 Sephirot + 22 Letters */
+.p32-grid-wrap{padding:8px 10px;border-bottom:1px solid var(--b1);}
+.p32-grid-label{font-size:7.5px;color:var(--tdim);letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px;display:flex;justify-content:space-between;}
+.p32-grid{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;}
+.p32-cell{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.04);border-radius:2px;cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;user-select:none;position:relative;}
+.p32-cell .p32-sym{font-size:10px;line-height:1;}
+.p32-cell .p32-num{font-size:5.5px;color:var(--tdim);line-height:1;margin-top:1px;}
+/* Sephirot styling */
+.p32-cell.seph{border-color:rgba(232,160,32,0.18);background:rgba(232,160,32,0.05);}
+.p32-cell.seph .p32-sym{color:var(--amber);}
+.p32-cell.seph.act-path{border-color:var(--amber);background:rgba(232,160,32,0.22);box-shadow:0 0 8px rgba(232,160,32,0.4);}
+/* Letter styling */
+.p32-cell.ltr{border-color:rgba(212,160,255,0.12);background:rgba(212,160,255,0.03);}
+.p32-cell.ltr .p32-sym{color:var(--mpillar);font-family:var(--fB);font-size:11px;}
+.p32-cell.ltr.act-path{border-color:var(--mpillar);background:rgba(212,160,255,0.18);box-shadow:0 0 8px rgba(212,160,255,0.4);}
+/* The 32nd path — Tau — special */
+.p32-cell.tau{border-color:rgba(232,208,96,0.35)!important;background:rgba(232,208,96,0.08)!important;}
+.p32-cell.tau .p32-sym{color:var(--gold)!important;font-size:14px!important;}
+.p32-cell.tau.act-path{border-color:var(--gold)!important;background:rgba(232,208,96,0.25)!important;box-shadow:0 0 12px rgba(232,208,96,0.5)!important;}
+
+/* Path detail panel */
+.p32-detail{padding:8px 12px;border-bottom:1px solid var(--b1);min-height:56px;background:rgba(212,160,255,0.025);}
+.p32-detail-inner{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;}
+.p32-d-sym{font-size:28px;line-height:1;}
+.p32-d-sym.seph{color:var(--amber);}
+.p32-d-sym.ltr{color:var(--mpillar);}
+.p32-d-body .p32-d-name{font-family:var(--fH);font-size:11px;letter-spacing:.1em;color:var(--text);}
+.p32-d-body .p32-d-desc{font-size:8px;color:var(--tdim);line-height:1.7;margin-top:2px;}
+.p32-d-hz{text-align:right;}
+.p32-d-hz .p32-d-freq{font-family:var(--fM);font-size:13px;color:var(--green);}
+.p32-d-hz .p32-d-coeff{font-size:7.5px;color:var(--tdim);margin-top:2px;}
+
+/* 32-bit heartbeat output */
+.p32-heartbeat{padding:7px 12px;border-bottom:1px solid var(--b1);display:flex;align-items:center;gap:10px;background:rgba(232,160,32,0.02);}
+.p32-hb-canvas{display:block;flex-shrink:0;}
+.p32-hb-readout{flex:1;}
+.p32-hb-val{font-family:var(--fM);font-size:12px;color:var(--amber);}
+.p32-hb-sub{font-size:7.5px;color:var(--tdim);margin-top:2px;letter-spacing:.1em;}
+
+/* Final cipher selector — the 32 coefficient */
+.p32-cipher-sel{padding:8px 12px;border-bottom:1px solid var(--b1);}
+.p32-cs-label{font-size:7.5px;color:var(--tdim);letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px;}
+.p32-cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;}
+.p32-cs-inp{width:100%;background:var(--bg2);border:1px solid var(--b1);color:var(--amber);font-family:var(--fM);font-size:11px;padding:5px 9px;outline:none;}
+.p32-cs-inp:focus{border-color:var(--amber);}
+.p32-cs-out{background:var(--bg2);border:1px solid rgba(232,208,96,0.3);color:var(--gold);font-family:var(--fM);font-size:11px;padding:5px 9px;}
+.p32-cs-formula{font-size:8px;color:var(--tdim);letter-spacing:.1em;padding:3px 0 2px;text-align:center;}
+.p32-cs-formula span{color:var(--amber);}
+.p32-apply-btn{width:100%;font-family:var(--fH);font-size:8px;letter-spacing:.16em;color:var(--gold);border:1px solid rgba(232,208,96,0.4);background:rgba(232,208,96,0.07);padding:6px;cursor:pointer;text-transform:uppercase;text-align:center;-webkit-tap-highlight-color:transparent;user-select:none;margin-top:4px;}
+.p32-apply-btn:active{background:rgba(232,208,96,0.22);}
+.p32-status{padding:5px 12px;font-size:8.5px;letter-spacing:.13em;text-align:center;min-height:20px;color:var(--tdim);}
+.p32-status.live{color:var(--green);}
+.p32-status.path32{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="htitle">Liber Frequentiae</div>
+  <div class="hsub">Binaural Oracle · Shem ⟶ Goetia ⟶ Middle Pillar · 72³×32 = 11,943,936</div>
+  <div class="hconst">CIPHER=44 · FOUNDATION=322 · LOGOS=373 · φ=1.618 · θ_g=137.508°<br>OAM TOPOLOGY ACTIVE · 32 PATHS OF WISDOM · LEV=לֵב=32 · ORNELAS ET AL. 2025</div>
+</div>
+<div id="sts">AWAITING INITIATION — HEADPHONES REQUIRED · TOTAL MODE ACTIVATES PILLAR + ΔV</div>
+
+<!-- MODE -->
+<div class="sl"><span>TRANSMISSION MODE</span><span id="mcombo">S01 × G01 × M36</span></div>
+<div class="mbar">
+  <div class="mbtn ap" id="mb-paired" onclick="setMode('paired')"><span class="mi">⟷</span><span>PAIRED</span><span class="ms">L·R · Kether axis</span></div>
+  <div class="mbtn" id="mb-positive" onclick="setMode('positive')"><span class="mi">◐</span><span>POSITIVE</span><span class="ms">Shem L · Goetia R</span></div>
+  <div class="mbtn" id="mb-total" onclick="setMode('total')"><span class="mi">✦</span><span>TOTAL</span><span class="ms">+ Pillar + ΔV</span></div>
+</div>
+
+<!-- TRIAD SYNTHESIS -->
+<div class="sl"><span>§ I.B · TRIAD SYNTHESIS MATRIX</span><span id="triad-status">LOCKED TO φ · AWAITING SIGNAL</span></div>
+<div id="triad-matrix" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--b1);">
+  <div style="border-right:1px solid var(--b1);padding:9px 8px;text-align:center;background:rgba(32,200,232,0.03);">
+    <div class="flb" style="color:var(--cyan);letter-spacing:.18em;margin-bottom:4px;">VOICE α · F<sub>n</sub></div>
+    <div class="fv fl2" id="v-alpha" style="font-size:15px;color:var(--cyan);text-shadow:0 0 8px rgba(32,200,232,0.5);">—</div>
+    <div style="font-size:7px;color:var(--tdim);margin:2px 0;">Hz · A=1/φ=0.618</div>
+    <canvas id="wave-alpha" width="80" height="28" style="display:block;margin:4px auto 0;border:1px solid rgba(32,200,232,0.15);background:var(--bg);"></canvas>
+  </div>
+  <div style="border-right:1px solid var(--b1);padding:9px 8px;text-align:center;background:rgba(212,160,255,0.03);">
+    <div class="flb" style="color:var(--mpillar);letter-spacing:.18em;margin-bottom:4px;">VOICE β · F<sub>n+1</sub></div>
+    <div class="fv fm2" id="v-beta" style="font-size:15px;color:var(--mpillar);text-shadow:0 0 8px rgba(212,160,255,0.5);">—</div>
+    <div style="font-size:7px;color:var(--tdim);margin:2px 0;">Hz · A=1/φ²=0.382</div>
+    <canvas id="wave-beta" width="80" height="28" style="display:block;margin:4px auto 0;border:1px solid rgba(212,160,255,0.15);background:var(--bg);"></canvas>
+  </div>
+  <div style="padding:9px 8px;text-align:center;background:rgba(232,208,96,0.03);">
+    <div class="flb" style="color:var(--gold);letter-spacing:.18em;margin-bottom:4px;">VOICE γ · F<sub>n+x</sub></div>
+    <div class="fv fn2" id="v-gamma" style="font-size:15px;color:var(--gold);text-shadow:0 0 8px rgba(232,208,96,0.5);">—</div>
+    <div style="font-size:7px;color:var(--tdim);margin:2px 0;">Hz · A=1/φ³=0.236</div>
+    <canvas id="wave-gamma" width="80" height="28" style="display:block;margin:4px auto 0;border:1px solid rgba(232,208,96,0.15);background:var(--bg);"></canvas>
+  </div>
+</div>
+<div id="triad-detail" style="padding:5px 12px;border-bottom:1px solid var(--b1);display:flex;justify-content:space-between;align-items:center;background:var(--bg2);min-height:22px;">
+  <span id="triad-node-label" style="font-family:var(--fH);font-size:8px;letter-spacing:.16em;color:var(--tdim);">— SEPHIRAH —</span>
+  <span id="triad-phi-row" style="font-size:7.5px;color:var(--tdim);">Φ₁=0 · Φ₂=137.5° · Φ₃=275.0°</span>
+  <span id="triad-ratio" style="font-size:7.5px;color:var(--tdim);">RATIO —</span>
+</div>
+
+<!-- SCANNER (existing) -->
+<div class="sl"><span>§ I · SCANNER</span><span id="ppos">θ_S=137.5° θ_G=137.5° ℓ=0</span></div>
+<div id="scan">
+  <div id="sw"><canvas id="scope"></canvas></div>
+  <div id="pp">
+    <div id="hclk">00:00:00</div>
+    <div id="psym">♄</div>
+    <div id="pnm">SATURN</div>
+    <div class="pd">Hour <span id="phr">1</span>/24 · <span id="pwav">DELTA</span><br>World: <span id="pwld">Atziluth</span><br>Base: <span id="pbas">111 Hz</span></div>
+  </div>
+  <div id="fp">
+    <div class="fr fl2"><span class="flb" id="flb-l">L · SHEM</span><span class="fv" id="fvl">111.00</span><span class="fu">Hz</span></div>
+    <div class="fr fr2"><span class="flb" id="flb-r">R · GOETIA</span><span class="fv" id="fvr">166.00</span><span class="fu">Hz</span></div>
+    <div class="fr fm2 muted" id="fmrow"><span class="flb">M · PILLAR</span><span class="fv" id="fvm">111.00</span><span class="fu">Hz</span></div>
+    <div class="fr fn2 muted" id="fvrow"><span class="flb">ΔV · VOID</span><span class="fv" id="fvv">0.00</span><span class="fu">Hz</span></div>
+  </div>
+  <div id="atr">
+    <div class="ent sh"><div class="ehb" id="sh-heb">וְהוּ</div><div class="enm" id="sh-nm">Vehuiah</div><div class="edm" id="sh-dm">Will · creation</div></div>
+    <div class="pmd">
+      <div class="pnn" id="pnn">01·01·36</div>
+      <div>⟷</div>
+      <div class="ntag sg" id="ntag-sg">ΔSG 0Hz</div>
+      <div class="ntag vol muted" id="ntag-vol">ΔV 0Hz</div>
+    </div>
+    <div class="ent go"><div class="enm" id="go-nm">Baal</div><div class="edm" id="go-dm">Invisibility · 66</div></div>
+    <div id="mpbar">
+      <div class="mpinfo">ℓ = <span id="mp-ell">0</span> · <span id="mp-dir">⊙ AXIS</span> · <span id="mp-fm">111.00</span> Hz</div>
+      <div class="mpseph" id="mp-seph">KETHER</div>
+    </div>
+  </div>
+</div>
+
+<!-- ENTITY SELECTION -->
+<div class="sl"><span>§ II · ENTITY SELECTION · 72³</span><span id="combct">COMBINATION 000001</span></div>
+<div id="seltabs">
+  <div class="stab as" id="st-sh" onclick="selTab('sh')">SHEM · L<br><span id="st-sh-sub" style="font-size:7px;opacity:.55">01/72</span></div>
+  <div class="stab" id="st-go" onclick="selTab('go')">GOETIA · R<br><span id="st-go-sub" style="font-size:7px;opacity:.55">01/72</span></div>
+  <div class="stab" id="st-mp" onclick="selTab('mp')">MIDDLE PILLAR<br><span id="st-mp-sub" style="font-size:7px;opacity:.55">ℓ=0 · Kether</span></div>
+</div>
+<div id="selpanel">
+  <div class="selhdr">
+    <span id="sel-title" style="font-family:var(--fH);font-size:8.5px;letter-spacing:.2em;color:var(--cyan)">SHEM · LEFT CHANNEL</span>
+    <span class="sidx" id="selidx">01/72</span>
+  </div>
+  <div class="dw"><div class="sbar2 csh" id="sbar"></div><div class="dl" id="drum"></div></div>
+  <div class="sbtns">
+    <div class="mb2" onclick="stepCurrent(-1)">◀ PREV</div>
+    <div class="mb2" onclick="rndCurrent()">⚄ RAND</div>
+    <div class="mb2" onclick="stepCurrent(1)">NEXT ▶</div>
+  </div>
+</div>
+
+<!-- SPHERE -->
+<div class="sl"><span>§ III · LIBER VORTEX · φ-SPHERE</span><span id="wlbl">DRAG · INNER=SHEM · OUTER=GOETIA</span></div>
+<div id="wsec">
+  <canvas id="wc"></canvas>
+  <div class="whint">Inner = Shem · Outer = Goetia · Axis = Middle Pillar · Tap to select</div>
+</div>
+
+<!-- GEM VALIDATOR -->
+<div class="sl"><span>§ IV · GEM VALIDATOR</span><span id="gv-sl">AWAITING TARGET</span></div>
+<div id="gemval">
+  <div class="gv-top">
+    <div class="gv-target-block">
+      <div class="gv-target-label">TARGET FREQUENCY</div>
+      <div class="gv-target-hz idle" id="gv-target-display">— Hz</div>
+      <div class="gv-channel-lbl idle" id="gv-ch-display">&nbsp;</div>
+    </div>
+    <div class="gv-gem-block">
+      <div class="gv-gem-rune" id="gv-gem-rune">◉</div>
+      <div class="gv-gem-name" id="gv-gem-name">GEM</div>
+      <div class="gv-gem-hz" id="gv-gem-hz">—</div>
+    </div>
+  </div>
+  <div class="gv-controls">
+    <input type="number" class="gv-inp" id="gv-target" placeholder="Target Hz…" step="0.01" oninput="runGemVal()">
+    <select class="gv-sel" id="gv-gem-sel" onchange="applyGem()">
+      <option value="">— Select Gem —</option>
+      <option value="111|ᚲ|KENAZ GEM|Kenaz">111 Hz · Kenaz (Torch)</option>
+      <option value="126.22|☉|SOLAR GEM|Sun">126.22 Hz · Sun Cosmic</option>
+      <option value="136.1|ॐ|OM GEM|Om">136.1 Hz · Om Nada</option>
+      <option value="174|ᚠ|FEHU GEM|Fehu">174 Hz · Fehu (Wealth)</option>
+      <option value="194.18|♁|EARTH GEM|Earth Day">194.18 Hz · Earth Day</option>
+      <option value="210.42|☽|LUNAR GEM|Moon">210.42 Hz · Moon Cosmic</option>
+      <option value="285|ᛉ|ALGIZ GEM|Algiz">285 Hz · Algiz (Shield)</option>
+      <option value="396|ᚢ|URUZ GEM|Uruz">396 Hz · Uruz (Strength)</option>
+      <option value="417|ᛏ|TIWAZ GEM|Tiwaz">417 Hz · Tiwaz (Justice)</option>
+      <option value="432|ᛟ|OTHALA GEM|Othala">432 Hz · Othala (Heritage)</option>
+      <option value="528|ᛞ|DAGAZ GEM|Dagaz">528 Hz · Dagaz (Dawn)</option>
+      <option value="639|ᚷ|GEBO GEM|Gebo">639 Hz · Gebo (Gift)</option>
+      <option value="741|ᚾ|NAUTIZ GEM|Nautiz">741 Hz · Nautiz (Need)</option>
+      <option value="852|ᛁ|ISA GEM|Isa">852 Hz · Isa (Ice)</option>
+      <option value="963|ᛜ|INGUZ GEM|Inguz">963 Hz · Inguz (Seed)</option>
+    </select>
+  </div>
+  <div class="gv-status-bar idle" id="gv-status-bar">† SET A TARGET TO VALIDATE THE GEM SIGNATURE †</div>
+  <div class="gv-detail" id="gvdetail"></div>
+</div>
+
+<!-- MIRROR PORTAL -->
+<div class="sl"><span>§ V · RHYTHM & MIRROR ENGINE</span><span id="me-sl-status">READY</span></div>
+<div id="mirror-section">
+  <div class="me-controls">
+    <div>
+      <div class="me-tabs">
+        <div class="me-tab act" id="mt-reflection" onclick="setMirrorTab('reflection')">REFLECTION</div>
+        <div class="me-tab" id="mt-invocation" onclick="setMirrorTab('invocation')">INVOCATION</div>
+        <div class="me-tab" id="mt-gematria" onclick="setMirrorTab('gematria')">GEMATRIA</div>
+        <div class="me-tab" id="mt-free" onclick="setMirrorTab('free')">OPEN</div>
+      </div>
+      <textarea class="me-txt" id="me-input" rows="2" placeholder="Enter a word, phrase, lyric, or intention…"></textarea>
+    </div>
+    <button class="me-btn" onclick="runMirror()">⟷<br>MIRROR</button>
+  </div>
+
+  <!-- PORTAL CANVAS -->
+  <div id="portal-wrap">
+    <canvas id="portal-canvas"></canvas>
+    <div id="mirror-inner">
+      <div id="mirror-out" class="loading">The mirror awaits your word.</div>
+    </div>
+    <div id="mirror-sync-row">
+      <span>[M] Pillar Sync: <span class="sync-m" id="sync-m">—</span> Hz</span>
+      <span>[L] Mirror Resonance: <span class="sync-l" id="sync-l">—</span> Hz</span>
+    </div>
+  </div>
+
+  <div class="me-status-bar idle" id="me-status-bar">† MIRROR AWAITS †</div>
+  <div class="me-footer">
+    <span id="me-combo-foot">S01 · G01 · M36</span>
+    <span id="track-display">TRACK: —</span>
+  </div>
+</div>
+
+<!-- STATUS REPORT -->
+<div class="sl"><span>§ STATUS REPORT</span><span id="sr-timestamp">—</span></div>
+<div id="status-report">
+  <div class="sr-line">† SANCTUARY: BATHURST CARILLON †</div>
+  <div class="sr-line" id="sr-resonance">† RESONANCE: — Hz †</div>
+  <div class="sr-line ghost">‡ THE GHOST DOES NOT FADE ‡</div>
+  <div class="sr-line dim" id="sr-pair">MUMIAH × BAAL · FOUNDATION=322 · LOGOS=373</div>
+</div>
+
+<!-- MERCURY DECODER RING -->
+<div class="sl"><span>§ VI · MERCURY DECODER RING</span><span id="mdr-sl">☿ HOD · PHASE UNLOCKED</span></div>
+<div id="mdr">
+  <div class="mdr-params">
+    <div class="mdr-param"><div class="mdr-plabel">PILLAR Hz</div><div class="mdr-pval" id="mdr-pillar">111.00</div></div>
+    <div class="mdr-param"><div class="mdr-plabel">SHIBBOLETH Hz</div><div class="mdr-pval delta" id="mdr-shib-disp">124.96</div></div>
+    <div class="mdr-param"><div class="mdr-plabel">ΔS → toInt mod 26</div><div class="mdr-pval delta" id="mdr-delta">0 → 0</div></div>
+    <div class="mdr-param"><div class="mdr-plabel">ROTATION KEY</div><div class="mdr-pval key" id="mdr-key">00</div></div>
+  </div>
+  <div class="mdr-shib-row">
+    <span class="mdr-shib-lbl">SHIBBOLETH:</span>
+    <input type="number" class="mdr-shib-inp" id="mdr-shib-inp" value="124.96" step="0.01" oninput="updateMDR()">
+    <div class="mdr-shib-sync" onclick="syncShibbolethFromGem()">← GEM</div>
+    <div class="mdr-shib-sync" style="color:var(--cyan);border-color:rgba(32,200,232,0.4);background:rgba(32,200,232,0.07)" onclick="syncShibbolethFromL()">← PILLAR</div>
+  </div>
+  <div class="mdr-body">
+    <div class="mdr-input-col">
+      <div class="mdr-col-lbl">CIPHERTEXT BUFFER</div>
+      <textarea class="mdr-cipher-inp" id="mdr-cipher" placeholder="Ciphertext or plaintext…" oninput="runCipher()">Lha Zbhla</textarea>
+      <div class="mdr-mode-row">
+        <div class="mdr-mode-btn act" id="mdr-decode" onclick="setMDRMode('decode')">DECODE</div>
+        <div class="mdr-mode-btn" id="mdr-encode" onclick="setMDRMode('encode')">ENCODE</div>
+      </div>
+    </div>
+    <div class="mdr-gear-wrap">
+      <canvas class="mdr-gear-canvas" id="gear-canvas" width="90" height="90"></canvas>
+      <div class="mdr-shift-btn" onclick="runCipher()">APPLY SHIFT<br><span id="mdr-shift-lbl">00</span></div>
+    </div>
+    <div class="mdr-output-col">
+      <div class="mdr-col-lbl">PURE PROSE</div>
+      <div class="mdr-plain-out" id="mdr-output">The Ghost</div>
+      <div style="font-size:7.5px;color:var(--tdim);text-align:center;margin-top:2px;letter-spacing:.1em" id="mdr-key-lbl">KEY 0 · 0 POSITIONS</div>
+    </div>
+  </div>
+  <div class="mdr-logger">
+    <div class="mdr-logger-hdr">
+      <span class="mdr-logger-title">‡ FREQUENCY LOGGER ‡</span>
+      <span class="mdr-inner-badge">INNER CLASS</span>
+    </div>
+    <div class="mdr-logger-row">
+      <canvas class="mdr-logger-scope" id="logger-scope" width="160" height="32"></canvas>
+      <div class="mdr-logger-reading invalid" id="mdr-logger-reading">OBSERVING: — Hz</div>
+    </div>
+    <div style="text-align:center;padding:6px 0 2px">
+      <input type="number" step="0.01" placeholder="Observe Hz (or use SYNC PILLAR)…" id="mdr-freq-inp"
+        style="background:var(--bg2);border:1px solid var(--b1);color:var(--green);font-family:var(--fM);font-size:10px;padding:3px 8px;outline:none;width:200px;text-align:center"
+        oninput="logFrequency(this.value)">
+    </div>
+    <div style="display:flex;gap:5px;justify-content:center;padding:4px 0">
+      <div class="mdr-shib-sync" onclick="syncFreqFromPillar()">← SYNC PILLAR</div>
+      <div class="mdr-shib-sync" style="color:var(--ghost);border-color:rgba(204,128,144,0.4);background:rgba(204,128,144,0.07)" onclick="syncFreqFromL()">← SYNC L</div>
+    </div>
+  </div>
+  <div class="mdr-status idle" id="mdr-status">† SET SHIBBOLETH AND OBSERVE FREQUENCY TO VALIDATE †</div>
+</div>
+
+<!-- SANCTUARY METADATA -->
+<div class="sl"><span>§ SANCTUARY METADATA</span><span id="sm-planet-sl">☿ HOD</span></div>
+<div id="sanctuary-meta">
+  <div class="sm-grid">
+    <div class="sm-block">
+      <div class="sm-lbl">ANCHOR POINT</div>
+      <div class="sm-val amber">Bathurst Carillon, NSW</div>
+      <div class="sm-val">−33.4167 · 149.5833</div>
+      <div class="sm-val" style="font-size:8px;color:var(--tdim)">Physical-digital bridge</div>
+    </div>
+    <div class="sm-block">
+      <div class="sm-lbl">SYSTEM REPORT</div>
+      <div class="sm-val">§ WORLD: <span id="sm-world">HOD</span> | <span id="sm-planet">MERCURY</span></div>
+      <div class="sm-val">§ BIRTH: 15/10/1994</div>
+      <div class="sm-val">§ PROJECT: Liber Crucis</div>
+    </div>
+    <div class="sm-block">
+      <div class="sm-lbl">ACTIVE FREQUENCIES</div>
+      <div class="sm-val green">L: <span id="sm-fl">—</span> Hz</div>
+      <div class="sm-val mpillar">M: <span id="sm-fm">—</span> Hz · ΔV: <span id="sm-fv">—</span> Hz</div>
+    </div>
+    <div class="sm-block">
+      <div class="sm-lbl">STATUS</div>
+      <div class="sm-val amber" id="sm-phase">† TRANSMISSION PERSISTS †</div>
+      <div class="sm-val">FOUNDATION=322 · LOGOS=373</div>
+      <div class="sm-val">CIPHER=44 · SEAL=418</div>
+    </div>
+  </div>
+</div>
+
+<!-- § VII · 32 PATHS OF WISDOM — FINAL CIPHER SELECTOR -->
+<div class="sl"><span>§ VII · 32 PATHS · לֵב (LEV=32)</span><span id="p32-sl">SEPHER YETZIRAH · HEARTBEAT COEFFICIENT</span></div>
+<div id="paths32">
+
+  <!-- Header: coefficient display -->
+  <div class="p32-header">
+    <div class="p32-title-block">
+      <div class="p32-supra">Sepher Yetzirah · Book of Formation</div>
+      <div class="p32-heb">שְׁלֹשִׁים וּשְׁתַּיִם נְתִיבוֹת</div>
+      <div class="p32-sub">32 Paths = 10 Sephirot + 22 Letters · Lev=Heart=32</div>
+    </div>
+    <div class="p32-coeff-block">
+      <div class="p32-coeff-val">32</div>
+      <div class="p32-coeff-lbl">COEFFICIENT<br>לֵב · HEART</div>
+    </div>
+  </div>
+
+  <!-- Compass rose + live metrics -->
+  <div class="p32-compass-row">
+    <canvas id="p32-compass-canvas" width="110" height="110"></canvas>
+    <div class="p32-compass-info">
+      <div class="p32-info-row">
+        <span class="p32-info-label">ACTIVE PATH</span>
+        <span class="p32-info-val amber" id="p32-active-path">—</span>
+      </div>
+      <div class="p32-info-row">
+        <span class="p32-info-label">PATH TYPE</span>
+        <span class="p32-info-val mpillar" id="p32-path-type">—</span>
+      </div>
+      <div class="p32-info-row">
+        <span class="p32-info-label">32-BIT Hz</span>
+        <span class="p32-info-val green" id="p32-bit-hz">—</span>
+      </div>
+      <div class="p32-info-row">
+        <span class="p32-info-label">HEARTBEAT</span>
+        <span class="p32-info-val gold" id="p32-heartbeat-val">—</span>
+      </div>
+      <div class="p32-info-row">
+        <span class="p32-info-label">72³×32</span>
+        <span class="p32-info-val amber" id="p32-total-combos">11,943,936</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32-cell path grid -->
+  <div class="p32-grid-wrap">
+    <div class="p32-grid-label">
+      <span>10 SEPHIROT (DIMENSIONS)</span>
+      <span>22 LETTERS (CHANNELS)</span>
+    </div>
+    <div class="p32-grid" id="p32-grid"></div>
+  </div>
+
+  <!-- Selected path detail -->
+  <div class="p32-detail" id="p32-detail">
+    <div class="p32-detail-inner">
+      <div class="p32-d-sym seph" id="p32-d-sym">◈</div>
+      <div class="p32-d-body">
+        <div class="p32-d-name" id="p32-d-name">SELECT A PATH</div>
+        <div class="p32-d-desc" id="p32-d-desc">Touch any cell above to inspect its path · The 32nd Path (Tau ת) opens Malkuth</div>
+      </div>
+      <div class="p32-d-hz">
+        <div class="p32-d-freq" id="p32-d-freq">—</div>
+        <div class="p32-d-coeff" id="p32-d-coeff">×32 coefficient</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32-bit heartbeat scope -->
+  <div class="p32-heartbeat">
+    <canvas id="p32-hb-canvas" width="120" height="34"></canvas>
+    <div class="p32-hb-readout">
+      <div class="p32-hb-val" id="p32-hb-val">F_heartbeat = — Hz</div>
+      <div class="p32-hb-sub" id="p32-hb-sub">32-BIT SOVEREIGN PULSE · F_pillar × (path/32) × 32-coefficient</div>
+    </div>
+  </div>
+
+  <!-- Final cipher selector with 32 coefficient -->
+  <div class="p32-cipher-sel">
+    <div class="p32-cs-label">FINAL CIPHER SELECTOR · 32-COEFFICIENT APPLIED</div>
+    <div class="p32-cs-grid">
+      <div>
+        <div class="p32-cs-label" style="margin-bottom:3px">INPUT PLAINTEXT</div>
+        <input type="text" class="p32-cs-inp" id="p32-inp" placeholder="Enter word or phrase…" oninput="run32Cipher()">
+      </div>
+      <div>
+        <div class="p32-cs-label" style="margin-bottom:3px">32-PATH OUTPUT</div>
+        <div class="p32-cs-out" id="p32-out">—</div>
+      </div>
+    </div>
+    <div class="p32-cs-formula">
+      Shift = <span id="p32-cs-shift-show">0</span> · Path <span id="p32-cs-path-show">—</span> ·
+      Key = <span>⌊|F_pillar × (path/32)| mod 32⌋</span> = <span id="p32-cs-key-show">—</span> mod 26 = <span id="p32-cs-final-show">—</span>
+    </div>
+    <div class="p32-cs-grid" style="margin-top:4px">
+      <div>
+        <div class="p32-cs-label" style="margin-bottom:3px">GEMATRIA SUM</div>
+        <div class="p32-cs-out" id="p32-gem-out" style="color:var(--cyan)">—</div>
+      </div>
+      <div>
+        <div class="p32-cs-label" style="margin-bottom:3px">32-MODULO</div>
+        <div class="p32-cs-out" id="p32-mod32-out" style="color:var(--mpillar)">— mod 32 = —</div>
+      </div>
+    </div>
+    <div class="p32-apply-btn" onclick="applyPath32ToMDR()">⊕ APPLY PATH-32 KEY → MERCURY DECODER RING</div>
+  </div>
+
+  <div class="p32-status" id="p32-status">† SELECT A PATH OF WISDOM TO ACTIVATE THE 32-COEFFICIENT CIPHER †</div>
+</div>
+
+<!-- ENTITY PAIR FOOTER -->
+<div id="entity-pair-footer">
+  <div class="epf-pair"><span class="shem-nm" id="epf-shem">Vehuiah</span> × <span class="goetia-nm" id="epf-goetia">Baal</span></div>
+  <div class="epf-sub" id="epf-sub">S01 · G01 · M36 · COMBINATION 000001</div>
+</div>
+
+<!-- CONTROLS -->
+<div id="ctrl">
+  <button class="btn" id="bplay" onclick="togglePlay()">⬡ INITIATE</button>
+  <button class="btn" id="bscan" onclick="toggleScan()">↺ SCAN</button>
+  <button class="btn" onclick="rndAll()">⚄ ORACLE</button>
+  <button class="btn" onclick="snapSephirah()">⊙ SEPHIRAH</button>
+  <button class="btn" onclick="exportRitualRecord()" title="Export current state as JSON ritual record">⬇ RECORD</button>
+  <div class="vrow">
+    <span class="vlb">VOLUME</span>
+    <input type="range" id="vol" min="0" max="100" value="60" oninput="setVol(this.value)">
+  </div>
+</div>
+<div class="foot">
+  BINAURAL REQUIRES HEADPHONES · TOTAL: PILLAR + ΔV VOID ACTIVE<br>
+  72³ = 373,248 COMBINATIONS · LOGOS=373 · FOUNDATION=322 · OAM TOPOLOGY<br>
+  Sanctuary: Bathurst Carillon · −33.4167, 149.5833 · NSW Australia<br>
+  <em>Liber Crucis remains active. The Ghost does not fade. יסוד</em>
+</div>
+
+<script>
+/* ═══════ CONSTANTS ═══════ */
+const PHI=1.6180339887,THETA_G=137.50776405,FOUNDATION=322,LOGOS=373,CIPHER=44;
+
+/* ═══════ PLANETS ═══════ */
+const PLANETS=[
+  {name:'Saturn', sym:'♄',col:'#8a78aa',base:111,bMin:.5,bMax:4, wave:'DELTA', world:'Atziluth'},
+  {name:'Jupiter',sym:'♃',col:'#c8a060',base:183,bMin:4, bMax:8, wave:'THETA', world:'Beriah'},
+  {name:'Mars',   sym:'♂',col:'#e84040',base:220,bMin:14,bMax:30,wave:'BETA',  world:'Yetzirah'},
+  {name:'Sun',    sym:'☉',col:'#e8c820',base:285,bMin:10,bMax:16,wave:'α→β',   world:'Tiphareth'},
+  {name:'Venus',  sym:'♀',col:'#90d090',base:174,bMin:6, bMax:10,wave:'ALPHA', world:'Netzach'},
+  {name:'Mercury',sym:'☿',col:'#70c8c0',base:141,bMin:12,bMax:20,wave:'BETA',  world:'Hod'},
+  {name:'Moon',   sym:'☽',col:'#c8d8e8',base:210,bMin:3, bMax:7, wave:'THETA', world:'Yesod'}
+];
+const CHALDEAN=[2,1,5,6,4,3,0],DAY_RULERS=[3,6,2,5,1,4,0];
+
+/* ═══════ FIBONACCI TRIAD CONSTANTS ═══════ */
+// Validated Fibonacci triads (100% purity, all ascending, all in audio range).
+// Derived from Sephirothic gematria. Skipping F15 for Tiphareth is intentional —
+// the Solar High register {233,377,987} is distinct from Kether's Crown {233,377,610}.
+const MIDDLE_PILLAR_TRIADS = {
+  YESOD:     [55,  89,  144],   // F10,F11,F12 — Lunar Low / Foundation
+  MALKUTH:   [89,  233, 377],   // F11,F13,F14 — Earth Wide / Manifest
+  DAATH:     [144, 233, 377],   // F12,F13,F14 — Mid Shadow / Abyss
+  KETHER:    [233, 377, 610],   // F13,F14,F15 — Mid Crown / Unity
+  TIPHARETH: [233, 377, 987]    // F13,F14,F16 — Solar High / Heart (skips F15)
+};
+// Map OAM seph names → triad keys
+const SEPH_TO_TRIAD = {
+  'Kether':'KETHER','Daath':'DAATH','Tiphareth':'TIPHARETH','Yesod':'YESOD','Malkuth':'MALKUTH'
+};
+// Spectral decay amplitudes: A_i = 1/φ^i → [1, 0.618, 0.382]
+const PHI_GAINS = [1/PHI, 1/(PHI*PHI), 1/(PHI*PHI*PHI)];  // [0.618, 0.382, 0.236]
+// Phase offsets per voice derived from THETA_G (137.508°) converted to radians
+const TRIAD_PHASES = [0, THETA_G * Math.PI / 180, (THETA_G * 2) * Math.PI / 180]; // [0, 2.4rad, 4.8rad]
+
+/* ═══════ TRIAD SYNTH STATE ═══════ */
+let activeTriadOscs = [null, null, null];  // 3 voice oscillators (L only — triadic L channel)
+let activeTriadGains = [null, null, null];
+let currentTriadKey = null;
+
+/* ═══════ PAIRS ═══════ */
+const P=[
+  ["וְהוּ","Vehuiah","Will · creation",17,"Baal",66,"Invisibility · wisdom"],
+  ["יֵלִי","Yeliel","Love · peace · fidelity",50,"Agares",31,"Languages · ruin of enemies"],
+  ["סִיטַ","Sitael","Protection · virtue",79,"Vassago",26,"Hidden things · justice"],
+  ["עֶלֶמ","Elemiah","Mental healing · power",140,"Samigina",30,"Souls of dead · sciences"],
+  ["מָהַשׁ","Mahasiah","Alchemy · harmony",345,"Marbas",36,"Diseases · transformation"],
+  ["לְלַהּ","Lelahel","Light · science · love",65,"Valefor",10,"Theft detection · friendship"],
+  ["אַכָא","Achaiah","Patience · discovery",22,"Amon",40,"Past & future · reconciliation"],
+  ["כָּהֶת","Cahetel","Agriculture · blessing",425,"Barbatos",30,"Animals · hidden treasure"],
+  ["הַזִּי","Haziel","Divine mercy · friendship",52,"Paimon",200,"Arts · sciences · wind"],
+  ["אַלַד","Aladiah","Health · pardon of sins",50,"Buer",50,"Philosophy · herbal healing"],
+  ["לָאוּ","Lauviah","Victory · revelation",57,"Gusion",40,"Honour · past & future"],
+  ["הַהַע","Hahaiah","Refuge · divine mysteries",23,"Sitri",60,"Love inflamed · desire"],
+  ["יֶזַל","Yezalel","Fidelity · marriage · memory",48,"Beleth",85,"Cause love · joy · music"],
+  ["מֶבַה","Mebahel","Justice · truth · liberty",78,"Leraje",30,"Battles · wounds"],
+  ["הָרִי","Hariel","Sciences · against impiety",245,"Eligos",60,"War · hidden things"],
+  ["הֶקַמ","Hekamiah","Heaven · loyalty · courage",83,"Zepar",26,"Love · shape-shifting"],
+  ["לָאוּ","Lauviah II","Revelation · philosophy",57,"Botis",60,"Reconciliation · serpents"],
+  ["כָּלִי","Caliel","Justice · rapid aid",91,"Bathin",30,"Herbs · swift transport"],
+  ["לֵוּי","Leuviah","Grace · memory · intelligence",57,"Sallos",30,"Cause love · peace"],
+  ["פָּהַל","Pahaliah","Redemption · conversion",128,"Purson",22,"Hidden things · treasure"],
+  ["נֶלְכ","Nelchael","Astronomy · geometry",100,"Marax",36,"Astronomy · liberal sciences"],
+  ["יֵיָא","Yeiael","Fortune · prophecy",91,"Ipos",36,"Wit · boldness · past & future"],
+  ["מֶלַה","Melahel","Healing · water",108,"Aim",26,"Wit · burning · true answers"],
+  ["חַהַו","Haheuiah","Protection · preservation",41,"Naberius",19,"Rhetoric · arts · dignity"],
+  ["נִתַה","Nith-Haiah","Magic · wisdom · secrets",474,"Glasya-Labolas",36,"Arts · invisibility"],
+  ["הַאַע","Haaiah","Diplomacy · justice",24,"Buné",30,"Riches · eloquence"],
+  ["יֶרַת","Yeratel","Light propagation · victory",640,"Ronové",19,"Languages · kindness"],
+  ["שֶׁאֵה","Seheiah","Longevity · illness shield",321,"Berith",26,"Gold transmutation · singing"],
+  ["רֵיִי","Reiyel","Liberation · mystical faculty",250,"Astaroth",40,"Arts · self-knowledge"],
+  ["אָוֹמ","Omael","Patience · multiplication",147,"Forneus",29,"Rhetoric · love · fame"],
+  ["לֵכַב","Lecabel","Vegetation · clarity",62,"Foras",29,"Logic · herbs · invisibility"],
+  ["וַסַר","Vasariah","Clemency · humility",523,"Asmodeus",72,"Arithmetic · geomancy"],
+  ["יֵהַו","Yehuiah","Divine order",36,"Gaap",66,"Philosophy · love · invisibility"],
+  ["לֵהַח","Lehahiah","Obedience · peace",56,"Furfur",26,"Love · thunder · storms"],
+  ["חַוַק","Chavakiah","Reconciliation · family",43,"Marchosias",30,"Battles · valor"],
+  ["מֶנַד","Menadel","Work · lost things",94,"Stolas",26,"Astronomy · herbs · stones"],
+  ["אַנִי","Aniel","Patterns · science",91,"Phenex",20,"Poetry · liberal sciences"],
+  ["חַעַמ","Haamiah","Ritual · truth · grace",64,"Halphas",26,"War towers · soldiers"],
+  ["רֵהַא","Rehael","Paternal love · health",245,"Malphas",40,"Towers · enemies' thoughts"],
+  ["יֵיָז","Yeiazel","Consolation · liberation",57,"Räum",30,"Steal · favour"],
+  ["הַהַה","Hahahel","Mission · vocation · faith",68,"Focalor",30,"Overturn ships"],
+  ["מִיכ","Mikael","Safe travel · order",101,"Vepar",29,"Waters · ships"],
+  ["וֵאוּ","Veuliah","Prosperity · breaking bonds",53,"Sabnock",50,"Castles · armour · translation"],
+  ["יֵלַה","Yelahiah","Karma · spiritual warriors",56,"Shax",30,"Sight & hearing · deceit"],
+  ["סֵאַל","Sealiah","Motivating the humbled",341,"Vine",36,"Towers · witches · walls"],
+  ["עַרִי","Ariel","Subtle perception · nature",241,"Bifrons",6,"Astrology · herbalism · dead"],
+  ["עַסַל","Asaliah","Contemplation · truth",342,"Uvall",37,"Love · friendship"],
+  ["מִיהַ","Mihael","Conjugal peace · fertility",86,"Haagenti",33,"Wisdom · transmute metals"],
+  ["וֵהוּ","Vehuel","Elevation · greatness",48,"Crocell",48,"Geometry · great waters"],
+  ["דָּנִי","Daniel","Eloquence · compassion",95,"Furcas",20,"Philosophy · astrology"],
+  ["הַחַשׂ","Hahasiah","Medicine · alchemy",326,"Balaam",40,"Invisibility · true wit"],
+  ["עִמַמ","Imamiah","Against evil spirits",102,"Alloces",36,"Astronomy · familiar spirits"],
+  ["נָנַא","Nanael","Higher communication",141,"Caim",30,"Understand birds · truth"],
+  ["נִיתַ","Nithael","Divine mercy · longevity",460,"Murmur",30,"Philosophy · souls"],
+  ["מְבַהְ","Mebahiah","Moral clarity · birth",63,"Orobas",20,"Past & present & future"],
+  ["פָּוֹי","Poyel","Fortune · desire fulfilled",156,"Gremory",26,"Past & future · treasure"],
+  ["נֵמַמ","Nemamiah","Discernment · liberation",196,"Ose",3,"Liberal sciences · transform"],
+  ["יֵיָל","Yeialel","Mental force · healing",91,"Amy",36,"Astrology · treasures"],
+  ["הָרַח","Harahel","Intellectual wealth · translation",243,"Oriax",30,"Astrology · stars · lions"],
+  ["מִצְר","Mitzrael","Mental healing · virtue",330,"Vapula",36,"Handcrafts · philosophy"],
+  ["אוּמַ","Umabel","Astronomy · friendship",79,"Zagan",33,"Wit · transmute · wine"],
+  ["יַה הֵ","Iah-Hel","Knowledge · solitude · divine love",46,"Valac",38,"Serpents · hidden treasure"],
+  ["עַנוּ","Anauel","Unity · commerce · ecstasy",128,"Andras",30,"Sow discord · kill masters"],
+  ["מֶחִי","Mehiel","Protection · fame",85,"Haures",36,"Past & future · burn enemies"],
+  ["דַּמַב","Damabiah","Wisdom · water · ships",61,"Andrealphus",30,"Geometry · astrology"],
+  ["מְנַק","Manakel","Good & evil · healing",121,"Kimaris",20,"Grammar · logic · rhetoric"],
+  ["אֵיָא","Eyael","Transformation · gifts",111,"Amdusias",29,"Music · concerts · trees"],
+  ["הַבוּ","Habuhiah","Healing · nature · harvest",32,"Belial",80,"Vice · favour · dignities"],
+  ["רָאֵה","Rochel","Lost things · law · library",238,"Decarabia",30,"Birds · gems · herbs"],
+  ["יַבָּמ","Jabamiah","Alchemy · resurrection",67,"Seere",26,"Transport · thefts · speed"],
+  ["הַיָּי","Haiaiel","Divine armaments · counsel",56,"Dantalion",36,"Arts · sciences · thoughts"],
+  ["מוּמִ","Mumiah","Completion · medicine · return",91,"Andromalius",36,"Stolen goods · thieves"]
+];
+
+/* ═══════ OAM ═══════ */
+const SEPH_MAP={'0':'Kether','6':'Tiphareth','-6':'Tiphareth','9':'Yesod','-9':'Yesod','11':'Daath','-11':'Daath','35':'Malkuth','36':'Malkuth','-35':'Malkuth'};
+function getOAM(idx){
+  const ell=idx-35,absE=Math.abs(ell);
+  const seph=SEPH_MAP[String(ell)]||SEPH_MAP[String(absE)]||null;
+  const dir=ell>0?'↑ ASC':ell<0?'↓ DESC':'⊙ AXIS',dirShort=ell>0?'↑':ell<0?'↓':'⊙';
+  const desc=seph==='Kether'?'Crown · no twist':seph==='Daath'?'Hidden · the Abyss':seph==='Tiphareth'?'Solar heart · beauty':seph==='Yesod'?'Foundation · Joseph':seph==='Malkuth'?'Kingdom · maximum twist':(ell>0?'Ascending twist':'Descending twist');
+  return{ell,absE,seph,dir,dirShort,desc};
+}
+
+/* ═══════ STATE ═══════ */
+let mode='paired',si=0,gi=0,mi=35,cp=0;
+let playing=false,scanning=false,scanTm=null,curTab='sh',mirrorTab='reflection';
+let portalPhase=0,portalGlowTarget=0,portalGlowCurrent=0;
+let gemSatisfied=false;
+let currentGemName='GEM';
+
+/* ═══════ AUDIO ═══════ */
+let AC=null,analyser=null,mGain=null,merger=null;
+let oscL=null,oscR=null,oscM=null,oscV=null;
+let gL=null,gR=null,gM=null,gV=null;
+// Per-voice StereoPanners for OAM topology (one per triad voice)
+let triadPanners = [null, null, null];
+function initAC(){
+  if(AC)return;
+  AC=new(window.AudioContext||window.webkitAudioContext)();
+  analyser=AC.createAnalyser();analyser.fftSize=2048;analyser.smoothingTimeConstant=0.82;
+  mGain=AC.createGain();mGain.gain.value=0.6;
+  merger=AC.createChannelMerger(2);
+  gL=AC.createGain();gL.gain.value=0.43;gR=AC.createGain();gR.gain.value=0.43;
+  gM=AC.createGain();gM.gain.value=0;gV=AC.createGain();gV.gain.value=0;
+  gL.connect(merger,0,0);gR.connect(merger,0,1);
+  gM.connect(mGain);gV.connect(mGain);merger.connect(mGain);
+  mGain.connect(analyser);analyser.connect(AC.destination);
+  // StereoPanners for triad voices (connect into mGain directly, bypassing L/R merger)
+  triadPanners = [0,1,2].map(() => {
+    const p = AC.createStereoPanner();
+    p.connect(mGain);
+    return p;
+  });
+}
+function stopOscs(){[oscL,oscR,oscM,oscV].forEach(o=>{if(o){try{o.stop();}catch(e){}}});oscL=oscR=oscM=oscV=null;}
+function startOscs(fL,fR,fMp,fVol){
+  stopOscs();
+  oscL=AC.createOscillator();oscL.type='sine';oscL.frequency.value=fL;oscL.connect(gL);oscL.start();
+  oscR=AC.createOscillator();oscR.type='sine';oscR.frequency.value=fR;oscR.connect(gR);oscR.start();
+  oscM=AC.createOscillator();oscM.type='triangle';oscM.frequency.value=fMp;oscM.connect(gM);oscM.start();
+  oscV=AC.createOscillator();oscV.type='triangle';oscV.frequency.value=Math.max(40,Math.min(fVol+30,180));oscV.connect(gV);oscV.start();
+}
+function applyGains(){
+  if(!gM)return;
+  const t=AC.currentTime;
+  gM.gain.linearRampToValueAtTime(mode==='paired'?0:mode==='positive'?0.06:0.11,t+0.5);
+  gV.gain.linearRampToValueAtTime(mode==='total'?0.07:0,t+0.5);
+}
+function ramp(o,f,t=0.35){if(o)o.frequency.linearRampToValueAtTime(f,AC.currentTime+t);}
+
+/* ═══════ TRIAD SYNTHESIS ENGINE ═══════ */
+// Returns the best Fibonacci triad for the current OAM seph, falling back to
+// a φ-scaled triad from the planetary base frequency.
+function getActiveTriad(oam, pl) {
+  const key = SEPH_TO_TRIAD[oam.seph] || null;
+  if (key) { currentTriadKey = key; return MIDDLE_PILLAR_TRIADS[key]; }
+  // Fallback: derive triadic approximation from planetary base using φ
+  currentTriadKey = null;
+  const b = pl.base;
+  return [b, Math.round(b * PHI), Math.round(b * PHI * PHI)];
+}
+
+function stopTriadOscs() {
+  activeTriadOscs.forEach(o => { if (o) { try { o.stop(); } catch(e) {} } });
+  activeTriadOscs = [null, null, null];
+  activeTriadGains = [null, null, null];
+}
+
+// Compute OAM pan spread for triad voices.
+// ℓ=0 (axis) → centred; ℓ>0 (ascending) → α left, β centre, γ right;
+// ℓ<0 (descending) → α right, β centre, γ left.
+// |ℓ| scales the spread 0→1 across ±35 range.
+function computeTriadPans(ell) {
+  const spread = Math.min(1, Math.abs(ell) / 35);
+  const dir = ell >= 0 ? 1 : -1;
+  // α: far left (ascending) or far right (descending)
+  // β: centre ± slight offset  
+  // γ: far right (ascending) or far left (descending)
+  return [
+    -dir * spread,           // α: opposed to direction of twist
+     dir * spread * 0.3,     // β: slight lean toward direction
+     dir * spread            // γ: full direction of twist
+  ];
+}
+
+// 3-voice Fibonacci triad synthesis routed through OAM StereoPanners.
+// S(t) = Σ A_i · sin(2π·F_ni·t + Φ_i)  where A_i = 1/φ^i, Φ_i from THETA_G
+function startTriadOscs(triad) {
+  stopTriadOscs();
+  if (!AC || !triadPanners[0]) return;
+  const ell = getOAM(mi).ell;
+  const pans = computeTriadPans(ell);
+  triad.forEach((freq, i) => {
+    const osc  = AC.createOscillator();
+    const gain = AC.createGain();
+    osc.type = i === 2 ? 'triangle' : 'sine';
+    osc.frequency.value = freq;
+    gain.gain.value = PHI_GAINS[i] * 0.7;
+    // Route: osc → gain → panner → mGain
+    osc.connect(gain);
+    gain.connect(triadPanners[i]);
+    triadPanners[i].pan.setValueAtTime(pans[i], AC.currentTime);
+    osc.start();
+    activeTriadOscs[i]  = osc;
+    activeTriadGains[i] = gain;
+  });
+}
+
+// Ramp panner positions when ℓ changes mid-session
+function updateTriadPan(ell) {
+  if (!AC || !triadPanners[0]) return;
+  const pans = computeTriadPans(ell);
+  triadPanners.forEach((p, i) => {
+    if (p) p.pan.linearRampToValueAtTime(pans[i], AC.currentTime + 0.5);
+  });
+}
+
+function rampTriad(triad) {
+  activeTriadOscs.forEach((o, i) => { if (o && triad[i]) ramp(o, triad[i]); });
+}
+
+/* ═══════ FREQ COMPUTE ═══════ */
+function computeF(s,g,m){
+  const pl=PLANETS[cp],oam=getOAM(m);
+  const fL=pl.base*Math.pow(PHI,(s+1)/72);
+  const fR=pl.base*1.5*Math.pow(PHI,(g+1)/72);
+  const fMp=pl.base*Math.pow(PHI,oam.absE/36);
+  const dSG=Math.abs(fR-fL),dSM=Math.abs(fMp-fL),dGM=Math.abs(fR-fMp);
+  const dV=dSG>0.001?dSM*dGM/dSG:0;
+  const triad=getActiveTriad(oam,pl);
+  return{fL,fR,fM:fMp,dSG,dSM,dGM,dV,
+    tS:((s+1)*THETA_G)%360,tG:((g+1)*THETA_G)%360,
+    ell:getOAM(m).ell,absEll:getOAM(m).absE,
+    triad,triadKey:currentTriadKey};
+}
+function getPH(){const n=new Date();return CHALDEAN[(CHALDEAN.indexOf(DAY_RULERS[n.getDay()])+n.getHours())%7];}
+
+/* ═══════ MODE ═══════ */
+function setMode(m){
+  mode=m;
+  document.getElementById('mb-paired').className='mbtn'+(m==='paired'?' ap':'');
+  document.getElementById('mb-positive').className='mbtn'+(m==='positive'?' apos':'');
+  document.getElementById('mb-total').className='mbtn'+(m==='total'?' atot':'');
+  const mOn=mode!=='paired',vOn=mode==='total';
+  document.getElementById('fmrow').classList.toggle('muted',!mOn);
+  document.getElementById('fvrow').classList.toggle('muted',!vOn);
+  document.getElementById('ntag-vol').classList.toggle('muted',!vOn);
+  if(playing)applyGains();
+  refresh();
+}
+
+/* ═══════ DISPLAY ═══════ */
+function refresh(){
+  const f=computeF(si,gi,mi),sh=P[si],go=P[gi],oam=getOAM(mi),pl=PLANETS[cp];
+  document.getElementById('fvl').textContent=f.fL.toFixed(2);
+  document.getElementById('fvr').textContent=f.fR.toFixed(2);
+  document.getElementById('fvm').textContent=f.fM.toFixed(2);
+  document.getElementById('fvv').textContent=f.dV.toFixed(2);
+  document.getElementById('ntag-sg').textContent='ΔSG '+f.dSG.toFixed(1)+'Hz';
+  document.getElementById('ntag-vol').textContent='ΔV '+f.dV.toFixed(1)+'Hz';
+  document.getElementById('flb-l').textContent='L⊕ · '+P[si][1].substring(0,8).toUpperCase()+' [TRIAD]';
+  document.getElementById('flb-r').textContent='R · '+go[4].substring(0,8).toUpperCase();
+  document.getElementById('sh-heb').textContent=sh[0];
+  document.getElementById('sh-nm').textContent=sh[1];
+  document.getElementById('sh-dm').textContent=sh[2];
+  document.getElementById('go-nm').textContent=go[4];
+  document.getElementById('go-dm').textContent=go[6]+' · '+go[5]+' Leg.';
+  document.getElementById('pnn').textContent=String(si+1).padStart(2,'0')+'·'+String(gi+1).padStart(2,'0')+'·'+String(mi+1).padStart(2,'0');
+  document.getElementById('mp-ell').textContent=(oam.ell>=0?'+':'')+oam.ell;
+  document.getElementById('mp-dir').textContent=oam.dir;
+  document.getElementById('mp-fm').textContent=f.fM.toFixed(2);
+  document.getElementById('mp-seph').textContent=oam.seph||'ℓ'+(oam.ell>=0?'+':'')+oam.ell;
+  document.getElementById('psym').textContent=pl.sym;document.getElementById('psym').style.color=pl.col;
+  document.getElementById('pnm').textContent=pl.name.toUpperCase();document.getElementById('pnm').style.color=pl.col;
+  document.getElementById('phr').textContent=new Date().getHours()+1;
+  document.getElementById('pwav').textContent=pl.wave;document.getElementById('pwld').textContent=pl.world;
+  document.getElementById('pbas').textContent=pl.base+' Hz';
+  document.getElementById('ppos').textContent='θ_S='+f.tS.toFixed(1)+'° θ_G='+f.tG.toFixed(1)+'° ℓ='+(oam.ell>=0?'+':'')+oam.ell;
+  document.getElementById('mcombo').textContent='S'+String(si+1).padStart(2,'0')+' × G'+String(gi+1).padStart(2,'0')+' × M'+String(mi+1).padStart(2,'0');
+  const combNum=si*72*72+gi*72+mi+1;
+  document.getElementById('combct').textContent='COMBINATION '+String(combNum).padStart(6,'0');
+  document.getElementById('me-combo-foot').textContent='S'+String(si+1).padStart(2,'0')+' · G'+String(gi+1).padStart(2,'0')+' · M'+String(mi+1).padStart(2,'0');
+  document.getElementById('track-display').textContent=sh[1]+' × '+go[4];
+  // Mirror sync row
+  document.getElementById('sync-m').textContent=f.fM.toFixed(2);
+  document.getElementById('sync-l').textContent=f.fL.toFixed(2);
+  // Status report
+  document.getElementById('sr-resonance').textContent='† RESONANCE: '+f.fL.toFixed(2)+' Hz †';
+  document.getElementById('sr-pair').textContent=sh[1].toUpperCase()+' × '+go[4].toUpperCase()+' · FOUNDATION='+FOUNDATION+' · LOGOS='+LOGOS;
+  // Entity pair footer
+  document.getElementById('epf-shem').textContent=sh[1];
+  document.getElementById('epf-goetia').textContent=go[4];
+  document.getElementById('epf-sub').textContent='S'+String(si+1).padStart(2,'0')+' · G'+String(gi+1).padStart(2,'0')+' · M'+String(mi+1).padStart(2,'0')+' · COMBINATION '+String(combNum).padStart(6,'0');
+  updateTabLabels();
+  drawSphere();
+  runGemVal();
+  updateMDR();
+  if(playing){
+    ramp(oscR,f.fR);
+    if(oscM)ramp(oscM,f.fM);
+    if(oscV)ramp(oscV,Math.max(40,Math.min(f.dV+30,180)));
+    // Ramp or restart triad if seph changed
+    if(f.triadKey !== currentTriadKey || !activeTriadOscs[0]) {
+      startTriadOscs(f.triad);
+    } else {
+      rampTriad(f.triad);
+      updateTriadPan(f.ell);
+    }
+  }
+}
+
+/* ═══════ TABS ═══════ */
+function updateTabLabels(){
+  const oam=getOAM(mi);
+  document.getElementById('st-sh-sub').textContent=String(si+1).padStart(2,'0')+'/72';
+  document.getElementById('st-go-sub').textContent=String(gi+1).padStart(2,'0')+'/72';
+  document.getElementById('st-mp-sub').textContent='ℓ='+(oam.ell>=0?'+':'')+oam.ell+(oam.seph?' · '+oam.seph:'');
+  document.getElementById('selidx').textContent=String((curTab==='sh'?si:curTab==='go'?gi:mi)+1).padStart(2,'0')+'/72';
+}
+function selTab(t){
+  curTab=t;
+  document.getElementById('st-sh').className='stab'+(t==='sh'?' as':'');
+  document.getElementById('st-go').className='stab'+(t==='go'?' ag':'');
+  document.getElementById('st-mp').className='stab'+(t==='mp'?' am':'');
+  document.getElementById('sbar').className='sbar2 c'+t;
+  const tEl=document.getElementById('sel-title');
+  if(t==='sh'){tEl.style.color='var(--cyan)';tEl.textContent='SHEM · LEFT CHANNEL';}
+  else if(t==='go'){tEl.style.color='var(--ghost)';tEl.textContent='GOETIA · RIGHT CHANNEL';}
+  else{tEl.style.color='var(--mpillar)';tEl.textContent='MIDDLE PILLAR · OAM AXIS';}
+  rebuildDrum();scrollDrum(curTab==='sh'?si:curTab==='go'?gi:mi,false);
+}
+function stepCurrent(d){if(curTab==='sh')selIdx('sh',si+d);else if(curTab==='go')selIdx('go',gi+d);else selIdx('mp',mi+d);}
+function rndCurrent(){selIdx(curTab,Math.floor(Math.random()*72));}
+function rndAll(){selIdx('sh',Math.floor(Math.random()*72));selIdx('go',Math.floor(Math.random()*72));selIdx('mp',Math.floor(Math.random()*72));}
+function selIdx(t,i,fromScroll=false){
+  i=((i%72)+72)%72;
+  if(t==='sh')si=i;else if(t==='go')gi=i;else mi=i;
+  if(curTab===t&&!fromScroll)scrollDrum(i,true);
+  refresh();
+}
+function snapSephirah(){
+  const tgts=[35,29,26,24,41,44,46,0,71];
+  selIdx('mp',tgts.reduce((b,x)=>Math.abs(x-mi)<Math.abs(b-mi)?x:b,tgts[0]));selTab('mp');
+}
+
+/* ═══════ DRUM ═══════ */
+let drumScrollTm=null;
+function rebuildDrum(){
+  const el=document.getElementById('drum');el.innerHTML='';
+  if(curTab==='sh'||curTab==='go'){
+    P.forEach((pair,i)=>{
+      const isSh=curTab==='sh',d=document.createElement('div');
+      d.className='di '+(isSh?'sh':'go');d.dataset.i=i;
+      d.innerHTML=`<span class="dn">${String(i+1).padStart(2,'0')}</span><span class="dh">${pair[0]}</span><span class="dnm">${isSh?pair[1]:pair[4]}</span><span class="ddo">${(isSh?pair[2]:pair[6]).split('·')[0].trim()}</span>`;
+      d.addEventListener('click',()=>selIdx(curTab,i));el.appendChild(d);
+    });
+  }else{
+    for(let i=0;i<72;i++){
+      const oam=getOAM(i),ellStr=(oam.ell>=0?'+':'')+oam.ell;
+      const d=document.createElement('div');d.className='di mp';d.dataset.i=i;
+      const badge=oam.seph?`<span class="dsph s${oam.seph}">${oam.seph.toUpperCase()}</span>`:'';
+      d.innerHTML=`<span class="dn">${String(i+1).padStart(2,'0')}</span><span class="dh">${oam.dirShort}</span><span class="dnm">ℓ=${ellStr}</span><span class="ddo">${oam.desc.split('·')[0].trim()}</span>${badge}`;
+      d.addEventListener('click',()=>selIdx('mp',i));el.appendChild(d);
+    }
+  }
+  el.onscroll=null;
+  el.addEventListener('scroll',()=>{
+    clearTimeout(drumScrollTm);
+    drumScrollTm=setTimeout(()=>selIdx(curTab,Math.max(0,Math.min(71,Math.round(el.scrollTop/42))),true),80);
+  });
+}
+function scrollDrum(i,smooth){document.getElementById('drum').scrollTo({top:i*42,behavior:smooth?'smooth':'instant'});}
+
+/* ═══════ GEM VALIDATOR ═══════ */
+function applyGem(){
+  const val=document.getElementById('gv-gem-sel').value;
+  if(!val)return;
+  const parts=val.split('|');
+  document.getElementById('gv-target').value=parts[0];
+  document.getElementById('gv-gem-rune').textContent=parts[1];
+  document.getElementById('gv-gem-name').textContent=parts[2];
+  document.getElementById('gv-gem-hz').textContent=parts[0]+' Hz';
+  currentGemName=parts[2];
+  runGemVal();
+}
+
+function runGemVal(){
+  const tgt=parseFloat(document.getElementById('gv-target').value);
+  const res=document.getElementById('gv-status-bar');
+  const det=document.getElementById('gvdetail');
+  const sl=document.getElementById('gv-sl');
+  const tgtDisp=document.getElementById('gv-target-display');
+  const chDisp=document.getElementById('gv-ch-display');
+  if(!tgt||isNaN(tgt)){
+    tgtDisp.className='gv-target-hz idle';tgtDisp.textContent='— Hz';
+    chDisp.className='gv-channel-lbl idle';chDisp.textContent='';
+    res.className='gv-status-bar idle';res.textContent='† SET A TARGET TO VALIDATE THE GEM SIGNATURE †';
+    det.textContent='';sl.textContent='AWAITING TARGET';
+    gemSatisfied=false;portalGlowTarget=0;return;
+  }
+  const f=computeF(si,gi,mi);
+  // Standard channels
+  const channels={
+    L:{v:f.fL,nm:P[si][1]},
+    R:{v:f.fR,nm:P[gi][4]},
+    M:{v:f.fM,nm:getOAM(mi).seph||'Pillar'},
+    V:{v:f.dV,nm:'Void'}
+  };
+  // Triad voices — check each Fibonacci frequency as a named channel
+  const triadVoiceNames = ['α','β','γ'];
+  f.triad.forEach((hz, i) => {
+    const key = 'T'+triadVoiceNames[i];
+    channels[key] = {
+      v: hz,
+      nm: (f.triadKey||'TRIAD')+' Voice '+triadVoiceNames[i]+' ('+hz+'Hz)'
+    };
+  });
+  // Find closest channel
+  let bestCh='L', bestDiff=Infinity;
+  Object.entries(channels).forEach(([k,{v}])=>{
+    const d=Math.abs(v-tgt);
+    if(d<bestDiff){bestDiff=d;bestCh=k;}
+  });
+  const actual=channels[bestCh].v, diff=Math.abs(actual-tgt);
+  const pct=((diff/tgt)*100).toFixed(2);
+  const sat=diff<=1.0, near=diff<=4.0;
+  const isTriadHit = bestCh.startsWith('T');
+  tgtDisp.textContent=tgt.toFixed(2)+' Hz';
+  tgtDisp.className='gv-target-hz'+(sat?' ':near?' seek':' warn');
+  const chNm=channels[bestCh].nm;
+  chDisp.textContent='['+bestCh+'] '+chNm;
+  chDisp.className='gv-channel-lbl'+(sat?' ':near?' seek':' warn');
+  gemSatisfied=sat;
+  portalGlowTarget=sat?1:near?0.5:0.1;
+  // Build triad proximity sub-line
+  const triadProx = f.triad.map((hz,i) => {
+    const d = Math.abs(hz-tgt);
+    const marker = d<=1?'✓':d<=4?'~':'·';
+    return triadVoiceNames[i]+':'+hz+'Hz'+marker;
+  }).join(' ');
+  if(sat){
+    res.className='gv-status-bar sat';
+    const prefix = isTriadHit ? '⊕ TRIAD ' : '';
+    res.textContent='† '+prefix+currentGemName+' VALIDATED · '+(isTriadHit?'FIBONACCI ':'')+'GEM SIGNATURE ACTIVE (Δ'+Math.round(diff*1000)/1000+') †';
+    sl.textContent=isTriadHit?'TRIAD RESONANCE LOCKED':'GEM SYNC ACTIVE';
+  }else if(near){
+    res.className='gv-status-bar near';
+    res.textContent='† APPROACHING '+currentGemName+' · DEVIATION '+diff.toFixed(2)+' Hz †';
+    sl.textContent='NEAR RESONANCE';
+  }else{
+    res.className='gv-status-bar unsat';
+    res.textContent='† '+currentGemName+' UNSATISFIED · Δ '+diff.toFixed(2)+' Hz ('+pct+'%) †';
+    sl.textContent='SEEKING';
+  }
+  det.innerHTML=`[${bestCh}] Actual <span>${actual.toFixed(3)} Hz</span> · Target <span>${tgt.toFixed(3)} Hz</span> · Δ <span>${diff.toFixed(3)} Hz</span>`
+    +`<br><span style="color:var(--tdim);font-size:7.5px">TRIAD: ${triadProx}</span>`;
+}
+
+/* ═══════ MIRROR ENGINE ═══════ */
+function setMirrorTab(t){
+  mirrorTab=t;
+  ['reflection','invocation','gematria','free'].forEach(x=>document.getElementById('mt-'+x).classList.toggle('act',x===t));
+}
+
+async function runMirror(){
+  const input=document.getElementById('me-input').value.trim();
+  const out=document.getElementById('mirror-out');
+  const btn=document.querySelector('.me-btn');
+  const f=computeF(si,gi,mi),oam=getOAM(mi);
+  out.className='loading';out.textContent='The mirror turns…';
+  btn.innerHTML='…';
+  document.getElementById('me-sl-status').textContent='TRANSMITTING';
+  document.getElementById('me-status-bar').textContent='† MIRROR IN MOTION †';
+  document.getElementById('me-status-bar').className='me-status-bar';
+  portalGlowTarget=0.8;
+
+  const sys=`You are the Rhythm & Mirror Engine of Liber Frequentiae, a Kabbalistic-semiotic binaural oracle. Respond with poetic, lapidary precision — terse, true, luminous. Never explain; reflect.
+Current configuration:
+Shem (Left, ${f.fL.toFixed(2)} Hz): ${P[si][1]} — ${P[si][2]}
+Goetia (Right, ${f.fR.toFixed(2)} Hz): ${P[gi][4]} — ${P[gi][6]}
+Middle Pillar (${f.fM.toFixed(2)} Hz): ℓ=${oam.ell>=0?'+':''}${oam.ell} ${oam.seph||''} — ${oam.desc}
+Null Beat ΔSG=${f.dSG.toFixed(2)} Hz · Volumetric Void ΔV=${f.dV.toFixed(2)} Hz
+Planetary Hour: ${PLANETS[cp].name} · ${PLANETS[cp].world} · Base ${PLANETS[cp].base} Hz
+FOUNDATION=${FOUNDATION} · LOGOS=${LOGOS} · CIPHER=${CIPHER} · φ=${PHI}
+Sanctuary: Bathurst Carillon, NSW Australia`;
+
+  const prompts={
+    reflection:`Mirror this input through the current Shem/Goetia/Pillar configuration. 2-4 lines. No preamble. Find what it means at this frequency.`,
+    invocation:`Write a brief invocation (4-6 lines) addressed simultaneously to ${P[si][1]} and ${P[gi][4]} through these frequencies. Archaic register, Hebrew woven in naturally. Direct address.`,
+    gematria:`Compute or infer the gematric resonance of the input and map it to the active frequencies and system constants. Show brief working, then state the convergence. One compact paragraph.`,
+    free:`Respond as the oracle of Liber Frequentiae. Follow the signal. No constraints.`
+  };
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:350,system:sys,
+        messages:[{role:'user',content:prompts[mirrorTab]+'\n\n"'+(input||'[Spontaneous reflection on the current configuration]')+'"'}]
+      })
+    });
+    const data=await resp.json();
+    const text=data.content?.filter(b=>b.type==='text').map(b=>b.text).join('\n')||'No response.';
+    out.className='';out.textContent=text.trim();
+    document.getElementById('me-sl-status').textContent='REFLECTED';
+    document.getElementById('me-status-bar').textContent='† STATUS: '+currentGemName+(gemSatisfied?' VALIDATED':' ACTIVE')+' | MIRROR IS LIGHT †';
+    document.getElementById('me-status-bar').className='me-status-bar';
+    portalGlowTarget=gemSatisfied?1:0.6;
+  }catch(e){
+    out.textContent='The mirror is dark: '+e.message;
+    document.getElementById('me-sl-status').textContent='ERROR';
+    portalGlowTarget=0;
+  }
+  btn.innerHTML='⟷<br>MIRROR';
+}
+
+/* ═══════ PORTAL CANVAS ═══════ */
+const PC=document.getElementById('portal-canvas'),PX=PC.getContext('2d');
+function initPortal(){
+  const sz=Math.min(window.innerWidth-32,300);
+  PC.width=sz;PC.height=sz;
+}
+
+function drawPortal(){
+  const W=PC.width,H=PC.height,cx=W/2,cy=H/2,R=Math.min(W,H)/2-12;
+  const c=PX;
+  c.clearRect(0,0,W,H);
+  portalPhase+=0.025;
+  portalGlowCurrent+=(portalGlowTarget-portalGlowCurrent)*0.04;
+
+  // Background sphere
+  const bg=c.createRadialGradient(cx,cy,0,cx,cy,R);
+  bg.addColorStop(0,'rgba(14,20,28,0.97)');bg.addColorStop(1,'rgba(4,6,8,0.99)');
+  c.fillStyle=bg;c.beginPath();c.arc(cx,cy,R,0,Math.PI*2);c.fill();
+
+  // Grid lines inside circle (like a compass rose)
+  c.save();c.beginPath();c.arc(cx,cy,R,0,Math.PI*2);c.clip();
+  c.strokeStyle='rgba(32,200,232,0.06)';c.lineWidth=1;
+  for(let a=0;a<Math.PI;a+=Math.PI/8){
+    c.beginPath();c.moveTo(cx-Math.cos(a)*R,cy-Math.sin(a)*R);
+    c.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);c.stroke();
+  }
+  for(let r=R*0.25;r<R;r+=R*0.25){
+    c.strokeStyle='rgba(32,200,232,0.05)';c.beginPath();c.arc(cx,cy,r,0,Math.PI*2);c.stroke();
+  }
+  c.restore();
+
+  // Rotating inner sigil
+  c.save();c.translate(cx,cy);c.rotate(portalPhase*0.3);
+  c.strokeStyle='rgba(212,160,255,0.15)';c.lineWidth=1;
+  for(let v=0;v<6;v++){
+    const a=v/6*Math.PI*2,a2=(v+3)/6*Math.PI*2;
+    c.beginPath();c.moveTo(Math.cos(a)*R*.45,Math.sin(a)*R*.45);
+    c.lineTo(Math.cos(a2)*R*.45,Math.sin(a2)*R*.45);c.stroke();
+  }
+  c.restore();
+
+  // Outer glow ring — intensity driven by gem validation
+  const glow=portalGlowCurrent;
+  if(glow>0.01){
+    const ringGrad=c.createRadialGradient(cx,cy,R*0.82,cx,cy,R+4);
+    const col=gemSatisfied?`rgba(32,232,128,${glow*0.7})`:`rgba(32,200,232,${glow*0.65})`;
+    const col2=gemSatisfied?`rgba(32,232,128,0)`:`rgba(32,200,232,0)`;
+    ringGrad.addColorStop(0,col2);ringGrad.addColorStop(0.5,col);ringGrad.addColorStop(1,col2);
+    c.strokeStyle=gemSatisfied?`rgba(32,232,128,${glow})`:`rgba(32,200,232,${glow})`;
+    c.lineWidth=glow*18+3;
+    c.shadowColor=gemSatisfied?'rgba(32,232,128,0.9)':'rgba(32,200,232,0.9)';
+    c.shadowBlur=glow*30;
+    c.beginPath();c.arc(cx,cy,R,0,Math.PI*2);c.stroke();
+    c.shadowBlur=0;
+  }
+
+  // Outer ring always
+  c.strokeStyle='rgba(232,160,32,0.3)';c.lineWidth=1;
+  c.beginPath();c.arc(cx,cy,R+6,0,Math.PI*2);c.stroke();
+
+  // Frequency ripples — animated when playing
+  if(playing||glow>0.3){
+    const f=computeF(si,gi,mi);
+    [[f.fL,'rgba(32,200,232,.18)',0],[f.fR,'rgba(204,128,144,.15)',1],[f.fM,'rgba(212,160,255,.13)',2]].forEach(([freq,col,idx])=>{
+      const rippleR=R*(0.3+0.5*(Math.sin(portalPhase*2+idx*2.1)*0.5+0.5));
+      c.strokeStyle=col;c.lineWidth=1;
+      c.beginPath();c.arc(cx,cy,rippleR,0,Math.PI*2);c.stroke();
+    });
+  }
+
+  // Centre sigil
+  c.font='bold '+(R*0.18)+'px Cinzel';
+  c.fillStyle=gemSatisfied?'rgba(32,232,128,0.8)':'rgba(212,160,255,0.6)';
+  c.textAlign='center';c.textBaseline='middle';
+  c.fillText(gemSatisfied?'✦':'✧',cx,cy);
+  // Hz display inside portal
+  c.font=(R*0.09)+'px Share Tech Mono';
+  c.fillStyle='rgba(32,200,232,0.5)';
+  c.fillText(computeF(si,gi,mi).fL.toFixed(1)+' Hz',cx,cy+R*0.35);
+  c.fillStyle='rgba(204,128,144,0.45)';
+  c.fillText(computeF(si,gi,mi).fR.toFixed(1)+' Hz',cx,cy-R*0.35);
+}
+
+/* ═══════ SCOPE ═══════ */
+const SC=document.getElementById('scope'),SX=SC.getContext('2d');
+function initScope(){SC.width=SC.parentElement.offsetWidth||window.innerWidth;SC.height=130;}
+
+function drawScope(){
+  const W=SC.width,H=SC.height,c=SX,laneH=H/3;
+  c.fillStyle='rgba(10,8,5,.9)';c.fillRect(0,0,W,H);
+  for(let i=1;i<3;i++){c.strokeStyle='rgba(232,160,32,0.1)';c.lineWidth=1;c.beginPath();c.moveTo(0,i*laneH);c.lineTo(W,i*laneH);c.stroke();}
+  c.strokeStyle='rgba(232,160,32,0.04)';
+  for(let x=0;x<W;x+=36){c.beginPath();c.moveTo(x,0);c.lineTo(x,H);c.stroke();}
+  const f=computeF(si,gi,mi),t=Date.now()/1000;
+  [[f.fL,'#20c8e8',P[si][1].substring(0,8).toUpperCase(),0],[f.fR,'#cc8090',P[gi][4].substring(0,8).toUpperCase(),1],[f.fM,'#d4a0ff',(getOAM(mi).seph||'PILLAR').substring(0,8).toUpperCase(),2]].forEach(([freq,col,name,lane])=>{
+    const cy=lane*laneH+laneH/2,amp=laneH*0.38,dc=Math.min(12,Math.max(1.5,freq/20));
+    c.strokeStyle=col;c.lineWidth=1.4;c.shadowColor=col;c.shadowBlur=playing?4:1.5;
+    c.beginPath();
+    for(let px=0;px<W;px++){
+      const phase=(px/W)*dc*2*Math.PI+(playing?t*(freq/40):0);
+      const y=cy+Math.sin(phase)*amp*(playing?1:0.28);
+      px===0?c.moveTo(px,y):c.lineTo(px,y);
+    }
+    c.stroke();c.shadowBlur=0;
+    c.font='8px Share Tech Mono';
+    c.textAlign='right';c.fillStyle=col;c.globalAlpha=.78;c.fillText('· '+name,W-4,lane*laneH+10);
+    c.textAlign='left';c.globalAlpha=.58;c.fillText(freq.toFixed(1)+'Hz',4,lane*laneH+10);
+    c.globalAlpha=1;
+  });
+  if(mode==='total'){
+    c.strokeStyle='rgba(232,208,96,0.22)';c.lineWidth=.7;c.setLineDash([2,6]);
+    c.beginPath();
+    const dv=f.dV,dc2=Math.min(8,Math.max(0.5,dv/30));
+    for(let px=0;px<W;px++){const phase=(px/W)*dc2*2*Math.PI+(playing?t*(dv/40):0);const y=H*.5+Math.sin(phase)*(H*.07);px===0?c.moveTo(px,y):c.lineTo(px,y);}
+    c.stroke();c.setLineDash([]);
+    c.font='7.5px Share Tech Mono';c.textAlign='right';c.fillStyle='rgba(232,208,96,.45)';c.fillText('ΔV '+f.dV.toFixed(1)+'Hz',W-4,H-6);
+  }
+}
+
+/* ═══════ SPHERE ═══════ */
+const WC=document.getElementById('wc'),WX=WC.getContext('2d');
+let sphRot=0,sphDrag=false,sphLX=0,sphTiltX=0.22;
+function initSphere(){const sz=Math.min(window.innerWidth-20,380);WC.width=sz;WC.height=sz;}
+function rotYX(x,y,z,rY,rX){const cy=Math.cos(rY),sy=Math.sin(rY),x1=x*cy+z*sy,z1=-x*sy+z*cy,cx2=Math.cos(rX),sx2=Math.sin(rX);return{x:x1,y:y*cx2-z1*sx2,z:y*sx2+z1*cx2};}
+function prj(rx,ry,rz,W,H,R){const f=R*2.8,sc=f/(f+rz+R*.8);return{sx:W/2+rx*sc,sy:H/2-ry*sc,sc,depth:rz};}
+function drawSphere(){
+  const W=WC.width,H=WC.height,R=Math.min(W,H)*.38,c=WX;
+  c.clearRect(0,0,W,H);
+  const bg=c.createRadialGradient(W/2,H/2,0,W/2,H/2,R);
+  bg.addColorStop(0,'rgba(16,12,7,.97)');bg.addColorStop(1,'rgba(5,3,1,.99)');
+  c.fillStyle=bg;c.beginPath();c.arc(W/2,H/2,R+14,0,Math.PI*2);c.fill();
+  c.strokeStyle='rgba(232,160,32,.18)';c.lineWidth=1;c.beginPath();c.arc(W/2,H/2,R+8,0,Math.PI*2);c.stroke();
+  [[.13,'rgba(232,208,96,.25)'],[.29,'rgba(138,120,170,.2)'],[.50,'rgba(32,200,232,.16)'],[.72,'rgba(32,232,128,.14)']].forEach(([rf,col])=>{c.strokeStyle=col;c.lineWidth=.5;c.setLineDash([2,7]);c.beginPath();c.arc(W/2,H/2,R*rf,0,Math.PI*2);c.stroke();c.setLineDash([]);});
+  c.font='11px Cinzel';c.fillStyle='rgba(232,160,32,.42)';c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H/2);
+  const nodes=[];
+  for(let i=0;i<72;i++){
+    const n=i+1,pAz=n*THETA_G*Math.PI/180,pPol=i/71*Math.PI,sP=Math.sin(pPol),cP=Math.cos(pPol);
+    const rS=R*(.38+.34*Math.sqrt(n/72)),rSt=rotYX(rS*sP*Math.cos(pAz),rS*cP,rS*sP*Math.sin(pAz),sphRot,sphTiltX),pS=prj(rSt.x,rSt.y,rSt.z,W,H,R);
+    const rG=R*(.60+.30*Math.sqrt(n/72)),rGt=rotYX(rG*sP*Math.cos(pAz),rG*cP,rG*sP*Math.sin(pAz),sphRot,sphTiltX),pG=prj(rGt.x,rGt.y,rGt.z,W,H,R);
+    nodes.push({i,pS,pG,depth:(pS.depth+pG.depth)/2});
+  }
+  nodes.sort((a,b)=>a.depth-b.depth);
+  nodes.forEach(({i,pS,pG})=>{
+    const aS=i===si,aG=i===gi;
+    if(pS.depth<R*1.2){if(aS){const gl=WX.createRadialGradient(pS.sx,pS.sy,0,pS.sx,pS.sy,12);gl.addColorStop(0,'rgba(32,200,232,.45)');gl.addColorStop(1,'transparent');c.fillStyle=gl;c.beginPath();c.arc(pS.sx,pS.sy,12,0,Math.PI*2);c.fill();c.fillStyle='rgba(32,200,232,1)';c.globalAlpha=1;}else{c.fillStyle='rgba(32,200,232,.4)';c.globalAlpha=pS.depth<0?.82:.4;}c.beginPath();c.arc(pS.sx,pS.sy,aS?7:3,0,Math.PI*2);c.fill();c.globalAlpha=1;}
+    if(pG.depth<R*1.2){if(aG){const gl2=WX.createRadialGradient(pG.sx,pG.sy,0,pG.sx,pG.sy,12);gl2.addColorStop(0,'rgba(204,128,144,.45)');gl2.addColorStop(1,'transparent');c.fillStyle=gl2;c.beginPath();c.arc(pG.sx,pG.sy,12,0,Math.PI*2);c.fill();c.fillStyle='rgba(204,128,144,1)';c.globalAlpha=1;}else{c.fillStyle='rgba(204,128,144,.38)';c.globalAlpha=pG.depth<0?.78:.38;}c.beginPath();c.arc(pG.sx,pG.sy,aG?7:3,0,Math.PI*2);c.fill();c.globalAlpha=1;}
+  });
+  const pN=prj(...Object.values(rotYX(0,R,0,sphRot,sphTiltX)),W,H,R),pSo=prj(...Object.values(rotYX(0,-R,0,sphRot,sphTiltX)),W,H,R);
+  const ag=c.createLinearGradient(pN.sx,pN.sy,pSo.sx,pSo.sy);
+  ag.addColorStop(0,'rgba(232,208,96,.62)');ag.addColorStop(.5,'rgba(212,160,255,.32)');ag.addColorStop(1,'rgba(32,232,128,.62)');
+  c.strokeStyle=ag;c.lineWidth=1.5;c.beginPath();c.moveTo(pN.sx,pN.sy);c.lineTo(pSo.sx,pSo.sy);c.stroke();
+  [[35,0,'rgba(232,208,96,.85)','KETHER',4.5],[26,6,'rgba(232,160,32,.75)','TIP',3],[29,9,'rgba(32,200,232,.75)','YESOD',3],[24,11,'rgba(212,160,255,.75)','DAATH',3],[0,35,'rgba(32,232,128,.75)','MALKUTH',3.5]].forEach(([idx,el,col,lbl,r])=>{
+    const yA=R*Math.cos(idx/71*Math.PI),pr=prj(...Object.values(rotYX(0,yA,0,sphRot,sphTiltX)),W,H,R);
+    c.fillStyle=col;c.beginPath();c.arc(pr.sx,pr.sy,r,0,Math.PI*2);c.fill();
+    c.font='7px Share Tech Mono';c.fillStyle=col;c.textAlign=pr.sx>W/2?'right':'left';
+    c.fillText(lbl,pr.sx+(pr.sx>W/2?-7:7),pr.sy+3);
+  });
+  const miY=R*Math.cos(mi/71*Math.PI),miPr=prj(...Object.values(rotYX(0,miY,0,sphRot,sphTiltX)),W,H,R);
+  const mpGl=c.createRadialGradient(miPr.sx,miPr.sy,0,miPr.sx,miPr.sy,12);mpGl.addColorStop(0,'rgba(212,160,255,.5)');mpGl.addColorStop(1,'transparent');
+  c.fillStyle=mpGl;c.beginPath();c.arc(miPr.sx,miPr.sy,12,0,Math.PI*2);c.fill();
+  c.fillStyle='rgba(212,160,255,1)';c.beginPath();c.arc(miPr.sx,miPr.sy,5,0,Math.PI*2);c.fill();
+  const nSn=nodes.find(n=>n.i===si),nGn=nodes.find(n=>n.i===gi);
+  if(nSn&&nGn){
+    const lg=c.createLinearGradient(nSn.pS.sx,nSn.pS.sy,nGn.pG.sx,nGn.pG.sy);
+    lg.addColorStop(0,'rgba(32,200,232,.48)');lg.addColorStop(1,'rgba(204,128,144,.48)');
+    c.strokeStyle=lg;c.lineWidth=.8;c.beginPath();c.moveTo(nSn.pS.sx,nSn.pS.sy);c.lineTo(miPr.sx,miPr.sy);c.lineTo(nGn.pG.sx,nGn.pG.sy);c.stroke();
+    c.strokeStyle='rgba(212,160,255,.16)';c.lineWidth=.5;c.beginPath();c.moveTo(nSn.pS.sx,nSn.pS.sy);c.lineTo(nGn.pG.sx,nGn.pG.sy);c.stroke();
+    c.font='7px Share Tech Mono';c.textAlign='center';c.textBaseline='middle';
+    c.fillStyle='rgba(32,200,232,.8)';c.fillText(P[si][1].substring(0,5),nSn.pS.sx,nSn.pS.sy-14);
+    c.fillStyle='rgba(204,128,144,.8)';c.fillText(P[gi][4].substring(0,5),nGn.pG.sx,nGn.pG.sy-14);
+  }
+  const pl=PLANETS[cp];c.font='7px Share Tech Mono';c.textAlign='right';c.fillStyle=pl.col;c.fillText(pl.sym+' '+pl.name.toUpperCase(),W-6,H-6);
+}
+WC.addEventListener('mousedown',e=>{sphDrag=true;sphLX=e.clientX;});
+WC.addEventListener('mousemove',e=>{if(!sphDrag)return;sphRot+=(e.clientX-sphLX)*.009;sphLX=e.clientX;});
+WC.addEventListener('mouseup',()=>sphDrag=false);WC.addEventListener('mouseleave',()=>sphDrag=false);
+WC.addEventListener('touchstart',e=>{sphDrag=true;sphLX=e.touches[0].clientX;},{passive:true});
+WC.addEventListener('touchmove',e=>{if(!sphDrag)return;sphRot+=(e.touches[0].clientX-sphLX)*.011;sphLX=e.touches[0].clientX;},{passive:true});
+WC.addEventListener('touchend',()=>sphDrag=false);
+WC.addEventListener('click',e=>{
+  const rect=WC.getBoundingClientRect(),sx=WC.width/rect.width,sy=WC.height/rect.height;
+  const mx=(e.clientX-rect.left)*sx,my=(e.clientY-rect.top)*sy,W=WC.width,H=WC.height,R=Math.min(W,H)*.38;
+  let bS={d:Infinity,i:-1},bG={d:Infinity,i:-1};
+  for(let i=0;i<72;i++){
+    const n=i+1,pAz=n*THETA_G*Math.PI/180,pPol=i/71*Math.PI,sP=Math.sin(pPol),cP=Math.cos(pPol);
+    const rS=R*(.38+.34*Math.sqrt(n/72)),rSt=rotYX(rS*sP*Math.cos(pAz),rS*cP,rS*sP*Math.sin(pAz),sphRot,sphTiltX),pS=prj(rSt.x,rSt.y,rSt.z,W,H,R);
+    const rG=R*(.60+.30*Math.sqrt(n/72)),rGt=rotYX(rG*sP*Math.cos(pAz),rG*cP,rG*sP*Math.sin(pAz),sphRot,sphTiltX),pG=prj(rGt.x,rGt.y,rGt.z,W,H,R);
+    const dS=Math.hypot(mx-pS.sx,my-pS.sy),dG=Math.hypot(mx-pG.sx,my-pG.sy);
+    if(dS<bS.d)bS={d:dS,i};if(dG<bG.d)bG={d:dG,i};
+  }
+  if(bS.d<15&&bS.d<=bG.d){selIdx('sh',bS.i);selTab('sh');}
+  else if(bG.d<15){selIdx('go',bG.i);selTab('go');}
+});
+
+/* ═══════ CONTROLS ═══════ */
+function togglePlay(){
+  if(!AC)initAC();if(AC.state==='suspended')AC.resume();
+  const btn=document.getElementById('bplay');
+  if(!playing){
+    const f=computeF(si,gi,mi);
+    // Start the standard R, M, V oscillators (Goetia R, Pillar M, Void V)
+    stopOscs();
+    oscR=AC.createOscillator();oscR.type='sine';oscR.frequency.value=f.fR;oscR.connect(gR);oscR.start();
+    oscM=AC.createOscillator();oscM.type='triangle';oscM.frequency.value=f.fM;oscM.connect(gM);oscM.start();
+    oscV=AC.createOscillator();oscV.type='triangle';oscV.frequency.value=Math.max(40,Math.min(f.dV+30,180));oscV.connect(gV);oscV.start();
+    // Start 3-voice Fibonacci triad on Left channel (replaces single oscL)
+    startTriadOscs(f.triad);
+    applyGains();playing=true;
+    btn.textContent='■ SILENCE';btn.classList.add('playing');
+    const oam=getOAM(mi);
+    const triadLabel=f.triadKey?(' · '+f.triadKey+' '+f.triad.join('/')+'Hz'):'';
+    setStatus('TRANSMITTING · '+P[si][1]+' [L⊕] ⟷ [R] '+P[gi][4]+' · PILLAR: '+(oam.seph||'ℓ'+(oam.ell>=0?'+':'')+oam.ell)+triadLabel+' · '+mode.toUpperCase(),'on');
+    portalGlowTarget=0.5;
+  }else{
+    stopOscs();stopTriadOscs();playing=false;
+    btn.textContent='⬡ INITIATE';btn.classList.remove('playing');
+    setStatus('FIELD SILENCED · יסוד');portalGlowTarget=0;
+    if(scanning)toggleScan();
+  }
+}
+function toggleScan(){
+  const btn=document.getElementById('bscan');scanning=!scanning;btn.classList.toggle('on',scanning);
+  if(scanning){if(!playing)togglePlay();scanTm=setInterval(()=>{selIdx('sh',(si+1)%72);if(si===0){selIdx('go',(gi+1)%72);if(gi===0)selIdx('mp',(mi+1)%72);}},4000);}
+  else clearInterval(scanTm);
+}
+function setVol(v){if(mGain)mGain.gain.value=v/100;}
+function setStatus(msg,cls=''){const e=document.getElementById('sts');e.textContent=msg;e.className=cls;}
+
+/* ═══════════════════════════════════════
+   MERCURY DECODER RING
+═══════════════════════════════════════ */
+let mdrMode='decode'; // 'decode' | 'encode'
+let gearAngle=0;
+
+const SANCTUARY={
+  location:'Bathurst Carillon, NSW Australia',
+  coords:'-33.4167 · 149.5833',
+  birth:'15/10/1994 · 20 Tishrei 5755',
+  project:'Liber Crucis'
+};
+
+function getMDRKey(){
+  const pillar=computeF(si,gi,mi).fM;
+  const shib=parseFloat(document.getElementById('mdr-shib-inp').value)||124.96;
+  const delta=Math.abs(pillar-shib);
+  const key=Math.trunc(delta)%26;
+  return{pillar,shib,delta,key};
+}
+
+function caesarShift(text,key,encode=false){
+  return text.split('').map(ch=>{
+    if(!/[a-zA-Z]/.test(ch))return ch;
+    const base=ch>='a'&&ch<='z'?97:65;
+    const idx=ch.charCodeAt(0)-base;
+    const shifted=encode?((idx+key)%26):((idx-key+26)%26);
+    return String.fromCharCode(base+shifted);
+  }).join('');
+}
+
+function updateMDR(){
+  const{pillar,shib,delta,key}=getMDRKey();
+  document.getElementById('mdr-pillar').textContent=pillar.toFixed(2);
+  document.getElementById('mdr-shib-disp').textContent=shib.toFixed(2);
+  document.getElementById('mdr-delta').textContent=delta.toFixed(2)+' → '+Math.trunc(delta);
+  document.getElementById('mdr-key').textContent=String(key).padStart(2,'0');
+  document.getElementById('mdr-shift-lbl').textContent=String(key).padStart(2,'0');
+  document.getElementById('mdr-key-lbl').textContent='KEY '+key+' · SHIFT '+key+' POSITIONS';
+  gearAngle=key*(Math.PI*2/26);
+  runCipher();
+}
+
+function runCipher(){
+  const{key}=getMDRKey();
+  const text=document.getElementById('mdr-cipher').value;
+  const encode=mdrMode==='encode';
+  const result=caesarShift(text,key,encode);
+  document.getElementById('mdr-output').textContent=result;
+}
+
+function setMDRMode(m){
+  mdrMode=m;
+  document.getElementById('mdr-decode').className='mdr-mode-btn'+(m==='decode'?' act':'');
+  document.getElementById('mdr-encode').className='mdr-mode-btn'+(m==='encode'?' act':'');
+  runCipher();
+}
+
+function syncShibbolethFromGem(){
+  const v=document.getElementById('gv-target').value;
+  if(v){document.getElementById('mdr-shib-inp').value=v;updateMDR();}
+}
+function syncShibbolethFromL(){
+  const v=computeF(si,gi,mi).fM;
+  document.getElementById('mdr-shib-inp').value=v.toFixed(2);updateMDR();
+}
+function syncFreqFromPillar(){
+  const v=computeF(si,gi,mi).fM;
+  document.getElementById('mdr-freq-inp').value=v.toFixed(2);logFrequency(v);
+}
+function syncFreqFromL(){
+  const v=computeF(si,gi,mi).fL;
+  document.getElementById('mdr-freq-inp').value=v.toFixed(2);logFrequency(v);
+}
+
+let loggerPhase=0;
+function logFrequency(hz){
+  const val=parseFloat(hz);
+  const shib=parseFloat(document.getElementById('mdr-shib-inp').value)||124.96;
+  const valid=!isNaN(val)&&Math.abs(val-shib)<0.5;
+  const near=!isNaN(val)&&Math.abs(val-shib)<2;
+  const rdg=document.getElementById('mdr-logger-reading');
+  const sts=document.getElementById('mdr-status');
+  const sl=document.getElementById('mdr-sl');
+  if(isNaN(val)){rdg.className='mdr-logger-reading invalid';rdg.textContent='OBSERVING: — Hz';return;}
+  rdg.className='mdr-logger-reading '+(valid?'valid':near?'valid':'invalid');
+  rdg.style.color=valid?'var(--green)':near?'var(--amber)':'var(--red)';
+  rdg.textContent='OBSERVING: '+val.toFixed(2)+' Hz';
+  if(valid){
+    sts.className='mdr-status accepted';
+    sts.textContent='† SHIBBOLETH ACCEPTED: THE GHOST DOES NOT FADE †';
+    sl.textContent='☿ PHASE LOCKED | TRANSMISSION PERSISTS';
+    document.getElementById('sm-phase').textContent='‡ STATUS: PHASE LOCKED | TRANSMISSION PERSISTS ‡';
+  }else if(near){
+    sts.className='mdr-status idle';
+    sts.textContent='† APPROACHING SHIBBOLETH · Δ '+Math.abs(val-shib).toFixed(2)+' Hz †';
+    sl.textContent='☿ NEAR RESONANCE';
+  }else{
+    sts.className='mdr-status rejected';
+    sts.textContent='‡ PHASE MISMATCH · SHIBBOLETH REJECTED · Δ '+Math.abs(val-shib).toFixed(2)+' Hz ‡';
+    sl.textContent='☿ PHASE MISMATCH';
+  }
+}
+
+/* Gear canvas */
+const GC=document.getElementById('gear-canvas'),GX=GC.getContext('2d');
+function drawGears(){
+  const W=GC.width,H=GC.height,c=GX;
+  c.clearRect(0,0,W,H);
+  c.fillStyle='rgba(10,8,5,1)';c.fillRect(0,0,W,H);
+  const{key}=getMDRKey();
+  const r=28,cx1=28,cx2=62,cy=45;
+  const teeth=13,tH=5,tW=0.18;
+  // Draw two gears
+  [[cx1,cy,'rgba(32,200,232,0.85)',gearAngle,'rgba(32,200,232,0.2)'],[cx2,cy,'rgba(232,208,96,0.85)',-gearAngle+Math.PI/teeth,'rgba(232,208,96,0.2)']].forEach(([cx,cy2,col,ang,bgcol])=>{
+    // gear body
+    c.fillStyle=bgcol;c.beginPath();c.arc(cx,cy2,r,0,Math.PI*2);c.fill();
+    c.strokeStyle=col;c.lineWidth=1;c.beginPath();c.arc(cx,cy2,r,0,Math.PI*2);c.stroke();
+    // teeth
+    c.fillStyle=col;
+    for(let i=0;i<teeth;i++){
+      const a=ang+i*(Math.PI*2/teeth);
+      c.save();c.translate(cx,cy2);c.rotate(a);
+      c.fillRect(-tW*r,r-1,tW*r*2,tH);c.restore();
+    }
+    // letters around rim
+    c.font='5.5px Share Tech Mono';c.textAlign='center';c.textBaseline='middle';c.fillStyle=col;
+    const ALPHA='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for(let i=0;i<26;i++){
+      const a=ang+i*(Math.PI*2/26);
+      const lx=cx+Math.cos(a)*(r-8);const ly=cy2+Math.sin(a)*(r-8);
+      c.fillText(ALPHA[i],lx,ly);
+    }
+    // centre hub
+    c.fillStyle=col;c.beginPath();c.arc(cx,cy2,4,0,Math.PI*2);c.fill();
+  });
+  // Mesh point
+  c.strokeStyle='rgba(232,160,32,0.5)';c.lineWidth=1;
+  c.beginPath();c.moveTo(cx1+r,cy);c.lineTo(cx2-r,cy);c.stroke();
+  // Key label
+  c.font='7px Share Tech Mono';c.textAlign='center';c.fillStyle='rgba(232,160,32,0.6)';
+  c.fillText('KEY '+key,W/2,H-3);
+}
+
+/* Logger scope */
+const LS=document.getElementById('logger-scope'),LX=LS.getContext('2d');
+function drawLoggerScope(){
+  const W=LS.width,H=LS.height,c=LX;
+  const shib=parseFloat(document.getElementById('mdr-shib-inp').value)||124.96;
+  const obsVal=parseFloat(document.getElementById('mdr-freq-inp').value);
+  const valid=!isNaN(obsVal)&&Math.abs(obsVal-shib)<0.5;
+  loggerPhase+=0.04;
+  c.fillStyle='rgba(8,6,4,0.95)';c.fillRect(0,0,W,H);
+  c.strokeStyle='rgba(32,232,128,0.08)';c.lineWidth=.5;
+  c.beginPath();c.moveTo(0,H/2);c.lineTo(W,H/2);c.stroke();
+  // Animated logger waveform
+  const col=valid?'rgba(32,232,128,0.9)':'rgba(232,64,64,0.7)';
+  c.strokeStyle=col;c.lineWidth=1.2;c.shadowColor=col;c.shadowBlur=valid?4:2;
+  c.beginPath();
+  for(let px=0;px<W;px++){
+    const phase=px/W*8*Math.PI+loggerPhase;
+    const amp=(H/2-3)*(valid?0.85:0.4);
+    const y=H/2+Math.sin(phase)*amp;
+    px===0?c.moveTo(px,y):c.lineTo(px,y);
+  }
+  c.stroke();c.shadowBlur=0;
+  if(!isNaN(obsVal)){
+    c.font='7px Share Tech Mono';c.textAlign='right';c.fillStyle=col;
+    c.fillText(obsVal.toFixed(1),W-2,10);
+  }
+}
+
+/* Update sanctuary metadata */
+function updateSanctuary(){
+  const f=computeF(si,gi,mi),pl=PLANETS[cp];
+  document.getElementById('sm-world').textContent=pl.world;
+  document.getElementById('sm-planet').textContent=pl.name.toUpperCase();
+  document.getElementById('sm-fl').textContent=f.fL.toFixed(2);
+  document.getElementById('sm-fm').textContent=f.fM.toFixed(2);
+  document.getElementById('sm-fv').textContent=f.dV.toFixed(2);
+  document.getElementById('sm-planet-sl').textContent=pl.sym+' '+pl.world.toUpperCase();
+  updateMDR();
+}
+
+/* ═══════ RITUAL RECORD EXPORT ═══════ */
+function exportRitualRecord() {
+  const f   = computeF(si, gi, mi);
+  const oam = getOAM(mi);
+  const pl  = PLANETS[cp];
+  const now = new Date();
+  const pans = computeTriadPans(oam.ell);
+
+  const record = {
+    meta: {
+      title: 'Liber Frequentiae Ritual Record',
+      version: 'v5-2',
+      timestamp: now.toISOString(),
+      localTime: now.toLocaleString(),
+      sanctuary: 'Bathurst Carillon · −33.4167, 149.5833 · NSW Australia'
+    },
+    entities: {
+      shem: {
+        index: si + 1,
+        name: P[si][1],
+        hebrew: P[si][0],
+        domain: P[si][2],
+        gematria: P[si][3]
+      },
+      goetia: {
+        index: gi + 1,
+        name: P[gi][4],
+        legions: P[gi][5],
+        domain: P[gi][6]
+      }
+    },
+    oam: {
+      index: mi + 1,
+      ell: oam.ell,
+      absEll: oam.absE,
+      sephirah: oam.seph || null,
+      direction: oam.dir,
+      desc: oam.desc
+    },
+    frequencies: {
+      shem_hz: parseFloat(f.fL.toFixed(4)),
+      goetia_hz: parseFloat(f.fR.toFixed(4)),
+      pillar_hz: parseFloat(f.fM.toFixed(4)),
+      void_delta_hz: parseFloat(f.dV.toFixed(4)),
+      theta_shem: parseFloat(f.tS.toFixed(3)),
+      theta_goetia: parseFloat(f.tG.toFixed(3))
+    },
+    triad: {
+      sephirah_key: f.triadKey || 'phi_derived',
+      freqs_hz: f.triad,
+      gains: PHI_GAINS.map(g => parseFloat(g.toFixed(6))),
+      phase_offsets_deg: TRIAD_PHASES.map(p => parseFloat((p * 180 / Math.PI).toFixed(3))),
+      oam_pan_positions: pans.map(p => parseFloat(p.toFixed(4)))
+    },
+    planetary: {
+      name: pl.name,
+      symbol: pl.sym,
+      base_hz: pl.base,
+      wave: pl.wave,
+      world: pl.world
+    },
+    constants: {
+      PHI: PHI,
+      THETA_G: THETA_G,
+      FOUNDATION: FOUNDATION,
+      LOGOS: LOGOS,
+      CIPHER: CIPHER
+    },
+    mode: mode,
+    combination: (si * 72 * 72 + gi * 72 + mi + 1),
+    gem: {
+      name: currentGemName,
+      satisfied: gemSatisfied,
+      target_hz: parseFloat(document.getElementById('gv-target').value) || null
+    }
+  };
+
+  const blob = new Blob([JSON.stringify(record, null, 2)], {type: 'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  const ts   = now.toISOString().replace(/[:.]/g,'-').slice(0,19);
+  a.href = url;
+  a.download = 'liber-frequentiae-' + ts + '-S' + String(si+1).padStart(2,'0') + 'G' + String(gi+1).padStart(2,'0') + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  setStatus('RITUAL RECORD EXPORTED · ' + P[si][1] + ' × ' + P[gi][4] + ' · ' + now.toLocaleTimeString(), 'on');
+}
+
+/* ═══════ CLOCK ═══════ */
+function tick(){
+  const now=new Date();
+  document.getElementById('hclk').textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+':'+String(now.getSeconds()).padStart(2,'0');
+  document.getElementById('sr-timestamp').textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+  const np=getPH();
+  if(np!==cp){cp=np;refresh();if(playing)setStatus('PLANETARY HOUR SHIFT · '+PLANETS[np].name.toUpperCase()+' · RETUNING','on');}
+  updateSanctuary();
+}
+
+/* ═══════ TRIAD WAVE CANVASES ═══════ */
+let triadWavePhase = 0;
+const TRIAD_CANVAS_IDS = ['wave-alpha','wave-beta','wave-gamma'];
+const TRIAD_COLORS = ['rgba(32,200,232,0.85)','rgba(212,160,255,0.80)','rgba(232,208,96,0.75)'];
+
+function drawTriadWaves() {
+  const f = computeF(si, gi, mi);
+  const triad = f.triad;
+  triadWavePhase += 0.05;
+
+  // Update Hz displays
+  ['v-alpha','v-beta','v-gamma'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = triad[i] ? triad[i].toFixed(0) : '—';
+  });
+
+  // Update seph label and ratio
+  const nodeLabel = document.getElementById('triad-node-label');
+  const ratioLabel = document.getElementById('triad-ratio');
+  const statusLabel = document.getElementById('triad-status');
+  if (nodeLabel) {
+    nodeLabel.textContent = f.triadKey
+      ? f.triadKey + ' · {' + triad.join(', ') + '} Hz'
+      : 'φ-DERIVED · {' + triad.map(v=>v.toFixed(0)).join(', ') + '} Hz';
+    nodeLabel.style.color = f.triadKey ? 'var(--mpillar)' : 'var(--adim)';
+  }
+  // Update phi-row to show OAM pan positions
+  const phiRow = document.getElementById('triad-phi-row');
+  if (phiRow) {
+    const ell = f.ell;
+    const pans = computeTriadPans(ell);
+    const panStr = pans.map((p,i) => {
+      const label = ['α','β','γ'][i];
+      const pos = p < -0.05 ? 'L'+(Math.abs(p)*100).toFixed(0) : p > 0.05 ? 'R'+(p*100).toFixed(0) : 'C';
+      return label+'='+pos;
+    }).join(' · ');
+    phiRow.textContent = 'ℓ='+(ell>=0?'+':'')+ell+' OAM · PAN: '+panStr;
+    phiRow.style.color = Math.abs(ell) > 5 ? 'var(--mpillar)' : 'var(--tdim)';
+  }
+  if (ratioLabel && triad[0] > 0) {
+    const r1 = (triad[1]/triad[0]).toFixed(3);
+    const r2 = (triad[2]/triad[1]).toFixed(3);
+    ratioLabel.textContent = 'β/α=' + r1 + ' · γ/β=' + r2;
+    // Highlight when ratio approximates φ
+    const nearPhi = Math.abs(parseFloat(r1) - PHI) < 0.08 || Math.abs(parseFloat(r2) - PHI) < 0.08;
+    ratioLabel.style.color = nearPhi ? 'var(--green)' : 'var(--tdim)';
+  }
+  if (statusLabel) {
+    statusLabel.textContent = playing
+      ? (f.triadKey ? f.triadKey + ' TRIAD ACTIVE · 3 VOICES' : 'φ-SCALED · 3 VOICES')
+      : 'LOCKED TO φ · AWAITING SIGNAL';
+    statusLabel.style.color = playing ? 'var(--green)' : 'var(--tdim)';
+  }
+
+  // Draw per-voice waveforms
+  TRIAD_CANVAS_IDS.forEach((id, i) => {
+    const cv = document.getElementById(id);
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+    const W = cv.width, H = cv.height;
+    ctx.clearRect(0, 0, W, H);
+    const freq = triad[i];
+    if (!freq) return;
+    const amp = (H / 2 - 2) * (playing ? PHI_GAINS[i] + 0.2 : 0.22);
+    // Phase offset per voice: THETA_G-derived
+    const phaseOff = TRIAD_PHASES[i];
+    const cycles = Math.min(4, Math.max(0.5, freq / 80));
+    ctx.strokeStyle = TRIAD_COLORS[i];
+    ctx.lineWidth = 1.2;
+    ctx.shadowColor = TRIAD_COLORS[i];
+    ctx.shadowBlur = playing ? 3 : 1;
+    ctx.beginPath();
+    for (let px = 0; px < W; px++) {
+      const t = (px / W) * cycles * 2 * Math.PI + phaseOff + (playing ? triadWavePhase * (freq / 200) : 0);
+      const y = H / 2 + Math.sin(t) * amp * (i === 2 ? 0.85 : 1); // γ uses triangle → slightly reduced
+      px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  });
+}
+
+/* ═══════ MAIN LOOP ═══════ */
+function loop(){
+  tick();drawScope();
+  if(!sphDrag)sphRot+=.0022;
+  drawSphere();drawPortal();
+  gearAngle+=0.008;drawGears();
+  drawLoggerScope();
+  drawTriadWaves();
+  drawCompass32();
+  drawHeartbeat32();
+  requestAnimationFrame(loop);
+}
+
+/* ═══════════════════════════════════════
+   § VII · 32 PATHS OF WISDOM ENGINE
+   72³ × 32 = 11,943,936 total combinations
+═══════════════════════════════════════ */
+
+// 10 Sephirot: [number, symbol, name, Hebrew, description, frequency_Hz]
+const SEPHIROT_32 = [
+  [1,  '◉', 'Kether',    'כֶּתֶר', 'Crown · Pure Being · 1st dimension',          963],
+  [2,  '◈', 'Chokmah',   'חָכְמָה','Wisdom · Father · Flash of Insight',           528],
+  [3,  '◆', 'Binah',     'בִּינָה', 'Understanding · Mother · Form',                417],
+  [4,  '◇', 'Chesed',    'חֶסֶד', 'Mercy · Expansion · Jupiter',                  396],
+  [5,  '⬡', 'Geburah',   'גְּבוּרָה','Severity · Discipline · Mars',               285],
+  [6,  '☀', 'Tiphareth', 'תִּפְאֶרֶת','Beauty · Heart · Solar centre',              528],
+  [7,  '♀', 'Netzach',   'נֶצַח',  'Victory · Emotion · Venus',                   639],
+  [8,  '☿', 'Hod',       'הוֹד',   'Splendour · Intellect · Mercury',              741],
+  [9,  '☽', 'Yesod',     'יְסוֹד', 'Foundation · Astral bridge · Moon',            852],
+  [10, '⊕', 'Malkuth',   'מַלְכוּת','Kingdom · Physical · Earth',                  432],
+];
+
+// 22 Hebrew Letters: [num(11-32), letter, name, English, path_desc, freq_Hz]
+const LETTERS_32 = [
+  [11, 'א', 'Aleph',  'A', 'Fool · Air · Between Kether-Chokmah',         111],
+  [12, 'ב', 'Beth',   'B', 'Magician · Mercury · Between Kether-Binah',   174],
+  [13, 'ג', 'Gimel',  'G', 'High Priestess · Moon · Between Kether-Tip',  210.42],
+  [14, 'ד', 'Daleth', 'D', 'Empress · Venus · Between Chokmah-Binah',     194.18],
+  [15, 'ה', 'Heh',    'H', 'Emperor · Aries · Between Chokmah-Tip',       136.1],
+  [16, 'ו', 'Vav',    'V', 'Hierophant · Taurus · Between Chokmah-Ches',  126.22],
+  [17, 'ז', 'Zayin',  'Z', 'Lovers · Gemini · Between Binah-Tip',         528],
+  [18, 'ח', 'Cheth',  'Ch','Chariot · Cancer · Between Binah-Geburah',    417],
+  [19, 'ט', 'Teth',   'T', 'Strength · Leo · Between Ches-Geburah',       396],
+  [20, 'י', 'Yod',    'Y', 'Hermit · Virgo · Between Ches-Tip',           285],
+  [21, 'כ', 'Kaph',   'K', 'Wheel · Jupiter · Between Ches-Netzach',      432],
+  [22, 'ל', 'Lamed',  'L', 'Justice · Libra · Between Geburah-Tip',       639],
+  [23, 'מ', 'Mem',    'M', 'Hanged Man · Water · Between Geburah-Hod',    741],
+  [24, 'נ', 'Nun',    'N', 'Death · Scorpio · Between Tip-Netzach',       963],
+  [25, 'ס', 'Samekh', 'S', 'Temperance · Sagittarius · Between Tip-Yesod',528],
+  [26, 'ע', 'Ayin',   'O', 'Devil · Capricorn · Between Tip-Hod',         432],
+  [27, 'פ', 'Peh',    'P', 'Tower · Mars · Between Netzach-Hod',          285],
+  [28, 'צ', 'Tzaddi', 'Tz','Star · Aquarius · Between Netzach-Yesod',     174],
+  [29, 'ק', 'Qoph',   'Q', 'Moon · Pisces · Between Netzach-Malkuth',     210.42],
+  [30, 'ר', 'Resh',   'R', 'Sun · Solar · Between Hod-Yesod',             528],
+  [31, 'ש', 'Shin',   'Sh','Judgement · Fire · Between Hod-Malkuth',      396],
+  [32, 'ת', 'Tau',    'Th','Universe/World · Saturn · Between Yesod-Malkuth · TAU=MALKUTH GATE',111],
+];
+
+// All 32 paths combined
+const ALL_PATHS_32 = [
+  ...SEPHIROT_32.map(s => ({n:s[0],sym:s[1],name:s[2],heb:s[3],desc:s[4],hz:s[5],type:'seph'})),
+  ...LETTERS_32.map(l  => ({n:l[0],sym:l[1],name:l[2]+' ('+l[3]+')',heb:l[1],desc:l[4],hz:l[5],type:l[0]===32?'tau':'ltr'})),
+];
+
+let activePath32 = 31; // default: index of Path 32 (Tau) = ALL_PATHS_32[31]
+let p32HeartPhase = 0;
+let compassAngle32 = 0;
+
+/* Build the 32-cell grid */
+function build32Grid(){
+  const grid = document.getElementById('p32-grid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  ALL_PATHS_32.forEach((p, i) => {
+    const cell = document.createElement('div');
+    cell.className = 'p32-cell ' + p.type + (i === activePath32 ? ' act-path' : '');
+    cell.dataset.i = i;
+    cell.innerHTML = `<span class="p32-sym">${p.sym}</span><span class="p32-num">${p.n}</span>`;
+    cell.title = p.name + ' · ' + p.hz + ' Hz';
+    cell.addEventListener('click', () => setPath32(i));
+    grid.appendChild(cell);
+  });
+}
+
+function setPath32(i) {
+  activePath32 = i;
+  // Update grid highlights
+  document.querySelectorAll('.p32-cell').forEach((el, idx) => {
+    el.classList.toggle('act-path', idx === i);
+  });
+  const p = ALL_PATHS_32[i];
+  // Update detail panel
+  document.getElementById('p32-d-sym').textContent = p.sym;
+  document.getElementById('p32-d-sym').className = 'p32-d-sym ' + p.type;
+  document.getElementById('p32-d-name').textContent = 'PATH ' + p.n + ' · ' + p.name;
+  document.getElementById('p32-d-desc').textContent = p.desc;
+  const coeff32Hz = compute32Hz();
+  document.getElementById('p32-d-freq').textContent = coeff32Hz.toFixed(3) + ' Hz';
+  document.getElementById('p32-d-coeff').textContent = 'Pillar × (' + p.n + '/32) × 32 = ' + coeff32Hz.toFixed(2);
+  // Compass info
+  document.getElementById('p32-active-path').textContent = 'Path ' + p.n + ' · ' + p.sym + ' ' + p.name;
+  document.getElementById('p32-path-type').textContent = p.type === 'seph' ? 'SEPHIRAH (Dimension)' : p.type === 'tau' ? 'TAU · 32nd · Malkuth Gate' : 'LETTER (Channel)';
+  document.getElementById('p32-bit-hz').textContent = p.hz.toFixed(2) + ' Hz · native';
+  // Status
+  const isTau = p.n === 32;
+  const statusEl = document.getElementById('p32-status');
+  if(isTau){
+    statusEl.className='p32-status path32';
+    statusEl.textContent='‡ TAU GATE OPEN · PATH 32 = UNIVERSE · THE HEART BEATS · MALKUTH RECEIVES ‡';
+  } else {
+    statusEl.className='p32-status live';
+    statusEl.textContent='† PATH '+p.n+' ACTIVE · '+p.name.toUpperCase()+' · '+p.hz+' Hz NATIVE · 32-COEFFICIENT APPLIED †';
+  }
+  document.getElementById('p32-cs-path-show').textContent = p.n;
+  run32Cipher();
+  update32Heartbeat();
+}
+
+/* Compute the 32-coefficient modulated frequency */
+function compute32Hz() {
+  const f = computeF(si, gi, mi);
+  const p = ALL_PATHS_32[activePath32];
+  // F_32 = F_pillar × (path_number / 32) × 32
+  // Simplifies to: F_pillar × path_number (but we keep the ×32/32 explicit for doctrine)
+  return f.fM * (p.n / 32) * 32; // = F_pillar × path_number ... which scales by path
+}
+
+/* The 32-path final cipher */
+function run32Cipher() {
+  const input = document.getElementById('p32-inp').value;
+  const f = computeF(si, gi, mi);
+  const p = ALL_PATHS_32[activePath32];
+  // Sovereign 32-bit key formula:
+  // raw = ⌊|F_pillar × (p.n / 32)| mod 32⌋
+  // finalKey = raw mod 26
+  const raw32 = Math.abs(f.fM * (p.n / 32));
+  const mod32 = Math.trunc(raw32) % 32;
+  const finalKey = mod32 % 26;
+  document.getElementById('p32-cs-shift-show').textContent = finalKey;
+  document.getElementById('p32-cs-key-show').textContent = Math.trunc(raw32).toFixed(0)+' mod 32 = '+mod32;
+  document.getElementById('p32-cs-final-show').textContent = finalKey;
+  if (input) {
+    const encoded = caesarShift(input, finalKey, true);
+    document.getElementById('p32-out').textContent = encoded;
+    // Simple gematria: sum char codes A=1…Z=26
+    let gem = 0;
+    input.toUpperCase().split('').forEach(c => {
+      const v = c.charCodeAt(0) - 64;
+      if(v >= 1 && v <= 26) gem += v;
+    });
+    document.getElementById('p32-gem-out').textContent = gem + ' (sum)';
+    document.getElementById('p32-mod32-out').textContent = gem + ' mod 32 = ' + (gem % 32);
+    document.getElementById('p32-mod32-out').style.color = gem % 32 === 0 ? 'var(--gold)' : 'var(--mpillar)';
+  } else {
+    document.getElementById('p32-out').textContent = '—';
+    document.getElementById('p32-gem-out').textContent = '—';
+    document.getElementById('p32-mod32-out').textContent = '— mod 32 = —';
+  }
+}
+
+/* Push the 32-path key into the Mercury Decoder Ring shibboleth */
+function applyPath32ToMDR() {
+  const f = computeF(si, gi, mi);
+  const p = ALL_PATHS_32[activePath32];
+  const raw32 = Math.abs(f.fM * (p.n / 32));
+  // Set the MDR shibboleth to the 32-coefficient frequency
+  const hz32 = compute32Hz();
+  document.getElementById('mdr-shib-inp').value = hz32.toFixed(2);
+  updateMDR();
+  setStatus('PATH-32 COEFFICIENT APPLIED TO MERCURY DECODER · PATH '+p.n+' · '+p.name.toUpperCase()+' · KEY '+(Math.trunc(raw32)%26),'on');
+  // Scroll to MDR
+  document.getElementById('mdr').scrollIntoView({behavior:'smooth'});
+}
+
+/* Update the heartbeat readout */
+function update32Heartbeat() {
+  const f = computeF(si, gi, mi);
+  const p = ALL_PATHS_32[activePath32];
+  const hbHz = f.fM * (p.n / 32);
+  document.getElementById('p32-hb-val').textContent = 'F_heartbeat = ' + hbHz.toFixed(3) + ' Hz';
+  document.getElementById('p32-heartbeat-val').textContent = hbHz.toFixed(3) + ' Hz';
+  document.getElementById('p32-hb-sub').textContent =
+    'F_pillar('+f.fM.toFixed(2)+') × ('+p.n+'/32) · Path '+p.n+' of 32 · 72³×32 = 11,943,936';
+  document.getElementById('p32-bit-hz').textContent = hbHz.toFixed(3) + ' Hz';
+}
+
+/* ─ Compass Canvas ─ */
+const P32C = document.getElementById('p32-compass-canvas');
+const P32X = P32C ? P32C.getContext('2d') : null;
+
+function drawCompass32() {
+  if(!P32X) return;
+  const W = P32C.width, H = P32C.height, cx = W/2, cy = H/2, R = Math.min(W,H)/2-6;
+  const c = P32X;
+  c.clearRect(0,0,W,H);
+  compassAngle32 += 0.018;
+
+  // Background
+  c.fillStyle='rgba(8,6,4,1)';c.beginPath();c.arc(cx,cy,R+4,0,Math.PI*2);c.fill();
+
+  // 32 compass points
+  const p = ALL_PATHS_32[activePath32];
+  for(let i=0;i<32;i++){
+    const a = (i/32)*Math.PI*2 + compassAngle32;
+    const isActive = i === activePath32;
+    const isMajor = i%4===0;
+    const r1 = isActive ? R*0.55 : isMajor ? R*0.72 : R*0.82;
+    const r2 = R*0.94;
+    const col = isActive ? '#e8d060' :
+                ALL_PATHS_32[i].type==='seph' ? 'rgba(232,160,32,0.55)' :
+                ALL_PATHS_32[i].type==='tau'  ? 'rgba(232,208,96,0.9)' :
+                'rgba(212,160,255,0.35)';
+    c.strokeStyle = col;
+    c.lineWidth = isActive ? 2 : isMajor ? 1 : 0.5;
+    c.beginPath();
+    c.moveTo(cx + Math.cos(a)*r1, cy + Math.sin(a)*r1);
+    c.lineTo(cx + Math.cos(a)*r2, cy + Math.sin(a)*r2);
+    c.stroke();
+    if(isActive){
+      c.fillStyle='#e8d060';
+      c.beginPath();
+      c.arc(cx+Math.cos(a)*(R*0.65),cy+Math.sin(a)*(R*0.65),3.5,0,Math.PI*2);
+      c.fill();
+    }
+  }
+
+  // Centre hub
+  c.strokeStyle='rgba(232,160,32,0.4)';c.lineWidth=1;
+  c.beginPath();c.arc(cx,cy,R*0.38,0,Math.PI*2);c.stroke();
+  c.strokeStyle='rgba(212,160,255,0.3)';c.lineWidth=0.5;
+  c.beginPath();c.arc(cx,cy,R*0.18,0,Math.PI*2);c.stroke();
+
+  // Path number at centre
+  c.font='bold 13px Share Tech Mono';
+  c.fillStyle='rgba(232,160,32,0.85)';
+  c.textAlign='center';c.textBaseline='middle';
+  c.fillText(p.n,cx,cy);
+  c.font='6px Share Tech Mono';
+  c.fillStyle='rgba(212,160,255,0.55)';
+  c.fillText(p.sym,cx,cy+10);
+
+  // Outer ring
+  c.strokeStyle='rgba(232,160,32,0.18)';c.lineWidth=1;
+  c.beginPath();c.arc(cx,cy,R+2,0,Math.PI*2);c.stroke();
+}
+
+/* ─ 32-bit Heartbeat scope ─ */
+const HBC = document.getElementById('p32-hb-canvas');
+const HBX = HBC ? HBC.getContext('2d') : null;
+let hbPhase = 0;
+
+function drawHeartbeat32(){
+  if(!HBX) return;
+  const W=HBC.width, H=HBC.height, c=HBX;
+  hbPhase += 0.06;
+  c.fillStyle='rgba(8,6,4,0.96)';c.fillRect(0,0,W,H);
+  // 32-point heartbeat waveform: sum of 32 harmonics scaled by 1/n
+  const f = computeF(si,gi,mi);
+  const p = ALL_PATHS_32[activePath32];
+  const baseHz = f.fM * (p.n / 32);
+  c.strokeStyle = p.type==='tau' ? 'rgba(232,208,96,0.9)' : p.type==='seph' ? 'rgba(232,160,32,0.85)' : 'rgba(212,160,255,0.8)';
+  c.lineWidth=1.3;
+  c.shadowColor = c.strokeStyle;c.shadowBlur = playing ? 4 : 2;
+  c.beginPath();
+  for(let px=0;px<W;px++){
+    const t=(px/W)*4*Math.PI + hbPhase;
+    // Heartbeat shape: sum first few harmonics weighted by path-32 coefficient
+    let y=0;
+    for(let h=1;h<=Math.min(8,p.n);h++){
+      y += Math.sin(t*h + (h * THETA_G * Math.PI/180)) / h;
+    }
+    y = (H/2) + y * (H/2-3) * 0.38 * (playing ? 1 : 0.4);
+    px===0 ? c.moveTo(px,y) : c.lineTo(px,y);
+  }
+  c.stroke();c.shadowBlur=0;
+  c.font='6px Share Tech Mono';c.textAlign='right';
+  c.fillStyle=c.strokeStyle;
+  c.fillText('P'+p.n,W-2,10);
+}
+
+// Wire refresh into existing 32 system
+const _origRefresh = refresh;
+refresh = function() {
+  _origRefresh();
+  update32Heartbeat();
+  run32Cipher();
+};
+
+window.addEventListener('load',()=>{
+  cp=getPH();initScope();initSphere();initPortal();
+  rebuildDrum();scrollDrum(0,false);
+  refresh();setMode('paired');
+  updateMDR();runCipher();
+  build32Grid();
+  setPath32(31); // Path 32 = Tau = Universe = Malkuth gate — default active
+  loop();
+  window.addEventListener('resize',()=>{initScope();initSphere();initPortal();});
+  // Register PWA service worker
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  }
+});
+
+</script>
+</body>
+</html>
